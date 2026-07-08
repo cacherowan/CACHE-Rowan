@@ -1,0 +1,24 @@
+version: 1
+
+project:
+  title: MyST Site
+  id: e5c27d9e-b15a-4c9f-8707-614c782cf6ab
+  jupyter: lite
+  resources:
+    - lj_widget.html
+  exclude:
+    - Reference_Files/*
+
+site:
+  template: book-theme
+  options:
+    navbar_open: true
+  toc:
+    - file: index.md
+    #- file: 06_MD_run_using_py.md
+    #- file: Assignment_4_Example.ipynb
+    #- file: Interactive_Graph.md
+    #- file: Example_Page_2.md
+    #- file: Example_Page.md
+    #- file: MSD_Analysis.md
+    #- file: Gibbs_Free_Energy.md

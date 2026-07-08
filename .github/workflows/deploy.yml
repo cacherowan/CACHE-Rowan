@@ -1,0 +1,64 @@
+name: Deploy MyST site
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Setup micromamba
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-name: myst
+          create-args: python=3.11 mystmd jupyterlite-core jupyterlite-pyodide-kernel nbconvert
+
+      - name: Set BASE_URL
+        run: echo "BASE_URL=/CACHE-Rowan/" >> $GITHUB_ENV
+
+     # - name: Clear notebook outputs
+     #   shell: "bash -l {0}"
+     #   run: |
+     #     jupyter nbconvert --ClearOutputPreprocessor.enabled=True --to notebook --inplace Assignment_4_Example.ipynb
+
+
+      - name: Build site
+        shell: "bash -l {0}"
+        run: myst build --html
+
+     # - name: Copy static files
+     #   run: cp lj_widget.html _build/html/
+
+      - name: Inject GoatCounter analytics
+        shell: "bash -l {0}"
+        run: python inject_analytics.py
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _build/html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
