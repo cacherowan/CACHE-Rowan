@@ -11,6 +11,8 @@ In this code you will be able to estimate the impact to Human Health using the A
 This code will download the human health impact weight of the model locally and give this file to the code, which then will take the input of a chemical using the SMILES identification to tell you the impact in kg to human health.  Then you will be able to see the impact scaled according to how much mass in kg you have of that chemical.  
 
 
+<img src="/Reference_Files/Workflows/Human_Health_Impact_Workflow.svg"/>
+
 
 Click the button below to open this code in Google Colab
 
