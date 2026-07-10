@@ -133,7 +133,7 @@ download_if_needed(CC_MODEL_URL, CC_MODEL_PATH)
 CC_MODEL = CC_MODEL_PATH
 ```
 
-</details>
+<details>
 <summary>Expected output</summary>
 
 ```text
