@@ -13,6 +13,29 @@ This code will download the human health impact weight of the model locally and 
 
 <img src="/Reference_Files/Workflows/Human_Health_Impact_Workflow.svg"/>
 
+The libraries / packages listed in cell 1 will have a brief explanation of their function in the code, but for more information, please use the links below
+
+| Library / Package | Link to Documentation |
+| :--: | :--: |
+| numpy | [NumPy Documentation](https://numpy.org/doc/stable/) |
+| pandas | [Pandas Documentation](https://pandas.pydata.org/docs/) |
+| random | [Random Documentation](https://docs.python.org/3/library/random.html) |
+| matplotlib.pyplot | [Matplotlib.pyplot](https://matplotlib.org/stable/api/pyplot_summary.html) |
+| ipywidgets | [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/stable/) |
+| IPython.display | [Display Module](https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html) |
+| MinMaxScaler | [MinMaxScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html) |
+| train_test_split | [Train Test Split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) |
+| mean_squared_error | [Mean Squared Error](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html) |
+| r2_score | [R² score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html) |
+| make_scorer | [Make Scorer](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html) |
+| KNNImputer | [KNNImputer](https://scikit-learn.org/stable/modules/generated/sklearn.impute.KNNImputer.html) |
+| tensorflow | [Tensorflow](https://www.tensorflow.org/api_docs) |
+| load_model | [Tensorflow Load Model](https://www.tensorflow.org/api_docs/python/tf/keras/models/load_model) |
+| permutation_importance | [Permutation Importance](https://scikit-learn.org/stable/modules/generated/sklearn.inspection.permutation_importance.html) |
+| resample | [Resample](https://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html) |
+| StratifiedKFold | [StratifiedKFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html) |
+| os | [OS](https://docs.python.org/3/library/os.html) |
+| requests | [Requests](https://requests.readthedocs.io/en/latest/) |
 
 Click the button below to open this code in Google Colab
 
@@ -24,33 +47,34 @@ Click the button below to open this code in Google Colab
 
 
 ```
-# Cell 1: Import Required Libraries
+# Cell 1: Import Required Libraries / Packages
 
-import numpy as np
-import pandas as pd
-import random
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score, make_scorer
-from sklearn.impute import KNNImputer
-import tensorflow as tf
-import matplotlib.pyplot as plt
-from sklearn.inspection import permutation_importance
-from sklearn.utils import resample
-from sklearn.model_selection import StratifiedKFold
 
-# Downloading Weights
-import os
-import requests
+import numpy as np                                                        # Computational library
+import pandas as pd                                                       # Excel of python
+import random                                                             # Random number generator
+import matplotlib.pyplot as plt                                           # Plot Graphs
+import ipywidgets as widgets                                              # Creates UI elements such as the slider below
+from IPython.display import display                                       # Displays UI elements
 
-# For Giving Weights
-from tensorflow.keras.models import load_model
 
-# For Widgets and Graphs at end
-import ipywidgets as widgets
-from IPython.display import display
-import matplotlib.pyplot as plt
-import numpy as np
+from sklearn.preprocessing import MinMaxScaler                            # Scaling features to a specific range
+from sklearn.model_selection import train_test_split                      # Splits datasets into random training and test subsets
+from sklearn.metrics import mean_squared_error, r2_score, make_scorer     # Used for regression analysis
+from sklearn.impute import KNNImputer                                     # Fills in missing values using averaging of close data
+
+
+import tensorflow as tf                                                   # A way to show tensors (vector or matrix)
+from tensorflow.keras.models import load_model                            # Loads Model (Weight)
+
+
+from sklearn.inspection import permutation_importance                     # A way to see a feature's importance
+from sklearn.utils import resample                                        # Resample data sets
+from sklearn.model_selection import StratifiedKFold                       # Helps split data into sets
+
+
+import os                                                                 # Allows interactions with the file system
+import requests                                                           # Makes requests to internet files
 ```
 <details>
 <summary>Expected output</summary>
@@ -135,14 +159,6 @@ model_HH = tf.keras.models.load_model(
 <summary>Expected output</summary>
 
 ```text
-
-# Cell 4: Load Weights
-
-model_HH = tf.keras.models.load_model(
-    HH_MODEL_PATH,
-    custom_objects={"LeakyReLU": tf.keras.layers.LeakyReLU},
-    compile=False
-)
 /usr/local/lib/python3.12/dist-packages/keras/src/layers/core/dense.py:106: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
   super().__init__(activity_regularizer=activity_regularizer, **kwargs)
 ```
@@ -158,6 +174,23 @@ model_HH = tf.keras.models.load_model(
 # 1. Example: Phenol
 MOLECULE = "PHENOL"
 SMILES = "Oc1ccccc1"
+
+# Other SMILES examples:
+
+# MOLECULE = "BUTANOL"
+# SMILES = "CCC(C)O"
+
+# MOLECULE = "AMMONIA"
+# SMILES = "N"
+
+# MOLECULE = "PROPANOL"
+# SMILES = "CCCO"
+
+# MOLECULE = "STYRENE"
+# SMILES = "C=Cc1ccccc1"
+
+# MOLECULE = "BENZOTRIFLUORIDE"
+# SMILES = "FC(F)(F)c1ccccc1"
 
 # 2. Read the DB:
 db = pd.read_excel(DATABASE_PATH)
@@ -212,7 +245,7 @@ dtype: object
 
 
 ```
-# Cell 7: Print Climate Change Impact and Human Health Impact
+# Cell 7: Print Human Health Impact
 
 molecule_human_health_impact = model_HH.predict(np.array([list(descriptors_hh)]), verbose=0) # DALY/kg chemical
 
