@@ -14,7 +14,7 @@ This code will be calling to an excel document that contains currently a few hun
 Click the button below to open this code in Google Colab
 
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Earlyrizer64/MyST_site/blob/main/Reference_Files/Google_Colab_Files/Tutorial_4.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Google_Colab_Files/Tutorial_4.ipynb)
 
 
 ### Outputs Should Appear Like This: 
@@ -40,7 +40,7 @@ No Visible Output
 ```
 # Cell 2: Define Location of Database (Located in Github Repository)
 
-DATABASE_PATH = "https://raw.githubusercontent.com/Earlyrizer64/MyST_site/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
+DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
 df = pd.read_excel(DATABASE_PATH)
 ```
 <details>
@@ -105,7 +105,7 @@ NOCount	1.0
 ```
 # Cell 4: Show how to display a specific property
 # Note to see full list of included chemicals and properties, go to this link which downloads the database:
-# https://raw.githubusercontent.com/Earlyrizer64/MyST_site/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6.xlsx.xlsx
+# https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6.xlsx.xlsx
 
 # Define Function to Obtain Standard Enthalpy of Formation
 def obtain_Enthalpy_Of_Formation(MOLECULE, SMILES):

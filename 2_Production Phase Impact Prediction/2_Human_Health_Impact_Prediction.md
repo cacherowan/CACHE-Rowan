@@ -40,7 +40,7 @@ The libraries / packages listed in cell 1 will have a brief explanation of their
 Click the button below to open this code in Google Colab
 
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Earlyrizer64/MyST_site/blob/main/Reference_Files/Google_Colab_Files/Human_Health_Impact_Prediction.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Google_Colab_Files/Human_Health_Impact_Prediction.ipynb)
 
 
 ### Outputs Should Appear Like This: 
@@ -121,11 +121,11 @@ No Visible Output
 ```
 # Cell 3: Create Path to Dowloaded Files and Database
 
-HH_MODEL_URL = ("https://raw.githubusercontent.com/Earlyrizer64/MyST_site/main/Reference_Files/Chemical_Property_Database/model_v5_HH_okayvaltest.h5")
+HH_MODEL_URL = ("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/model_v5_HH_okayvaltest.h5")
 
 HH_MODEL_PATH = "model_v5_HH_okayvaltest.h5"
 
-DATABASE_PATH = "https://raw.githubusercontent.com/Earlyrizer64/MyST_site/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
+DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
 
 # Call to Function
 download_if_needed(HH_MODEL_URL, HH_MODEL_PATH)
