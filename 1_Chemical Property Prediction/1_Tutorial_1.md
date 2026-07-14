@@ -12,6 +12,26 @@ In this tutorial you will learn how to use ASE and MACE-OFF to get Chemical Prop
 This code will compute Chemical Properties of Methyl Nitrite using 2 methods.  The first calls for the geometry of the molecule from a list of common molecules in ASE, g2.  This list was made to allow users to quickly refer to common molecules.  The second method will build the molecule using the SMILES identificiation, and compute the same properties.  Then the code will compare the results to see how similar they are.  
 
 
+<img src="/Reference_Files/Workflows/Tutorial_1_Workflow.svg"/>
+
+
+The libraries / packages listed in cell 2 will have a brief explanation of their function in the code, but for more information, please use the links below
+
+| Library / Package | Link to Documentations |
+| :--: | :--: |
+| numpy | [NumPy Documentation](https://numpy.org/doc/stable/) |
+| pandas | [Pandas Documentation](https://pandas.pydata.org/docs/) |
+| chem | [rdkit.chem Documentation](https://www.rdkit.org/docs/source/rdkit.html) |
+| AllChem | Same Link as above |
+| mace_off | [MACE Calculator Parameter Reference](https://mace-web-interface.readthedocs.io/en/latest/guide/mace-calculator-parameters/#mace_off-organic-force-field-mace-off23) |
+| mace_off | [MACE Descriptors](https://mace-docs.readthedocs.io/en/latest/guide/descriptors.html) |
+| atoms | [Atoms Object](https://ase.gitlab.io/ase/ase/atoms.html#ase.Atoms) |
+| molecule | [Molecules](https://docs.ase-lib.org/ase/build/build.html#ase.build.molecule) |
+| QuasiNewton | [Structure Optimization](https://docs.ase-lib.org/ase/optimize.html) |
+| Vibrations | [Vibrational Modes](https://ase.gitlab.io/ase/ase/vibrations/modes.html#module-ase.vibrations) |
+| IdealGasThermo | [Ideal-gas limit](https://ase.gitlab.io/ase/ase/thermochemistry/thermochemistry.html#ase.thermochemistry.IdealGasThermo) |
+| units | [Units](https://ase.gitlab.io/ase/ase/units.html#module-ase.units) |
+
 Click the button below to open this code in Google Colab
 
 
@@ -235,18 +255,21 @@ Successfully installed appdirs-1.4.4 configargparse-1.7.5 e3nn-0.4.4 jedi-0.20.0
 ```
 # Cell 2: Import Required Libraries
 
-import numpy as np
-from ase.optimize import QuasiNewton
-from ase.thermochemistry import IdealGasThermo
-from ase.vibrations import Vibrations
-from ase.units import kJ, mol
-from ase import Atoms
-from ase.build import bulk, molecule
-import pandas as pd
-from mace.calculators import mace_mp, mace_off
+import numpy as np                              # Computational library
+import pandas as pd                             # Excel of python
 
-from rdkit import Chem
-from rdkit.Chem import AllChem
+from rdkit import Chem                          # Used to build molecules (basic package)
+from rdkit.Chem import AllChem                  # Used to build molecules (advanced package)
+
+from mace.calculators import mace_off           # MACE-OFF (Machine Learning Potential)
+
+# Atomic Simulation Environment Libraries
+from ase import Atoms                           # Represents a molecule object with information
+from ase.build import molecule                  # Creates an atomic structure from the database
+from ase.optimize import QuasiNewton            # Optimization / energy minimization
+from ase.vibrations import Vibrations           # Used to calculate vibrational modes of the Atom object
+from ase.thermochemistry import IdealGasThermo  # Allows you to calculate entropy, enthalpy, and gibbs free energy
+from ase.units import kJ, mol                   # Conversion for units
 ```
 <details>
 <summary>Expected output</summary>
