@@ -23,14 +23,14 @@ The libraries / packages listed in cell 2 will have a brief explanation of their
 | pandas | [Pandas Documentation](https://pandas.pydata.org/docs/) |
 | chem | [rdkit.chem Documentation](https://www.rdkit.org/docs/source/rdkit.html) |
 | AllChem | Same Link as above |
-| mace_off | [MACE Calculator Parameter Reference](https://mace-web-interface.readthedocs.io/en/latest/guide/mace-calculator-parameters/#mace_off-organic-force-field-mace-off23) |
-| mace_off | [MACE Descriptors](https://mace-docs.readthedocs.io/en/latest/guide/descriptors.html) |
-| atoms | [Atoms Object](https://ase.gitlab.io/ase/ase/atoms.html#ase.Atoms) |
-| molecule | [Molecules](https://docs.ase-lib.org/ase/build/build.html#ase.build.molecule) |
-| QuasiNewton | [Structure Optimization](https://docs.ase-lib.org/ase/optimize.html) |
-| Vibrations | [Vibrational Modes](https://ase.gitlab.io/ase/ase/vibrations/modes.html#module-ase.vibrations) |
-| IdealGasThermo | [Ideal-gas limit](https://ase.gitlab.io/ase/ase/thermochemistry/thermochemistry.html#ase.thermochemistry.IdealGasThermo) |
-| units | [Units](https://ase.gitlab.io/ase/ase/units.html#module-ase.units) |
+| mace_off | [MACE Calculator Documentation](https://mace-web-interface.readthedocs.io/en/latest/guide/mace-calculator-parameters/#mace_off-organic-force-field-mace-off23) |
+| mace_off | [MACE Descriptors Documentation](https://mace-docs.readthedocs.io/en/latest/guide/descriptors.html) |
+| atoms | [Atoms Object Documentation](https://ase.gitlab.io/ase/ase/atoms.html#ase.Atoms) |
+| molecule | [Molecules Documentation](https://docs.ase-lib.org/ase/build/build.html#ase.build.molecule) |
+| QuasiNewton | [Structure Optimization Documentation](https://docs.ase-lib.org/ase/optimize.html) |
+| Vibrations | [Vibrational Modes Documentation](https://ase.gitlab.io/ase/ase/vibrations/modes.html#module-ase.vibrations) |
+| IdealGasThermo | [Ideal-gas limit Documentation](https://ase.gitlab.io/ase/ase/thermochemistry/thermochemistry.html#ase.thermochemistry.IdealGasThermo) |
+| units | [Units Documentation](https://ase.gitlab.io/ase/ase/units.html#module-ase.units) |
 
 Click the button below to open this code in Google Colab
 
