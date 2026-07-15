@@ -23,6 +23,28 @@ From here we solve this derivative numerically instead of analytically, using a 
 This code will define a molecule using SMILES and will create the geometry of the molecule.  MACE-OFF will then optimize the geometry to ensure forces don't explode initially.  Then you will obtain some chemical properties of the molecules and use them to estimate the heat capacity at constant pressure.  After that, the code will display this property and compare to NIST.  
 
 
+<img src="/Reference_Files/Workflows/Tutorial_2_Workflow.svg"/>
+
+
+The libraries / packages listed in cell 2 will have a brief explanation of their function in the code, but for more information, please use the links below
+
+| Library / Package | Link to Documentations |
+| :--: | :--: |
+| numpy | [NumPy Documentation](https://numpy.org/doc/stable/) |
+| matplotlib.pyplot | [Matplotlib.pyplot](https://matplotlib.org/stable/api/pyplot_summary.html) |
+| pandas | [Pandas Documentation](https://pandas.pydata.org/docs/) |
+| chem | [rdkit.chem Documentation](https://www.rdkit.org/docs/source/rdkit.html) |
+| AllChem | Same link as above |
+| Descriptors | Same link as above |
+| rdMolDescriptors | Same Link as above |
+| mace_off | [MACE Calculator Documentation](https://mace-web-interface.readthedocs.io/en/latest/guide/mace-calculator-parameters/#mace_off-organic-force-field-mace-off23) |
+| mace_off | [MACE Descriptors Documentation](https://mace-docs.readthedocs.io/en/latest/guide/descriptors.html) |
+| atoms | [Atoms Object Documentation](https://ase.gitlab.io/ase/ase/atoms.html#ase.Atoms) |
+| units | [Units Documentation](https://ase.gitlab.io/ase/ase/units.html#module-ase.units) |
+| LBFGS | [Structure Optimization Documentation](https://docs.ase-lib.org/ase/optimize.html) |
+| Vibrations | [Vibrational Modes Documentation](https://ase.gitlab.io/ase/ase/vibrations/modes.html#module-ase.vibrations) |
+| IdealGasThermo | [Ideal-gas limit Documentation](https://ase.gitlab.io/ase/ase/thermochemistry/thermochemistry.html#ase.thermochemistry.IdealGasThermo) |
+
 Click the button below to open this code in Google Colab
 
 
@@ -159,23 +181,23 @@ Successfully installed rdkit-2026.3.3
 # Cell 2: Import Required Libraries
 
 # Tools for plotting charts
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
+import numpy as np                                # Computational library
+import matplotlib.pyplot as plt                   # Plot graphs
+import pandas as pd                               # Excel of python
 
 # RDKit is for SMILES to construct a molecule
-from rdkit import Chem
-from rdkit.Chem import AllChem, Descriptors
-from rdkit.Chem import rdMolDescriptors
-
-# ASE (Atomic Simulation Environment) computes information recieved from the machine learning potential
-from ase import Atoms, units
-from ase.optimize import LBFGS
-from ase.vibrations import Vibrations
-from ase.thermochemistry import IdealGasThermo
+from rdkit import Chem                            # Used to build molecules (basic package)
+from rdkit.Chem import AllChem, Descriptors       # Used to build molecules (advanced package)
+from rdkit.Chem import rdMolDescriptors           # Used to obtain information of molecules
 
 # MACE-OFF is the machine learning potential trained on organic molecules
-from mace.calculators import mace_off
+from mace.calculators import mace_off             # MACE-OFF (Machine Learning Potential)
+
+# ASE (Atomic Simulation Environment) computes information recieved from the machine learning potential
+from ase import Atoms, units                      # Represents a molecule object with information and conversion for units
+from ase.optimize import LBFGS                    # Optimization / energy minimization
+from ase.vibrations import Vibrations             # Used to calculate vibrational modes of the Atom object
+from ase.thermochemistry import IdealGasThermo    # Allows you to calculate entropy, enthalpy, and gibbs free energy
 ```
 <details>
 <summary>Expected output</summary>
