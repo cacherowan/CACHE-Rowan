@@ -22,17 +22,7 @@ The libraries / packages listed in cell 1 will have a brief explanation of their
 | matplotlib.pyplot | [Matplotlib.pyplot](https://matplotlib.org/stable/api/pyplot_summary.html) |
 | ipywidgets | [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/stable/) |
 | IPython.display | [Display Module](https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html) |
-| MinMaxScaler | [MinMaxScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html) |
-| train_test_split | [Train Test Split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) |
-| mean_squared_error | [Mean Squared Error](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html) |
-| r2_score | [R² score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html) |
-| make_scorer | [Make Scorer](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html) |
-| KNNImputer | [KNNImputer](https://scikit-learn.org/stable/modules/generated/sklearn.impute.KNNImputer.html) |
 | tensorflow | [Tensorflow](https://www.tensorflow.org/api_docs) |
-| load_model | [Tensorflow Load Model](https://www.tensorflow.org/api_docs/python/tf/keras/models/load_model) |
-| permutation_importance | [Permutation Importance](https://scikit-learn.org/stable/modules/generated/sklearn.inspection.permutation_importance.html) |
-| resample | [Resample](https://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html) |
-| StratifiedKFold | [StratifiedKFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html) |
 | os | [OS](https://docs.python.org/3/library/os.html) |
 | requests | [Requests](https://requests.readthedocs.io/en/latest/) |
 
