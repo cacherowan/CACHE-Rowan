@@ -14,7 +14,7 @@ This code will be calling to an excel document that contains currently a few hun
 Click the button below to open this code in Google Colab
 
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Google_Colab_Files/Tutorial_4.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Google_Colab_Files/Tutorial_3.ipynb)
 
 
 ### Outputs Should Appear Like This: 
@@ -23,8 +23,8 @@ Click the button below to open this code in Google Colab
 ```
 # Cell 1: Import Required Libraries to Obtain Chemical Properties
 
-import numpy as np
-import pandas as pd
+import numpy as np    # Stores numbers in arrays and runs fast calculations on them
+import pandas as pd   # Opens the data file as a table and find rows by their SMILES string
 ```
 <details>
 <summary>Expected output</summary>
@@ -103,7 +103,7 @@ NOCount	1.0
 
 
 ```
-# Cell 4: Show how to display a specific property
+# Cell 4: Show how to Display a Specific Property
 # Note to see full list of included chemicals and properties, go to this link which downloads the database:
 # https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6.xlsx.xlsx
 
@@ -156,7 +156,7 @@ print(Propanol_Enthalpy_Of_Formation)
 <summary>Expected output</summary>
 
 ```text
-Standard Formation Enthalpy (Gas) [J/mol]    2.953934
+Standard Formation Enthalpy (Gas) [J/mol]   -256000.0
 Name: CCCO, dtype: object
 ```
 </details>
