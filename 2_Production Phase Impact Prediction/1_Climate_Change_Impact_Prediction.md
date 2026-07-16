@@ -8,7 +8,7 @@ In this code you will be able to estimate the impact to Climate Change using the
 
 ### Code Overview: 
 
-This code will download the climate change impact weight of the model locally and give this file to the code, which then will take the input of a chemical using the SMILES identification to tell you the impact in kg to climate change.  Then you will be able to see the impact scaled according to how much mass in kg you have of that chemical.  
+This code will download the climate change impact weight of a pre-trained Artificial Neural Network (ANN) model locally and give this file to the code, which then will take the input of a chemical using the SMILES identification to tell you the impact to climate change in kg CO2 equivalent per kg of chemical.  Then you will be able to see the impact scaled according to how much mass in kg you have of that chemical.  
 
 
 <img src="/Reference_Files/Workflows/Climate_Change_Impact_Workflow.svg"/>
@@ -19,7 +19,6 @@ The libraries / packages listed in cell 1 will have a brief explanation of their
 | :--: | :--: |
 | numpy | [NumPy Documentation](https://numpy.org/doc/stable/) |
 | pandas | [Pandas Documentation](https://pandas.pydata.org/docs/) |
-| random | [Random Documentation](https://docs.python.org/3/library/random.html) |
 | matplotlib.pyplot | [Matplotlib.pyplot](https://matplotlib.org/stable/api/pyplot_summary.html) |
 | ipywidgets | [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/stable/) |
 | IPython.display | [Display Module](https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html) |
@@ -49,29 +48,13 @@ Click the button below to open this code in Google Colab
 ```
 # Cell 1: Import Required Libraries / Packages
 
-
-import numpy as np                                                        # Computational library
-import pandas as pd                                                       # Excel of python
-import random                                                             # Random number generator
+import numpy as np                                                        # Stores numbers in arrays and runs fast calculations on them
+import pandas as pd                                                       # Opens the data file as a table and find rows by their SMILES string
 import matplotlib.pyplot as plt                                           # Plot Graphs
 import ipywidgets as widgets                                              # Creates UI elements such as the slider below
 from IPython.display import display                                       # Displays UI elements
 
-
-from sklearn.preprocessing import MinMaxScaler                            # Scaling features to a specific range
-from sklearn.model_selection import train_test_split                      # Splits datasets into random training and test subsets
-from sklearn.metrics import mean_squared_error, r2_score, make_scorer     # Used for regression analysis
-from sklearn.impute import KNNImputer                                     # Fills in missing values using averaging of close data
-
-
-import tensorflow as tf                                                   # A way to show tensors (vector or matrix)
-from tensorflow.keras.models import load_model                            # Loads Model (Weight)
-
-
-from sklearn.inspection import permutation_importance                     # A way to see a feature's importance
-from sklearn.utils import resample                                        # Resample data sets
-from sklearn.model_selection import StratifiedKFold                       # Helps split data into sets
-
+import tensorflow as tf                                                   # Loads the trained neural network (ANN) and runs it to make predictions
 
 import os                                                                 # Allows interactions with the file system
 import requests                                                           # Makes requests to internet files
@@ -89,7 +72,7 @@ No Visible Output
 
 
 ```
-# Cell 2: Define Function to Download Weight of ANN Model
+# Cell 2: Define Function to Download Weight (.h5 file) of ANN Model
 
 def download_if_needed(url, local_path):
     """Download a file from GitHub if it doesn't already exist."""
@@ -121,15 +104,19 @@ No Visible Output
 ```
 # Cell 3: Create Path to Dowloaded File (Weight) and Database
 
+# URL / path to download (.h5 file)
 CC_MODEL_URL = ("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/model_v5_CC_okayvaltest.h5")
 
+# Name of weight file
 CC_MODEL_PATH = "model_v5_CC_okayvaltest.h5"
 
+# URL / path to database (the spreadsheet holding the molecular properties)
 DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
 
-# Call to Function to Download Weight
+# Call to Function to Download Weight (.h5 file)
 download_if_needed(CC_MODEL_URL, CC_MODEL_PATH)
 
+# The trained model file (.h5) that predicts Human Health Impact
 CC_MODEL = CC_MODEL_PATH
 ```
 
@@ -147,64 +134,19 @@ Download complete.
 
 
 ```
-# Cell 4: Load Weight
+# Cell 4: Load the trained model
+# Load the .h5 file, which contains the trained network: its structure and its learned weights.  
+# This rebuilds the model as "model_CC," ready to make predictions.  
+# compile=false in the code below helps skip the training setup, since we are only using the model to predict (not train it).  
+
+import warnings
+warnings.filterwarnings("ignore")
 
 model_CC = tf.keras.models.load_model(
     CC_MODEL_PATH,
     custom_objects={"LeakyReLU": tf.keras.layers.LeakyReLU},
     compile=False
 )
-```
-<details>
-<summary>Expected output</summary>
-
-```text
-/usr/local/lib/python3.12/dist-packages/keras/src/layers/core/dense.py:106: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
-  super().__init__(activity_regularizer=activity_regularizer, **kwargs)
-/usr/local/lib/python3.12/dist-packages/keras/src/layers/activations/leaky_relu.py:41: UserWarning: Argument `alpha` is deprecated. Use `negative_slope` instead.
-  warnings.warn(
-```
-
-</details>
-
-
-
-
-```
-# Cell 5: Example of Phenol
-
-# 1. Example: Phenol
-MOLECULE = "PHENOL"
-SMILES = "Oc1ccccc1"
-
-# Other SMILES examples:
-
-# MOLECULE = "BUTANOL"
-# SMILES = "CCC(C)O"
-
-# MOLECULE = "AMMONIA"
-# SMILES = "N"
-
-# MOLECULE = "PROPANOL"
-# SMILES = "CCCO"
-
-# MOLECULE = "STYRENE"
-# SMILES = "C=Cc1ccccc1"
-
-# MOLECULE = "BENZOTRIFLUORIDE"
-# SMILES = "FC(F)(F)c1ccccc1"
-
-# 2. Read the DB:
-db = pd.read_excel(DATABASE_PATH)
-db = db.set_index('SMILES')
-descriptors = db.loc[SMILES]
-
-# Selected properties for Climate Change:
-thermo_feat_CC   = ['Heat Capacity (kJ/kgC)', 'Boiling Point(K)', 'XLogP', 'Critical Temperature [K]', 'Critical Molar Volume [m3/mol]']
-mol_desc_feat_CC = ['BertzCT', 'ExactMolWt', 'HallKierAlpha', 'PEOE_VSA6', 'NOCount']
-
-# 3. Obtain the relevant properties:
-descriptors_cc = descriptors.loc[thermo_feat_CC + mol_desc_feat_CC]
 ```
 <details>
 <summary>Expected output</summary>
@@ -219,26 +161,17 @@ No Visible Output
 
 
 ```
-# Cell 6: Print Descriptors
+# Cell 5: Load the molecule database
+# Opens the spreadshet into a table, and uses each molecule's SMILES code as its row name so molecules are easy to look up
 
-descriptors_cc
+db = pd.read_excel(DATABASE_PATH)
+db = db.set_index('SMILES')
 ```
 <details>
 <summary>Expected output</summary>
 
 ```text
-	Oc1ccccc1
-Heat Capacity (kJ/kgC)	2.1408
-Boiling Point(K)	454.99
-XLogP	1.5
-Critical Temperature [K]	694.25
-Critical Molar Volume [m3/mol]	0.000229
-BertzCT	134.10737
-ExactMolWt	94.041865
-HallKierAlpha	-0.98
-PEOE_VSA6	18.199101
-NOCount	1
-dtype: object
+No Visible Output
 ```
 
 </details>
@@ -247,17 +180,223 @@ dtype: object
 
 
 ```
-# Cell 7: Print Climate Change Impact
+# Cell 6: Select the thermodynamic properties and the molecular descriptors used as inputs for the Climate Change model
+# The Climate Change model was trained on a specific set of 10 featurres.  
+# We must feed the model the exact same features, in the exact same order, every time we ask it to make a prediction.  
+
+# Thermodynamic properties:
+thermo_feat_CC = [
+    'Heat Capacity (kJ/kgC)',         # heat needed to raise the temperature of the molecule
+    'Boiling Point(K)',               # temperature at which it boils
+    'XLogP',                          # a measure of how "fat-loving" vs "water-loving" a molecule is
+    'Critical Temperature [K]',       # temperature above which it can't be liquefied
+    'Critical Molar Volume [m3/mol]'  # volume one mole occupies at the critical point
+]
+# Molecular descriptors:
+mol_desc_feat_CC = [
+    'BertzCT',          # a measure of molecular complexity
+    'ExactMolWt',        # exact molecular weight
+    'HallKierAlpha',     # a shape-related descriptor
+    'PEOE_VSA6',         # surface-area descriptor related to partial charges
+    'NOCount'            # count of Nitrogen and Oxygen atoms
+]
+```
+<details>
+<summary>Expected output</summary>
+
+```text
+No Visible Output
+```
+
+</details>
+
+
+
+
+```
+# Cell 7: Predict Climate Change impact for one molecule (Build Prediction Function)
+# This function takes a molecule, looks up its properties in the database, feeds them to the trained model, and returns the predicted Climate Change Impact (kg CO2-eq per kg of chemical).  
+# Run this cell once.  It won't show any output on its own, it just sets up the function so the cells below can use it.  
+
+def predict_climate_change_impact(molecule_name, smiles):
+    """
+    Predict the Climate Change Impact of one molecule.
+
+    molecule_name : name for printing only (e.g. "Methanol") — doesn't affect the result.
+    smiles        : SMILES string; must exactly match a row in the database.
+    Returns the predicted impact in kg CO2-eq per kg of chemical.
+    """
+    descriptors = db.loc[smiles]
+    descriptors_cc = descriptors.loc[thermo_feat_CC + mol_desc_feat_CC]
+
+    # Show the feature values that go into the model for this molecule.
+    print(f"\nFeatures for {molecule_name} ({smiles}):")
+    for feature_name, value in descriptors_cc.items():
+        print(f"   {feature_name}: {value}")
+
+    model_input = np.array([list(descriptors_cc)])
+    prediction = model_CC.predict(model_input, verbose=0)
+    impact_value = prediction.item()
+
+    print(f"Climate Change Impact of {molecule_name}: "
+          f"{round(impact_value, 4)} kgCO2-eq/kg {molecule_name}")
+    return impact_value
+```
+<details>
+<summary>Expected output</summary>
+
+```text
+No Visible Output
+```
+
+</details>
+
+
+
+
+```
+# Cell 8: Calculate the Climate Change Impact of a chemical
+# Give the function below two things: the chemical's name (for display) and its SMILES code, which the model uses to look it up.  Run the cell to see its features and its predicted climate change impact.  
+# To calculate the impact for another chemical, copy the line below into a new cell and change the name and SMILES.  
+
+predict_climate_change_impact("Methanol", "CO");
+```
+
+<details>
+<summary>Expected output</summary>
+
+```text
+Features for Methanol (CO):
+   Heat Capacity (kJ/kgC): 2.5318
+   Boiling Point(K): 337.85
+   XLogP: -0.5
+   Critical Temperature [K]: 512.5
+   Critical Molar Volume [m3/mol]: 0.000117
+   BertzCT: 2.0
+   ExactMolWt: 32.026214748
+   HallKierAlpha: -0.04
+   PEOE_VSA6: 0.0
+   NOCount: 1
+Climate Change Impact of Methanol: 91.8481 kgCO2-eq/kg Methanol
+```
+
+</details>
+
+
+
+
+```
+# Cell 9: Example with Ethanol
+predict_climate_change_impact("Ethanol", "CCO");
+```
+
+<details>
+<summary>Expected output</summary>
+
+```text
+Features for Ethanol (CCO):
+   Heat Capacity (kJ/kgC): 2.57
+   Boiling Point(K): 351.35
+   XLogP: -0.1
+   Critical Temperature [K]: 514.0
+   Critical Molar Volume [m3/mol]: 0.000168
+   BertzCT: 2.754887502163468
+   ExactMolWt: 46.041864812
+   HallKierAlpha: -0.04
+   PEOE_VSA6: 0.0
+   NOCount: 1
+Climate Change Impact of Ethanol: 88.8233 kgCO2-eq/kg Ethanol
+```
+
+</details>
+
+
+
+
+
+```
+# Cell 10: Example with Benzene
+
+predict_climate_change_impact("Benzene", "c1ccccc1");
+```
+
+<details>
+<summary>Expected output</summary>
+
+```text
+Features for Benzene (c1ccccc1):
+   Heat Capacity (kJ/kgC): 1.7469
+   Boiling Point(K): 353.24
+   XLogP: 2.1
+   Critical Temperature [K]: 562.05
+   Critical Molar Volume [m3/mol]: 0.000256
+   BertzCT: 71.96100505779535
+   ExactMolWt: 78.046950192
+   HallKierAlpha: -0.78
+   PEOE_VSA6: 36.39820241076966
+   NOCount: 0
+Climate Change Impact of Benzene: 95.396 kgCO2-eq/kg Benzene
+```
+
+</details>
+
+
+
+
+```
+# Cell 11: Example with Toluene
+
+predict_climate_change_impact("Toluene", "Cc1ccccc1");
+```
+
+<details>
+<summary>Expected output</summary>
+
+```text
+Features for Toluene (Cc1ccccc1):
+   Heat Capacity (kJ/kgC): 1.719
+   Boiling Point(K): 383.75
+   XLogP: 2.7
+   Critical Temperature [K]: 591.75
+   Critical Molar Volume [m3/mol]: 0.000316
+   BertzCT: 129.9656602453383
+   ExactMolWt: 92.062600256
+   HallKierAlpha: -0.78
+   PEOE_VSA6: 35.89528683400505
+   NOCount: 0
+Climate Change Impact of Toluene: 93.1468 kgCO2-eq/kg Toluene
+```
+
+</details>
+
+
+
+
+```
+# Cell 12: Example using Phenol (Which will be displayed later on a slider and graph)
+
+# 1. Example: Phenol
+MOLECULE = "PHENOL" # Change name to another molecule if needed (display only)
+SMILES = "Oc1ccccc1" # Change SMILES to another molecule if needed (Required to change molecule)
+
+# 2. Read the DB:
+descriptors = db.loc[SMILES]
+
+# Selected properties for Climate Change:
+thermo_feat_CC   = ['Heat Capacity (kJ/kgC)', 'Boiling Point(K)', 'XLogP', 'Critical Temperature [K]', 'Critical Molar Volume [m3/mol]']
+mol_desc_feat_CC = ['BertzCT', 'ExactMolWt', 'HallKierAlpha', 'PEOE_VSA6', 'NOCount']
+
+# 3. Obtain the relevant properties:
+descriptors_cc = descriptors.loc[thermo_feat_CC + mol_desc_feat_CC]
 
 molecule_climate_change_impact = model_CC.predict(np.array([list(descriptors_cc)]), verbose=0)  # kgCO2-eq/kg chemcal
-
-print("Climate Change Impact: ", round(molecule_climate_change_impact.item(), 4), f"kgCO2-eq/kg {MOLECULE}")
 ```
+
 <details>
 <summary>Expected output</summary>
 
 ```text
-Climate Change Impact:  107.0432 kgCO2-eq/kg PHENOL
+No Visible Output
 ```
 
 </details>
@@ -266,7 +405,7 @@ Climate Change Impact:  107.0432 kgCO2-eq/kg PHENOL
 
 
 ```
-# Cell 8: Creating Slider to Visualize Impact
+# Cell 13: Phenol Continued, Creating Slider to Visualize Impact
 
 kg_slider = widgets.FloatSlider(value=10, min=0, max=100, step=0.1, description='kg amount:')
 output_slider = widgets.Output()
@@ -282,6 +421,7 @@ kg_slider.observe(update_slider, names='value')
 display(kg_slider, output_slider)
 update_slider(None)
 ```
+
 <details>
 <summary>Expected output</summary>
 
@@ -292,8 +432,9 @@ update_slider(None)
 
 
 
+
 ```
-# Cell 9: Creating Slider and Graph to Visualize Impact
+# Cell 14: Phenol Continued, Creating Slider and Graph to Visualize Impact
 
 kg_slider_graph = widgets.FloatSlider(value=10, min=0, max=100, step=0.1, description='kg amount:')
 output_graph = widgets.Output()

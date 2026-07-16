@@ -49,29 +49,13 @@ Click the button below to open this code in Google Colab
 ```
 # Cell 1: Import Required Libraries / Packages
 
-
-import numpy as np                                                        # Computational library
-import pandas as pd                                                       # Excel of python
-import random                                                             # Random number generator
+import numpy as np                                                        # Stores numbers in arrays and runs fast calculations on them
+import pandas as pd                                                       # Opens the data file as a table and finds rows by their SMILES string
 import matplotlib.pyplot as plt                                           # Plot Graphs
 import ipywidgets as widgets                                              # Creates UI elements such as the slider below
 from IPython.display import display                                       # Displays UI elements
 
-
-from sklearn.preprocessing import MinMaxScaler                            # Scaling features to a specific range
-from sklearn.model_selection import train_test_split                      # Splits datasets into random training and test subsets
-from sklearn.metrics import mean_squared_error, r2_score, make_scorer     # Used for regression analysis
-from sklearn.impute import KNNImputer                                     # Fills in missing values using averaging of close data
-
-
-import tensorflow as tf                                                   # A way to show tensors (vector or matrix)
-from tensorflow.keras.models import load_model                            # Loads Model (Weight)
-
-
-from sklearn.inspection import permutation_importance                     # A way to see a feature's importance
-from sklearn.utils import resample                                        # Resample data sets
-from sklearn.model_selection import StratifiedKFold                       # Helps split data into sets
-
+import tensorflow as tf                                                   # Loads the trained neural network (ANN) and runs it to make predictions
 
 import os                                                                 # Allows interactions with the file system
 import requests                                                           # Makes requests to internet files
@@ -89,7 +73,7 @@ No Visible Output
 
 
 ```
-# Cell 2: Define Function to Download Weights of ANN
+# Cell 2: Define Function to Download Weight (.h5 file) of ANN Model
 
 def download_if_needed(url, local_path):
     """Download a file from GitHub if it doesn't already exist."""
@@ -121,15 +105,19 @@ No Visible Output
 ```
 # Cell 3: Create Path to Dowloaded Files and Database
 
+# URL / path to download (.h5 file)
 HH_MODEL_URL = ("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/model_v5_HH_okayvaltest.h5")
 
+# Name of weight file
 HH_MODEL_PATH = "model_v5_HH_okayvaltest.h5"
 
+# URL / path to database (the spreadsheet holding the molecular properties)
 DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
 
-# Call to Function
+# Call to Function to Download Weight (.h5 file)
 download_if_needed(HH_MODEL_URL, HH_MODEL_PATH)
 
+# The trained model file (.h5) that predicts Human Health Impact
 HH_MODEL = HH_MODEL_PATH
 ```
 
@@ -147,7 +135,13 @@ Download complete.
 
 
 ```
-# Cell 4: Load Weights
+# Cell 4: Load the trained model
+# Load the .h5 file, which contains the trained network: its structure and its learned weights.  
+# This rebuilds the model as "model_CC," ready to make predictions.  
+# compile=false in the code below helps skip the training setup, since we are only using the model to predict (not train it).  
+
+import warnings
+warnings.filterwarnings("ignore")
 
 model_HH = tf.keras.models.load_model(
     HH_MODEL_PATH,
@@ -155,12 +149,12 @@ model_HH = tf.keras.models.load_model(
     compile=False
 )
 ```
-<details>
+
+</details>
 <summary>Expected output</summary>
 
 ```text
-/usr/local/lib/python3.12/dist-packages/keras/src/layers/core/dense.py:106: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
-  super().__init__(activity_regularizer=activity_regularizer, **kwargs)
+No Visible Output
 ```
 
 </details>
@@ -169,41 +163,13 @@ model_HH = tf.keras.models.load_model(
 
 
 ```
-# Cell 5: Example of Phenol
+# Cell 5: Load the molecule database
+# Opens the spreadshet into a table, and uses each molecule's SMILES code as its row name so molecules are easy to look up
 
-# 1. Example: Phenol
-MOLECULE = "PHENOL"
-SMILES = "Oc1ccccc1"
-
-# Other SMILES examples:
-
-# MOLECULE = "BUTANOL"
-# SMILES = "CCC(C)O"
-
-# MOLECULE = "AMMONIA"
-# SMILES = "N"
-
-# MOLECULE = "PROPANOL"
-# SMILES = "CCCO"
-
-# MOLECULE = "STYRENE"
-# SMILES = "C=Cc1ccccc1"
-
-# MOLECULE = "BENZOTRIFLUORIDE"
-# SMILES = "FC(F)(F)c1ccccc1"
-
-# 2. Read the DB:
 db = pd.read_excel(DATABASE_PATH)
 db = db.set_index('SMILES')
-descriptors = db.loc[SMILES]
-
-# Selected properties for Human Health Impact:
-thermo_feat_HH   = ['Heat of Vaporization(J/mol)', 'Heat Capacity (kJ/kgC)', 'XLogP','Pitzer’s Acentric Factor [-]', 'Critical Temperature [K]']
-mol_desc_feat_HH = ['Chi0n', 'HallKierAlpha', 'SMR_VSA7', 'VSA_EState6','NumValenceElectrons']
-
-# 3. Obtain the relevant properties:
-descriptors_hh = descriptors.loc[thermo_feat_HH + mol_desc_feat_HH]
 ```
+
 <details>
 <summary>Expected output</summary>
 
@@ -217,26 +183,33 @@ No Visible Output
 
 
 ```
-# Cell 6: Print Descriptors
+# Cell 6: Select the thermodynamic properties and the molecular descriptors used as inputs for the Climate Change model
+# The Climate Change model was trained on a specific set of 10 featurres.  
+# We must feed the model the exact same features, in the exact same order, every time we ask it to make a prediction.  
 
-descriptors_cc
+# Thermodynamic properties:
+thermo_feat_HH = [
+    'Heat of Vaporization(J/mol)',    # energy needed to turn the liquid into vapour
+    'Heat Capacity (kJ/kgC)',         # heat needed to raise the molecule's temperature
+    'XLogP',                          # a measure of how "fat-loving" vs "water-loving" it is
+    'Pitzer’s Acentric Factor [-]',   # a measure of how non-spherical the molecule is
+    'Critical Temperature [K]'        # temperature above which it can't be liquefied
+]
+# Molecular descriptors:
+mol_desc_feat_HH = [
+    'Chi0n',                # a connectivity index describing molecular structure
+    'HallKierAlpha',        # a shape-related descriptor
+    'SMR_VSA7',             # surface-area descriptor related to molar refractivity
+    'VSA_EState6',          # surface-area descriptor related to electronic state
+    'NumValenceElectrons'   # total number of valence electrons in the molecule
+]
 ```
+
 <details>
 <summary>Expected output</summary>
 
 ```text
-	Oc1ccccc1
-Heat of Vaporization(J/mol)	57735.363515
-Heat Capacity (kJ/kgC)	2.1408
-XLogP	1.5
-Pitzer’s Acentric Factor [-]	0.438
-Critical Temperature [K]	694.25
-Chi0n	3.833965
-HallKierAlpha	-0.98
-SMR_VSA7	30.331835
-VSA_EState6	8.712685
-NumValenceElectrons	36
-dtype: object
+No Visible Output
 ```
 
 </details>
@@ -245,17 +218,198 @@ dtype: object
 
 
 ```
-# Cell 7: Print Human Health Impact
+# Cell 7: Predict Human Health Impact for one molecule
+# This function takes a molecule, looks up its properties in the database, feeds them to the trained model, and returns the predicted Human Health Impact.  
+# Run this cell once.  It won't show any output on its own, it just sets yp the function so the cells below can use it.  
+
+def predict_human_health_impact(molecule_name, smiles):
+    """
+    Predict the Human Health Impact of one molecule.
+
+    molecule_name : name for printing only (e.g. "Methanol") — doesn't affect the result.
+    smiles        : SMILES string; must exactly match a row in the database.
+    Returns the predicted Human Health Impact in DALY per kg of chemical.
+    """
+    descriptors = db.loc[smiles]
+    descriptors_hh = descriptors.loc[thermo_feat_HH + mol_desc_feat_HH]
+
+    print(f"\n{molecule_name}  ({smiles})")
+    print("-" * 40)
+    for feature_name, value in descriptors_hh.items():
+        print(f"  {feature_name:<32} {value:>8.4f}")
+    print("-" * 40)
+
+    model_input = np.array([list(descriptors_hh)])
+    prediction = model_HH.predict(model_input, verbose=0)
+    impact_value = prediction.item()
+
+    print(f"  Human Health Impact: {round(impact_value, 4)} DALY/kg\n")
+    return impact_value
+```
+
+<details>
+<summary>Expected output</summary>
+
+```text
+No Visible Output
+```
+
+</details>
+
+
+
+
+```
+# Cell 8: Calculate the Human Health Impact of a chemical
+# Give the function below two things: the chemical's name (for display) and its SMILES code, which the model uses to look it up.  Run the cell to see its features and its predicted human health impact impact.  
+# To calculate the impact for another chemical, copy the line below into a new cell and change the name and SMILES.  
+
+predict_human_health_impact("Methanol", "CO");
+```
+
+<details>
+<summary>Expected output</summary>
+
+```text
+Methanol  (CO)
+----------------------------------------
+  Heat of Vaporization(J/mol)      37460.1385
+  Heat Capacity (kJ/kgC)             2.5318
+  XLogP                             -0.5000
+  Pitzer’s Acentric Factor [-]       0.5560
+  Critical Temperature [K]         512.5000
+  Chi0n                              1.4472
+  HallKierAlpha                     -0.0400
+  SMR_VSA7                           0.0000
+  VSA_EState6                        0.0000
+  NumValenceElectrons               14.0000
+----------------------------------------
+  Human Health Impact: 0.9432 DALY/kg
+```
+
+</details>
+
+
+
+
+```
+# Cell 9: Example with Ethanol
+
+predict_human_health_impact("Ethanol", "CCO");
+```
+
+<details>
+<summary>Expected output</summary>
+
+```text
+Ethanol  (CCO)
+----------------------------------------
+  Heat of Vaporization(J/mol)      42319.9941
+  Heat Capacity (kJ/kgC)             2.5700
+  XLogP                             -0.1000
+  Pitzer’s Acentric Factor [-]       0.6440
+  Critical Temperature [K]         514.0000
+  Chi0n                              2.1543
+  HallKierAlpha                     -0.0400
+  SMR_VSA7                           0.0000
+  VSA_EState6                        0.0000
+  NumValenceElectrons               20.0000
+----------------------------------------
+  Human Health Impact: 0.9486 DALY/kg
+```
+
+</details>
+
+
+
+
+```
+# Cell 10: Example with Benzene
+
+predict_human_health_impact("Benzene", "c1ccccc1");
+```
+
+<details>
+<summary>Expected output</summary>
+
+```text
+Benzene  (c1ccccc1)
+----------------------------------------
+  Heat of Vaporization(J/mol)      33879.4484
+  Heat Capacity (kJ/kgC)             1.7469
+  XLogP                              2.1000
+  Pitzer’s Acentric Factor [-]       0.2120
+  Critical Temperature [K]         562.0500
+  Chi0n                              3.4641
+  HallKierAlpha                     -0.7800
+  SMR_VSA7                          36.3982
+  VSA_EState6                       12.0000
+  NumValenceElectrons               30.0000
+----------------------------------------
+  Human Health Impact: 0.9432 DALY/kg
+```
+
+</details>
+
+
+
+
+```
+# Cell 11: Example with Toluene
+
+predict_human_health_impact("Toluene", "Cc1ccccc1");
+```
+
+<details>
+<summary>Expected output</summary>
+
+```text
+Toluene  (Cc1ccccc1)
+----------------------------------------
+  Heat of Vaporization(J/mol)      38009.5928
+  Heat Capacity (kJ/kgC)             1.7190
+  XLogP                              2.7000
+  Pitzer’s Acentric Factor [-]       0.2630
+  Critical Temperature [K]         591.7500
+  Chi0n                              4.3868
+  HallKierAlpha                     -0.7800
+  SMR_VSA7                          35.8953
+  VSA_EState6                       10.2616
+  NumValenceElectrons               36.0000
+----------------------------------------
+  Human Health Impact: 0.9432 DALY/kg
+```
+
+</details>
+
+
+
+
+```
+# Cell 12: Example using Phenol (Which will be displayed later on a slider and graph)
+
+# 1. Example: Phenol
+MOLECULE = "PHENOL"
+SMILES = "Oc1ccccc1"
+
+# 2. Read the DB:
+descriptors = db.loc[SMILES]
+
+# Selected properties for Human Health Impact:
+thermo_feat_HH   = ['Heat of Vaporization(J/mol)', 'Heat Capacity (kJ/kgC)', 'XLogP','Pitzer’s Acentric Factor [-]', 'Critical Temperature [K]']
+mol_desc_feat_HH = ['Chi0n', 'HallKierAlpha', 'SMR_VSA7', 'VSA_EState6','NumValenceElectrons']
+
+# 3. Obtain the relevant properties:
+descriptors_hh = descriptors.loc[thermo_feat_HH + mol_desc_feat_HH]
 
 molecule_human_health_impact = model_HH.predict(np.array([list(descriptors_hh)]), verbose=0) # DALY/kg chemical
-
-print("Human Health Impact: ", round(molecule_human_health_impact.item(), 4), f"DALY/kg {MOLECULE}")
 ```
+
 <details>
 <summary>Expected output</summary>
 
 ```text
-Human Health Impact:  0.9596 DALY/kg PHENOL
+No Visible Output
 ```
 
 </details>
@@ -264,7 +418,7 @@ Human Health Impact:  0.9596 DALY/kg PHENOL
 
 
 ```
-# Cell 8: Creating Slider to Visualize Impact
+# Cell 13: Phenol Continued, Creating Slider to Visualize Impact
 
 kg_slider = widgets.FloatSlider(value=10, min=0, max=100, step=0.1, description='kg amount:')
 output_slider = widgets.Output()
@@ -280,6 +434,7 @@ kg_slider.observe(update_slider, names='value')
 display(kg_slider, output_slider)
 update_slider(None)
 ```
+
 <details>
 <summary>Expected output</summary>
 
@@ -291,7 +446,7 @@ update_slider(None)
 
 
 ```
-# Cell 9: Creating Slider and Graph to Visualize Impact
+# Cell 14: Phenol Continued, Creating Slider and Graph to Visualize Impact
 
 kg_slider_graph = widgets.FloatSlider(value=10, min=0, max=100, step=0.1, description='kg amount:')
 output_graph = widgets.Output()
