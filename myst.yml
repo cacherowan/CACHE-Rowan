@@ -15,6 +15,7 @@ site:
     navbar_open: true
   toc:
     - file: index.md
+    - file: 3_Use and End of Life Phase Impact Prediction/Climate Change Impact Prediction Using a Power Law Correlation.ipynb
     #- file: 06_MD_run_using_py.md
     #- file: Assignment_4_Example.ipynb
     #- file: Interactive_Graph.md

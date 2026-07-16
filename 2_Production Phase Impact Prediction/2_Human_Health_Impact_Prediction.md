@@ -1,4 +1,4 @@
-# Human Health Impact Prediction Using ANN Model
+# Tutorial 2: Human Health Impact Prediction Using ANN Model
 
 ***
 
