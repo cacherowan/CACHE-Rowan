@@ -13,10 +13,32 @@ Standard Enthalpy of Formation of H{sub}`2`O = H(H{sub}`2`O) - H(H{sub}`2`) - $ 
 The Code below will go through using Atomic Simulation Environment (ASE) and Multi Atomic Cluster Expansion - Organic Force Field (MACE-OFF) to calculate the Standard Enthalpy of Formation of Molecules including, Ammonia, Propanol, Methanol, Propane, and Thiophene.  Then you will see how to use the Database of Chemical Properties to obtain the Standard Enthalpy of Formation of the same materials, and then finally compare the values from both methods against the National Institute of Standards and Technologies (NIST) Database.  
 
 
+<img src="/Reference_Files/Workflows/Error_4_Workflow.svg"/>
+
+
+The libraries / packages listed in cell 2 will have a brief explanation of their function in the code, but for more information, please use the links below
+
+| Library / Package | Link to Documentations |
+| :--: | :--: |
+| numpy | [NumPy Documentation](https://numpy.org/doc/stable/) |
+| matplotlib.pyplot | [Matplotlib.pyplot](https://matplotlib.org/stable/api/pyplot_summary.html) |
+| pandas | [Pandas Documentation](https://pandas.pydata.org/docs/) |
+| chem | [rdkit.chem Documentation](https://www.rdkit.org/docs/source/rdkit.html) |
+| AllChem | Same link as above |
+| mace_off | [MACE Calculator Documentation](https://mace-web-interface.readthedocs.io/en/latest/guide/mace-calculator-parameters/#mace_off-organic-force-field-mace-off23) |
+| mace_off | [MACE Descriptors Documentation](https://mace-docs.readthedocs.io/en/latest/guide/descriptors.html) |
+| atoms | [Atoms Object Documentation](https://ase.gitlab.io/ase/ase/atoms.html#ase.Atoms) |
+| molecule | [Molecules Documentation](https://docs.ase-lib.org/ase/build/build.html#ase.build.molecule) |
+| QuasiNewton | [Structure Optimization Documentation](https://docs.ase-lib.org/ase/optimize.html) |
+| Vibrations | [Vibrational Modes Documentation](https://ase.gitlab.io/ase/ase/vibrations/modes.html#module-ase.vibrations) |
+| IdealGasThermo | [Ideal-gas limit Documentation](https://ase.gitlab.io/ase/ase/thermochemistry/thermochemistry.html#ase.thermochemistry.IdealGasThermo) |
+| kJ, mol | [Units Documentation](https://ase.gitlab.io/ase/ase/units.html#module-ase.units) |
+
+
 Click the link below to open the Colab notebook:
 
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Google_Colab_Files/Error_5.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Google_Colab_Files/Error_4.ipynb)
 
 
 ### Outputs Should Appear Like This:
@@ -38,7 +60,7 @@ Collecting ASE
 Requirement already satisfied: numpy>=1.21.6 in /usr/local/lib/python3.12/dist-packages (from ASE) (2.0.2)
 Requirement already satisfied: scipy>=1.8.1 in /usr/local/lib/python3.12/dist-packages (from ASE) (1.16.3)
 Requirement already satisfied: matplotlib>=3.5.2 in /usr/local/lib/python3.12/dist-packages (from ASE) (3.10.0)
-Requirement already satisfied: typing_extensions>=4.13.1 in /usr/local/lib/python3.12/dist-packages (from ASE) (4.15.0)
+Requirement already satisfied: typing_extensions>=4.13.1 in /usr/local/lib/python3.12/dist-packages (from ASE) (4.16.0)
 Requirement already satisfied: contourpy>=1.0.1 in /usr/local/lib/python3.12/dist-packages (from matplotlib>=3.5.2->ASE) (1.3.3)
 Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.12/dist-packages (from matplotlib>=3.5.2->ASE) (0.12.1)
 Requirement already satisfied: fonttools>=4.22.0 in /usr/local/lib/python3.12/dist-packages (from matplotlib>=3.5.2->ASE) (4.63.0)
@@ -49,14 +71,14 @@ Requirement already satisfied: pyparsing>=2.3.1 in /usr/local/lib/python3.12/dis
 Requirement already satisfied: python-dateutil>=2.7 in /usr/local/lib/python3.12/dist-packages (from matplotlib>=3.5.2->ASE) (2.9.0.post0)
 Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.12/dist-packages (from python-dateutil>=2.7->matplotlib>=3.5.2->ASE) (1.17.0)
 Downloading ase-3.29.0-py3-none-any.whl (3.0 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 72.9 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 17.6 MB/s eta 0:00:00
 Installing collected packages: ASE
 Successfully installed ASE-3.29.0
 Collecting mace-torch
   Downloading mace_torch-0.3.16-py3-none-any.whl.metadata (27 kB)
 Requirement already satisfied: ase in /usr/local/lib/python3.12/dist-packages (3.29.0)
 Collecting rdkit
-  Downloading rdkit-2026.3.3-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+  Downloading rdkit-2026.3.4-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (3.8 kB)
 Collecting weas-widget
   Downloading weas_widget-0.2.6-py3-none-any.whl.metadata (13 kB)
 Requirement already satisfied: torch>=1.12 in /usr/local/lib/python3.12/dist-packages (from mace-torch) (2.11.0+cpu)
@@ -66,7 +88,7 @@ Requirement already satisfied: numpy in /usr/local/lib/python3.12/dist-packages 
 Requirement already satisfied: opt_einsum in /usr/local/lib/python3.12/dist-packages (from mace-torch) (3.4.0)
 Collecting torch-ema (from mace-torch)
   Downloading torch_ema-0.3-py3-none-any.whl.metadata (415 bytes)
-Requirement already satisfied: prettytable in /usr/local/lib/python3.12/dist-packages (from mace-torch) (3.17.0)
+Requirement already satisfied: prettytable in /usr/local/lib/python3.12/dist-packages (from mace-torch) (3.18.0)
 Collecting matscipy (from mace-torch)
   Downloading matscipy-1.2.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
 Requirement already satisfied: h5py in /usr/local/lib/python3.12/dist-packages (from mace-torch) (3.16.0)
@@ -77,11 +99,11 @@ Collecting python-hostlist (from mace-torch)
   Preparing metadata (setup.py) ... done
 Collecting configargparse (from mace-torch)
   Downloading configargparse-1.7.5-py3-none-any.whl.metadata (23 kB)
-Requirement already satisfied: GitPython in /usr/local/lib/python3.12/dist-packages (from mace-torch) (3.1.50)
+Requirement already satisfied: GitPython in /usr/local/lib/python3.12/dist-packages (from mace-torch) (3.1.51)
 Requirement already satisfied: pyYAML in /usr/local/lib/python3.12/dist-packages (from mace-torch) (6.0.3)
 Requirement already satisfied: tqdm in /usr/local/lib/python3.12/dist-packages (from mace-torch) (4.67.3)
 Collecting lmdb (from mace-torch)
-  Downloading lmdb-2.2.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (1.2 kB)
+  Downloading lmdb-2.3.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (1.2 kB)
 Requirement already satisfied: orjson in /usr/local/lib/python3.12/dist-packages (from mace-torch) (3.11.9)
 Requirement already satisfied: matplotlib in /usr/local/lib/python3.12/dist-packages (from mace-torch) (3.10.0)
 Requirement already satisfied: pandas in /usr/local/lib/python3.12/dist-packages (from mace-torch) (2.2.2)
@@ -89,12 +111,12 @@ Requirement already satisfied: sympy in /usr/local/lib/python3.12/dist-packages 
 Requirement already satisfied: scipy in /usr/local/lib/python3.12/dist-packages (from e3nn==0.4.4->mace-torch) (1.16.3)
 Collecting opt-einsum-fx>=0.1.4 (from e3nn==0.4.4->mace-torch)
   Downloading opt_einsum_fx-0.1.4-py3-none-any.whl.metadata (3.3 kB)
-Requirement already satisfied: typing_extensions>=4.13.1 in /usr/local/lib/python3.12/dist-packages (from ase) (4.15.0)
+Requirement already satisfied: typing_extensions>=4.13.1 in /usr/local/lib/python3.12/dist-packages (from ase) (4.16.0)
 Requirement already satisfied: Pillow in /usr/local/lib/python3.12/dist-packages (from rdkit) (11.3.0)
 Requirement already satisfied: anywidget>=0.9.11 in /usr/local/lib/python3.12/dist-packages (from weas-widget) (0.9.21)
 Collecting appdirs>=1.4.4 (from weas-widget)
   Downloading appdirs-1.4.4-py2.py3-none-any.whl.metadata (9.0 kB)
-Requirement already satisfied: click>=8.1.7 in /usr/local/lib/python3.12/dist-packages (from weas-widget) (8.4.1)
+Requirement already satisfied: click>=8.1.7 in /usr/local/lib/python3.12/dist-packages (from weas-widget) (8.4.2)
 Requirement already satisfied: requests in /usr/local/lib/python3.12/dist-packages (from weas-widget) (2.32.4)
 Requirement already satisfied: scikit-image in /usr/local/lib/python3.12/dist-packages (from weas-widget) (0.25.2)
 Requirement already satisfied: ipywidgets>=7.6.0 in /usr/local/lib/python3.12/dist-packages (from anywidget>=0.9.11->weas-widget) (7.7.1)
@@ -106,19 +128,19 @@ Requirement already satisfied: kiwisolver>=1.3.1 in /usr/local/lib/python3.12/di
 Requirement already satisfied: packaging>=20.0 in /usr/local/lib/python3.12/dist-packages (from matplotlib->mace-torch) (26.2)
 Requirement already satisfied: pyparsing>=2.3.1 in /usr/local/lib/python3.12/dist-packages (from matplotlib->mace-torch) (3.3.2)
 Requirement already satisfied: python-dateutil>=2.7 in /usr/local/lib/python3.12/dist-packages (from matplotlib->mace-torch) (2.9.0.post0)
-Requirement already satisfied: filelock in /usr/local/lib/python3.12/dist-packages (from torch>=1.12->mace-torch) (3.29.3)
+Requirement already satisfied: filelock in /usr/local/lib/python3.12/dist-packages (from torch>=1.12->mace-torch) (3.29.7)
 Requirement already satisfied: setuptools<82 in /usr/local/lib/python3.12/dist-packages (from torch>=1.12->mace-torch) (75.2.0)
 Requirement already satisfied: networkx>=2.5.1 in /usr/local/lib/python3.12/dist-packages (from torch>=1.12->mace-torch) (3.6.1)
 Requirement already satisfied: jinja2 in /usr/local/lib/python3.12/dist-packages (from torch>=1.12->mace-torch) (3.1.6)
 Requirement already satisfied: fsspec>=0.8.5 in /usr/local/lib/python3.12/dist-packages (from torch>=1.12->mace-torch) (2025.3.0)
 Requirement already satisfied: gitdb<5,>=4.0.1 in /usr/local/lib/python3.12/dist-packages (from GitPython->mace-torch) (4.0.12)
 Requirement already satisfied: pytz>=2020.1 in /usr/local/lib/python3.12/dist-packages (from pandas->mace-torch) (2025.2)
-Requirement already satisfied: tzdata>=2022.7 in /usr/local/lib/python3.12/dist-packages (from pandas->mace-torch) (2026.2)
-Requirement already satisfied: wcwidth in /usr/local/lib/python3.12/dist-packages (from prettytable->mace-torch) (0.8.1)
-Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/lib/python3.12/dist-packages (from requests->weas-widget) (3.4.7)
+Requirement already satisfied: tzdata>=2022.7 in /usr/local/lib/python3.12/dist-packages (from pandas->mace-torch) (2026.3)
+Requirement already satisfied: wcwidth>=0.3.5 in /usr/local/lib/python3.12/dist-packages (from prettytable->mace-torch) (0.8.2)
+Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/lib/python3.12/dist-packages (from requests->weas-widget) (3.4.9)
 Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.12/dist-packages (from requests->weas-widget) (3.18)
 Requirement already satisfied: urllib3<3,>=1.21.1 in /usr/local/lib/python3.12/dist-packages (from requests->weas-widget) (2.5.0)
-Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.12/dist-packages (from requests->weas-widget) (2026.5.20)
+Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.12/dist-packages (from requests->weas-widget) (2026.6.17)
 Requirement already satisfied: imageio!=2.35.0,>=2.33 in /usr/local/lib/python3.12/dist-packages (from scikit-image->weas-widget) (2.37.3)
 Requirement already satisfied: tifffile>=2022.8.12 in /usr/local/lib/python3.12/dist-packages (from scikit-image->weas-widget) (2026.4.11)
 Requirement already satisfied: lazy-loader>=0.4 in /usr/local/lib/python3.12/dist-packages (from scikit-image->weas-widget) (0.5)
@@ -167,7 +189,7 @@ Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.12/dist-
 Requirement already satisfied: bleach!=5.0.0 in /usr/local/lib/python3.12/dist-packages (from bleach[css]!=5.0.0->nbconvert>=5->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (6.4.0)
 Requirement already satisfied: defusedxml in /usr/local/lib/python3.12/dist-packages (from nbconvert>=5->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (0.7.1)
 Requirement already satisfied: jupyterlab-pygments in /usr/local/lib/python3.12/dist-packages (from nbconvert>=5->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (0.3.0)
-Requirement already satisfied: mistune<4,>=2.0.3 in /usr/local/lib/python3.12/dist-packages (from nbconvert>=5->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (3.2.1)
+Requirement already satisfied: mistune<4,>=2.0.3 in /usr/local/lib/python3.12/dist-packages (from nbconvert>=5->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (3.3.3)
 Requirement already satisfied: nbclient>=0.5.0 in /usr/local/lib/python3.12/dist-packages (from nbconvert>=5->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (0.10.4)
 Requirement already satisfied: pandocfilters>=1.4.1 in /usr/local/lib/python3.12/dist-packages (from nbconvert>=5->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (1.5.1)
 Requirement already satisfied: fastjsonschema>=2.15 in /usr/local/lib/python3.12/dist-packages (from nbformat->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (2.21.2)
@@ -178,12 +200,12 @@ Requirement already satisfied: tinycss2>=1.1.0 in /usr/local/lib/python3.12/dist
 Requirement already satisfied: attrs>=22.2.0 in /usr/local/lib/python3.12/dist-packages (from jsonschema>=2.6->nbformat->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (26.1.0)
 Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /usr/local/lib/python3.12/dist-packages (from jsonschema>=2.6->nbformat->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (2025.9.1)
 Requirement already satisfied: referencing>=0.28.4 in /usr/local/lib/python3.12/dist-packages (from jsonschema>=2.6->nbformat->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (0.37.0)
-Requirement already satisfied: rpds-py>=0.25.0 in /usr/local/lib/python3.12/dist-packages (from jsonschema>=2.6->nbformat->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (2026.5.1)
-Requirement already satisfied: jupyter-server<3,>=1.8 in /usr/local/lib/python3.12/dist-packages (from notebook-shim>=0.2.3->nbclassic>=0.4.7->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (2.18.2)
-Requirement already satisfied: cffi>=1.0.1 in /usr/local/lib/python3.12/dist-packages (from argon2-cffi-bindings->argon2-cffi->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (2.0.0)
+Requirement already satisfied: rpds-py>=0.25.0 in /usr/local/lib/python3.12/dist-packages (from jsonschema>=2.6->nbformat->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (2026.6.3)
+Requirement already satisfied: jupyter-server<3,>=1.8 in /usr/local/lib/python3.12/dist-packages (from notebook-shim>=0.2.3->nbclassic>=0.4.7->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (2.20.0)
+Requirement already satisfied: cffi>=1.0.1 in /usr/local/lib/python3.12/dist-packages (from argon2-cffi-bindings->argon2-cffi->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (2.1.0)
 Requirement already satisfied: soupsieve>1.2 in /usr/local/lib/python3.12/dist-packages (from beautifulsoup4->nbconvert>=5->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (2.8.4)
 Requirement already satisfied: pycparser in /usr/local/lib/python3.12/dist-packages (from cffi>=1.0.1->argon2-cffi-bindings->argon2-cffi->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (3.0)
-Requirement already satisfied: anyio>=3.1.0 in /usr/local/lib/python3.12/dist-packages (from jupyter-server<3,>=1.8->notebook-shim>=0.2.3->nbclassic>=0.4.7->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (4.13.0)
+Requirement already satisfied: anyio>=3.1.0 in /usr/local/lib/python3.12/dist-packages (from jupyter-server<3,>=1.8->notebook-shim>=0.2.3->nbclassic>=0.4.7->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (4.14.2)
 Requirement already satisfied: jupyter-events>=0.11.0 in /usr/local/lib/python3.12/dist-packages (from jupyter-server<3,>=1.8->notebook-shim>=0.2.3->nbclassic>=0.4.7->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (0.12.1)
 Requirement already satisfied: jupyter-server-terminals>=0.4.4 in /usr/local/lib/python3.12/dist-packages (from jupyter-server<3,>=1.8->notebook-shim>=0.2.3->nbclassic>=0.4.7->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (0.5.4)
 Requirement already satisfied: websocket-client>=1.7 in /usr/local/lib/python3.12/dist-packages (from jupyter-server<3,>=1.8->notebook-shim>=0.2.3->nbclassic>=0.4.7->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (1.9.0)
@@ -199,33 +221,33 @@ Requirement already satisfied: webcolors>=24.6.0 in /usr/local/lib/python3.12/di
 Requirement already satisfied: lark>=1.2.2 in /usr/local/lib/python3.12/dist-packages (from rfc3987-syntax>=1.1.0->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=1.8->notebook-shim>=0.2.3->nbclassic>=0.4.7->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (1.3.1)
 Requirement already satisfied: arrow>=0.15.0 in /usr/local/lib/python3.12/dist-packages (from isoduration->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=1.8->notebook-shim>=0.2.3->nbclassic>=0.4.7->notebook>=4.4.1->widgetsnbextension~=3.6.0->ipywidgets>=7.6.0->anywidget>=0.9.11->weas-widget) (1.4.0)
 Downloading mace_torch-0.3.16-py3-none-any.whl (316 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 316.0/316.0 kB 21.3 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 316.0/316.0 kB 6.5 MB/s eta 0:00:00
 Downloading e3nn-0.4.4-py3-none-any.whl (387 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 387.7/387.7 kB 28.1 MB/s eta 0:00:00
-Downloading rdkit-2026.3.3-cp312-cp312-manylinux_2_28_x86_64.whl (37.2 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 37.2/37.2 MB 43.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 387.7/387.7 kB 25.4 MB/s eta 0:00:00
+Downloading rdkit-2026.3.4-cp312-cp312-manylinux_2_28_x86_64.whl (37.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 37.4/37.4 MB 46.2 MB/s eta 0:00:00
 Downloading weas_widget-0.2.6-py3-none-any.whl (345 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 345.3/345.3 kB 20.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 345.3/345.3 kB 25.3 MB/s eta 0:00:00
 Downloading appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)
 Downloading configargparse-1.7.5-py3-none-any.whl (27 kB)
-Downloading lmdb-2.2.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (338 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 338.3/338.3 kB 22.3 MB/s eta 0:00:00
+Downloading lmdb-2.3.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (344 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 344.7/344.7 kB 23.6 MB/s eta 0:00:00
 Downloading matscipy-1.2.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (453 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 453.1/453.1 kB 22.1 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 453.1/453.1 kB 32.4 MB/s eta 0:00:00
 Downloading torch_ema-0.3-py3-none-any.whl (5.5 kB)
 Downloading torchmetrics-1.9.0-py3-none-any.whl (983 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 983.4/983.4 kB 36.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 983.4/983.4 kB 54.9 MB/s eta 0:00:00
 Downloading lightning_utilities-0.15.3-py3-none-any.whl (31 kB)
 Downloading opt_einsum_fx-0.1.4-py3-none-any.whl (13 kB)
 Downloading jedi-0.20.0-py2.py3-none-any.whl (4.9 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.9/4.9 MB 83.1 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.9/4.9 MB 81.9 MB/s eta 0:00:00
 Building wheels for collected packages: python-hostlist
   Building wheel for python-hostlist (setup.py) ... done
-  Created wheel for python-hostlist: filename=python_hostlist-2.3.0-py3-none-any.whl size=39449 sha256=fc55e3caba3c4bdaacebe1bbe98af22c5852f0824f1d841d93984cac01399b8f
+  Created wheel for python-hostlist: filename=python_hostlist-2.3.0-py3-none-any.whl size=39449 sha256=e3886f4c170cf7f45a1e04a9b30e0ad9159fbba3e60a3fc9c0b9766710156a20
   Stored in directory: /root/.cache/pip/wheels/02/e4/34/75fc0cd5b7889d8cc4ce6fb2f74c9fd17b3c6138cb03832481
 Successfully built python-hostlist
 Installing collected packages: python-hostlist, appdirs, rdkit, lmdb, lightning-utilities, jedi, configargparse, torchmetrics, torch-ema, opt-einsum-fx, matscipy, e3nn, mace-torch, weas-widget
-Successfully installed appdirs-1.4.4 configargparse-1.7.5 e3nn-0.4.4 jedi-0.20.0 lightning-utilities-0.15.3 lmdb-2.2.1 mace-torch-0.3.16 matscipy-1.2.0 opt-einsum-fx-0.1.4 python-hostlist-2.3.0 rdkit-2026.3.3 torch-ema-0.3 torchmetrics-1.9.0 weas-widget-0.2.6
+Successfully installed appdirs-1.4.4 configargparse-1.7.5 e3nn-0.4.4 jedi-0.20.0 lightning-utilities-0.15.3 lmdb-2.3.0 mace-torch-0.3.16 matscipy-1.2.0 opt-einsum-fx-0.1.4 python-hostlist-2.3.0 rdkit-2026.3.4 torch-ema-0.3 torchmetrics-1.9.0 weas-widget-0.2.6
 ```
 
 </details>
@@ -237,24 +259,24 @@ Successfully installed appdirs-1.4.4 configargparse-1.7.5 e3nn-0.4.4 jedi-0.20.0
 # Cell 2: Import Required Libraries
 
 # General Libraries
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# ASE and MACE-OFF Libraries
-from ase import Atoms
-from ase.build import bulk, molecule
-import mace
-from mace.calculators import mace_mp, mace_off
-from ase.build import molecule
-from ase.optimize import QuasiNewton
-from ase.thermochemistry import IdealGasThermo
-from ase.vibrations import Vibrations
-from ase.units import kJ, mol
+import numpy as np                              # Stores numbers in arrays and runs fast calculations on them
+import matplotlib.pyplot as plt                 # Plot Graphs
+import pandas as pd                             # Opens the data file as a table and find rows by their SMILES string
 
 # Building Geometry of Molecules / Atoms
-from rdkit import Chem
-from rdkit.Chem import AllChem
+from rdkit import Chem                          # Used to build molecules (basic package)
+from rdkit.Chem import AllChem                  # Used to build molecules (advanced package)
+
+# MACE Library
+from mace.calculators import mace_off           # MACE-OFF (Machine Learning Potential)
+
+# Atomic Simulation Environment Libraries
+from ase import Atoms                           # Represents a molecule object with information
+from ase.build import molecule                  # Creates an atomic structure from the database
+from ase.optimize import QuasiNewton            # Optimization / energy minimization
+from ase.vibrations import Vibrations           # Used to calculate vibrational modes of the Atom object
+from ase.thermochemistry import IdealGasThermo  # Allows you to calculate entropy, enthalpy, and gibbs free energy
+from ase.units import kJ, mol                   # Conversion for units
 ```
 <details>
 <summary>Expected output</summary>
@@ -444,7 +466,7 @@ def smiles_to_atoms(smiles, seed=64):
     mol = Chem.MolFromSmiles(smiles)
     mol = Chem.AddHs(mol) # Adds explicit hydrogens to the molecule
     AllChem.EmbedMolecule(mol, randomSeed=64) # Randomly places atoms at correct distances from each other
-    AllChem.MMFFOptimizeMolecule(mol) # Optimizes the geometry using the MMFF94 classical force field (Starting Position for MACE-OFF optimization))
+    AllChem.MMFFOptimizeMolecule(mol) # Optimizes the geometry using the MMFF94 classical force field (Starting Position for MACE-OFF optimization)
     conf = mol.GetConformer()
     symbols = [a.GetSymbol() for a in mol.GetAtoms()]
     positions = conf.GetPositions()
