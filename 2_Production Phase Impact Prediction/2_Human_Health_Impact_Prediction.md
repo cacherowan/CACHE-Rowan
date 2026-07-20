@@ -38,16 +38,16 @@ Click the button below to open this code in Google Colab
 ```
 # Cell 1: Import Required Libraries / Packages
 
-import numpy as np                                                        # Stores numbers in arrays and runs fast calculations on them
-import pandas as pd                                                       # Opens the data file as a table and finds rows by their SMILES string
-import matplotlib.pyplot as plt                                           # Plot Graphs
-import ipywidgets as widgets                                              # Creates UI elements such as the slider below
-from IPython.display import display                                       # Displays UI elements
+import numpy as np                    # Stores numbers in arrays and runs fast calculations on them
+import pandas as pd                   # Opens the data file as a table and finds rows by their SMILES string
+import matplotlib.pyplot as plt       # Plot Graphs
+import ipywidgets as widgets          # Creates UI elements such as the slider below
+from IPython.display import display   # Displays UI elements
 
-import tensorflow as tf                                                   # Loads the trained neural network (ANN) and runs it to make predictions
+import tensorflow as tf               # Loads the trained neural network (ANN) and runs it to make predictions
 
-import os                                                                 # Allows interactions with the file system
-import requests                                                           # Makes requests to internet files
+import os                             # Allows interactions with the file system
+import requests                       # Makes requests to internet files
 ```
 <details>
 <summary>Expected output</summary>
@@ -110,7 +110,7 @@ download_if_needed(HH_MODEL_URL, HH_MODEL_PATH)
 HH_MODEL = HH_MODEL_PATH
 ```
 
-</details>
+<details>
 <summary>Expected output</summary>
 
 ```text
@@ -172,9 +172,9 @@ No Visible Output
 
 
 ```
-# Cell 6: Select the thermodynamic properties and the molecular descriptors used as inputs for the Climate Change model
-# The Climate Change model was trained on a specific set of 10 featurres.  
-# We must feed the model the exact same features, in the exact same order, every time we ask it to make a prediction.  
+# Cell 6: Select the thermodynamic properties and the molecular descriptors used as inputs for the Human Health model
+# The Human Health model was trained on a specific set of 10 features.
+# We must feed the model the exact same features, in the exact same order, every time we ask it to make a prediction.
 
 # Thermodynamic properties:
 thermo_feat_HH = [
