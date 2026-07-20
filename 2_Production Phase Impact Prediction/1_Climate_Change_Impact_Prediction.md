@@ -38,16 +38,16 @@ Click the button below to open this code in Google Colab
 ```
 # Cell 1: Import Required Libraries / Packages
 
-import numpy as np                                                        # Stores numbers in arrays and runs fast calculations on them
-import pandas as pd                                                       # Opens the data file as a table and find rows by their SMILES string
-import matplotlib.pyplot as plt                                           # Plot Graphs
-import ipywidgets as widgets                                              # Creates UI elements such as the slider below
-from IPython.display import display                                       # Displays UI elements
+import numpy as np                    # Stores numbers in arrays and runs fast calculations on them
+import pandas as pd                   # Opens the data file as a table and find rows by their SMILES string
+import matplotlib.pyplot as plt       # Plot Graphs
+import ipywidgets as widgets          # Creates UI elements such as the slider below
+from IPython.display import display   # Displays UI elements
 
-import tensorflow as tf                                                   # Loads the trained neural network (ANN) and runs it to make predictions
+import tensorflow as tf               # Loads the trained neural network (ANN) and runs it to make predictions
 
-import os                                                                 # Allows interactions with the file system
-import requests                                                           # Makes requests to internet files
+import os                             # Allows interactions with the file system
+import requests                       # Makes requests to internet files
 ```
 <details>
 <summary>Expected output</summary>
