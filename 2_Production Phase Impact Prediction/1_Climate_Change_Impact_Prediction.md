@@ -106,7 +106,7 @@ DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/R
 # Call to Function to Download Weight (.h5 file)
 download_if_needed(CC_MODEL_URL, CC_MODEL_PATH)
 
-# The trained model file (.h5) that predicts Human Health Impact
+# The trained model file (.h5) that predicts Climate Change Impact
 CC_MODEL = CC_MODEL_PATH
 ```
 
