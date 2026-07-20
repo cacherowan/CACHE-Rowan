@@ -171,7 +171,7 @@ No Visible Output
 
 ```
 # Cell 6: Select the thermodynamic properties and the molecular descriptors used as inputs for the Climate Change model
-# The Climate Change model was trained on a specific set of 10 featurres.  
+# The Climate Change model was trained on a specific set of 10 features.  
 # We must feed the model the exact same features, in the exact same order, every time we ask it to make a prediction.  
 
 # Thermodynamic properties:
