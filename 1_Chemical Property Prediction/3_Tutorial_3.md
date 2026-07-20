@@ -95,17 +95,18 @@ descriptors_cc
 <summary>Expected output</summary>
 
 ```text
-	CCCO
-Heat Capacity (kJ/kgC)	2.043271
-Boiling Point(K)	2.697911
-XLogP	1.054688
-Critical Temperature [K]	2.688617
-Critical Molar Volume [m3/mol]	0.607143
-BertzCT	0.054327
-ExactMolWt	1.042309
-HallKierAlpha	3.161765
-PEOE_VSA6	0.267486
-NOCount	1.0
+                        CCCO
+Heat Capacity (kJ/kgC)	2.346
+Boiling Point(K)	370.35
+XLogP	0.3
+Critical Temperature [K]	537.0
+Critical Molar Volume [m3/mol]	0.000218
+BertzCT	5.245112
+ExactMolWt	60.057515
+HallKierAlpha	-0.04
+PEOE_VSA6	6.923737
+NOCount	1
+dtype: object
 ```
 </details>
 
