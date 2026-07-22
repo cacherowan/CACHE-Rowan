@@ -6,9 +6,9 @@ In this tutorial you will learn how to Obtain Chemical Properties that are inclu
 
 ***
 
-### Bakground Information / Code Overview: 
+### Background Information / Code Overview: 
 
-This code will be calling to an excel document that contains currently a few hundred chemicals with property data including: Heat of vaporization, Heat Capacity, Boiling Point, Melting Point, Viscosity, Standard Formation Enthalpy, Critical Pressure and Temperature, and Critical Molar Volume.  With the code, you will be able to input a chemical name and Simplified Molecular Input Line Entry System (SMILES), the output will be some the property data listed above.  To suit a specific need, feel free to modify the code to display only certain properties or search for multiple chemicals at once.  
+This code will be calling to an excel document that contains currently a few hundred chemicals with property data including: Heat of Vaporization, Heat Capacity, Boiling Point, Melting Point, Viscosity, Standard Formation Enthalpy, Critical Pressure and Temperature, and Critical Molar Volume.  With the code, you will be able to input a chemical name and Simplified Molecular Input Line Entry System (SMILES), the output will be some of the property data listed above.  To suit a specific need, feel free to modify the code to display only certain properties or search for multiple chemicals at once.  
 
 
 <img src="/Reference_Files/Workflows/Tutorial_3_Workflow.svg"/>
