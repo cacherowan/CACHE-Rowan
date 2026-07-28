@@ -440,6 +440,7 @@ Vibrational frequencies (real modes):
 ```
 </details>
 
+<img src="/Reference_Files/Tutorial_2_Files/Possible_Molecular_Moves.jpg"/>
 
 
 
