@@ -237,8 +237,9 @@ No Visible Output
 ```
 </details>
 
+<img src="/Reference_Files/Tutorial_2_Files/CO2.png"/>
 
-
+Image of CO{sub}`2`
 
 ```
 # Cell 4: Defines Fucntion that takes a SMILES and returns if it is valid.  Then it prints some information about the molecule
@@ -372,6 +373,9 @@ Optimisation complete.
 ```
 </details>
 
+| <img src="/Reference_Files/Tutorial_2_Files/Before_Optimization.png"/> | <img src="/Reference_Files/Tutorial_2_Files/After_Optimization.png"/> |
+| :--: | :--: |
+| Notice the forces are much higher in the x, y, and z direction | Notice how the forces are much lower here (optimized or minimized)
 
 
 
