@@ -373,9 +373,11 @@ Optimisation complete.
 ```
 </details>
 
-| <img src="/Reference_Files/Tutorial_2_Files/Before_Optimization.png"/> | <img src="/Reference_Files/Tutorial_2_Files/After_Optimization.png"/> |
+| <img src="/Reference_Files/Tutorial_2_Files/Before_Optimization_Image.png"/> | <img src="/Reference_Files/Tutorial_2_Files/After_Optimization_Image.png"/> |
 | :--: | :--: |
-| Notice the forces are much higher in the x, y, and z direction | Notice how the forces are much lower here (optimized or minimized)
+| Image of carbon dioxide molecule before optimization (No visible difference with other image) | Image of carbon dioxide molecule optimized (No visible difference with other image) |
+| <img src="/Reference_Files/Tutorial_2_Files/Before_Optimization_Data.png"/> | <img src="/Reference_Files/Tutorial_2_Files/After_Optimization_Data.png"/> |
+| Notice the forces are much higher in the x, y, and z directions for each atom | Notice how the forces are much lower in the x, y, and z directions for each atom (optimized or minimized)
 
 
 
