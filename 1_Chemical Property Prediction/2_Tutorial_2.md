@@ -237,7 +237,7 @@ No Visible Output
 ```
 </details>
 
-<img src="/Reference_Files/Tutorial_2_Files/CO2.png"/>
+<img src="/Reference_Files/Tutorial_2_Files/CO2-Molecular-Geometry.png"/>
 
 Image of CO{sub}`2`
 
