@@ -48,7 +48,7 @@ All molecules have a stable form that corresponds to their minimum energy. Left 
 
 | Unoptimized Geometry | Optimized |
 | :--: | :--: |
-| <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Unpotimized.png"> | <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Optimized.png"> |
+| <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Unoptimized.png"> | <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Optimized.png"> |
 
 ## Reference State for Potential Energy Calculation and Ideal Gas Approximation 
 
