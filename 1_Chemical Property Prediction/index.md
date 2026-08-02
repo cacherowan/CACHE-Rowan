@@ -22,7 +22,7 @@ When we set up an MD simulation, we have to pick a coordinate system to describe
 
 | Cartesian Coordinates | Polar Coordinates or Spherical Coordinates (3D) |
 | :--: | :--: |
-| <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Cartesian_Coordinates.png"> | <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Cartesian_Coordinates.png"> |
+| <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Cartesian_Coordinates.png"> | <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Polar_Coordinates.png"> |
 
 **The equations of motion are simpler:**
 
