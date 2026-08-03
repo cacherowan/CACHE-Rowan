@@ -108,3 +108,11 @@ Learn how to calculate the standard enthalpy of formation for molecules using th
 :::
 
 ::::
+
+Tutorial 1 shows the basics of using MACE-OFF and how to perform molecular simulations using a MACE potential and then using that data to calculate chemical properties
+
+Tutorial 2 takes this a step further and calculates the heat capacity of a handful of molecules using this same method but takes some more time showing how to construct the molecule from scratch (if the molecule you are using doesn't have a g2 shortcut).  
+
+Tutorial 3 uses the database to give you chemical properties instead of performing simulations to obtain this data
+
+Tutorial 4 demonstrates the error in each method comparing the resuts to NIST
