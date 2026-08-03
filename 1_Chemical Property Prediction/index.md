@@ -101,7 +101,7 @@ Using the same machine learning potential in tutorial 1, you will calculate the 
 Tutorials 1 and 2 predicted chemical properties of various molecules using molecular simulations and a machine learning potnetial.  While this tutorial will also determine chemical properties of various molecules, it accomplishes this task using a database of chemical properties.  In this tutorial, you will learn how to load the database to allow the code to read chemical properties that are listed in the database.  
 :::
 
-:::{grid-item-card} Tutorial 4
+:::{grid-item-card} Error Comparison
 :link: 4_Tutorial_4.md
 
 Learn how to calculate the standard enthalpy of formation for molecules using the atomic simulations environment (calculate chemical properties using data from MACE-OF) as well as MACE-OFF.  Similar to using tutorial 1 to get the enthalpy of a molecule, you will be doing this again for specific atoms and molecules to find the standard enthalpy of formation for 5 molecules.  Then you will compare the error in the machine learning method with the National Institute of Standards and Technology (NIST) and the database used in Tutorial 3 with NIST.  
