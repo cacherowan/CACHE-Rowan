@@ -66,7 +66,7 @@ The machine learning model gives us one number for a given molecular geometry: t
 
 from these ingredients, standard formulas give the enthalpy H, which is the total energy content of the molecule plus a pressure-volume term:
 
-$$H=E_{\text{elec}} + E_{\text{ZPE}} + E_{\text{vib}}(T) + E_{\text{rot}}(T) + E_{\text{trans}}(T) + PV$$
+$$ H = E_{\text{elec}} + E_{\text{ZPE}} + E_{\text{vib}}(T) + E_{\text{rot}}(T) + E_{\text{trans}}(T) + PV $$
 
 Each term has a clear physical meaning. E{sub}`ZPE` is the zero-point energy, the residual vibrational energy that molecules retain even at 0 K. The three thermal terms E{sub}`vib`, E{sub}`rot`, and E{sub}`transare` the additional energy the molecule holds because it is vibrating, rotating, and translating at temperature T. The PVterm comes from the ideal gas law. The entropy Smeasures how many different microscopic states the molecule can occupy at a given temperature. More accessible states means higher entropy. Statistical mechanics gives separate contributions from translation, rotation, and vibration, which are added together.
 
