@@ -80,14 +80,31 @@ So the overall picture is straightforward: MACE provides the potential energy an
 
 
 
+::::{grid} 2
+:gutter: 3
 
-
-::::{grid} 1 1 2 2
-
-:::{card} Tutorial 1: Chemical Property Estimation (Enthalpy, Entropy, and Gibbs Free Energy for Gases)
+:::{grid-item-card} Tutorial 1
 :link: 1_Tutorial_1.md
-Learn the basics of using a machine learning potential to calculate the enthalpy, entropy, and gibbs free energy of a molecule at various temperatures
+
+Learn the basics of using a machine learning potential to calculate the enthalpy, entropy, and Gibbs free energy of a molecule at various temperatures.
+:::
+
+:::{grid-item-card} Tutorial 2
+:link: 2_Tutorial_2.md
+
+Description of Tutorial 2.
+:::
+
+:::{grid-item-card} Tutorial 3
+:link: 3_Tutorial_3.md
+
+Description of Tutorial 3.
+:::
+
+:::{grid-item-card} Tutorial 4
+:link: 4_Tutorial_4.md
+
+Description of Tutorial 4.
 :::
 
 ::::
-
