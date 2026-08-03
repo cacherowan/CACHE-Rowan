@@ -46,7 +46,7 @@ When you load a MACE-MP-0 model as "small", "medium", or "large", the sizes do n
 
 All molecules have a stable form that corresponds to their minimum energy. Left alone, they naturally settle into this state. A geometry optimization uses a numerical algorithm to nudge the atoms toward that stable form before the simulation begins. The algorithm makes small adjustments to each atom's position, checks whether the total potential energy went down, and repeats until the forces on every atom fall below a small threshold. A useful mental picture is a spring at its natural length. If we start the simulation with the spring already stretched or compressed, it will snap violently the moment we let go, and the dynamics will explode. Geometry optimization lets the spring relax first, so the system begins from a calm state rather than one primed to fly apart.  
 
-| Unoptimized Geometry | Optimized |
+| Unoptimized Geometry | Optimized Geometry |
 | :--: | :--: |
 | <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Unoptimized.png"> | <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Optimized.png"> |
 
@@ -59,16 +59,16 @@ For thermochemistry, we feed this potential energy along with the computed vibra
 ## Machine Learning Values and Obtaining Thermodynamic Properties
 
 The machine learning model gives us one number for a given molecular geometry: the electronic potential energy E_elec. But a real molecule at room temperature is not sitting still. It vibrates, it rotates, and it translates through space. Each of these motions carries energy and contributes to the thermodynamic properties we actually care about, like enthalpy and Gibbs free energy. So how do we get from that one ML number to a full thermodynamic description? The answer comes from statistical mechanics, the branch of physics that connects the behavior of individual molecules to bulk thermodynamic quantities. Under the ideal gas approximation (molecules do not interact, they rotate as rigid bodies, and they vibrate like tiny springs), statistical mechanics gives us clean formulas for each type of motion. The inputs it needs are:
-1. The electronic potential energy E_elec (from MACE)
+1. The electronic potential energy E{sub}`elec` (from MACE)
 1. The vibrational frequencies of the molecule (computed by slightly displacing each atom and re-evaluating the forces with MACE)
 1. The molecular geometry, mass, and symmetry
 1. The temperature and pressure
 
 from these ingredients, standard formulas give the enthalpy H, which is the total energy content of the molecule plus a pressure-volume term:
 
-H=E{sub}`elec` + E{sub}`ZPE` + E{sub}`vib`(T) + E{sub}`rot`(T) + E{sub}`trans`(T) + PV
+$$H=E_{\text{elec}} + E_{\text{ZPE}} + E_{\text{vib}}(T) + E_{\text{rot}}(T) + E_{\text{trans}}(T) + PV$$
 
-Each term has a clear physical meaning. E_ZPEis the zero-point energy, the residual vibrational energy that molecules retain even at 0 K. The three thermal terms E{sub}`vib`, E{sub}`rot`, and E{sub}`transare` the additional energy the molecule holds because it is vibrating, rotating, and translating at temperature T. The PVterm comes from the ideal gas law. The entropy Smeasures how many different microscopic states the molecule can occupy at a given temperature. More accessible states means higher entropy. Statistical mechanics gives separate contributions from translation, rotation, and vibration, which are added together.
+Each term has a clear physical meaning. E{sub}`ZPE` is the zero-point energy, the residual vibrational energy that molecules retain even at 0 K. The three thermal terms E{sub}`vib`, E{sub}`rot`, and E{sub}`transare` the additional energy the molecule holds because it is vibrating, rotating, and translating at temperature T. The PVterm comes from the ideal gas law. The entropy Smeasures how many different microscopic states the molecule can occupy at a given temperature. More accessible states means higher entropy. Statistical mechanics gives separate contributions from translation, rotation, and vibration, which are added together.
 
 Finally, the Gibbs free energy follows from its familiar thermodynamic definition:
 
@@ -86,7 +86,7 @@ So the overall picture is straightforward: MACE provides the potential energy an
 
 :::{card} Tutorial 1: Chemical Property Estimation (Enthalpy, Entropy, and Gibbs Free Energy for Gases)
 :link: 1_Tutorial_1.md
-Description of Page
+Learn the basics of using a machine learning potential to calculate the enthalpy, entropy, and gibbs free energy of a molecule at various temperatures
 :::
 
 ::::
