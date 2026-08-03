@@ -86,25 +86,25 @@ So the overall picture is straightforward: MACE provides the potential energy an
 :::{grid-item-card} Tutorial 1
 :link: 1_Tutorial_1.md
 
-Learn the basics of using a machine learning potential to calculate the enthalpy, entropy, and Gibbs free energy of a molecule at various temperatures.
+Learn the basics of using a machine learning potential (MACE-OFF) to calculate the enthalpy, entropy, and Gibbs free energy of a molecule at various temperatures.
 :::
 
 :::{grid-item-card} Tutorial 2
 :link: 2_Tutorial_2.md
 
-Description of Tutorial 2.
+Using the same machine learning potential in tutorial 1, you will calculate the heat capacity for various molecules as a function of time.  This tutorial will show you how to construct the geometries of multiple molecules to simulate them and calculate their potential energy.  Chemical properties can then be predicted using the simulation data.  
 :::
 
 :::{grid-item-card} Tutorial 3
 :link: 3_Tutorial_3.md
 
-Description of Tutorial 3.
+Tutorials 1 and 2 predicted chemical properties of various molecules using molecular simulations and a machine learning potnetial.  While this tutorial will also determine chemical properties of various molecules, it accomplishes this task using a database of chemical properties.  In this tutorial, you will learn how to load the database to allow the code to read chemical properties that are listed in the database.  
 :::
 
 :::{grid-item-card} Tutorial 4
 :link: 4_Tutorial_4.md
 
-Description of Tutorial 4.
+Learn how to calculate the standard enthalpy of formation for molecules using the atomic simulations environment (calculate chemical properties using data from MACE-OF) as well as MACE-OFF.  Similar to using tutorial 1 to get the enthalpy of a molecule, you will be doing this again for specific atoms and molecules to find the standard enthalpy of formation for 5 molecules.  Then you will compare the error in the machine learning method with the National Institute of Standards and Technology (NIST) and the database used in Tutorial 3 with NIST.  
 :::
 
 ::::
