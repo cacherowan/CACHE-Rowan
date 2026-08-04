@@ -81,19 +81,19 @@ So the overall picture is straightforward: MACE provides the potential energy an
 ::::{grid} 2
 :gutter: 3
 
-:::{grid-item-card} Tutorial 1
+:::{grid-item-card} Tutorial: 1
 :link: 1_Tutorial_1.md
 
 Learn the basics of using a machine learning potential (MACE-OFF) to calculate the enthalpy, entropy, and Gibbs free energy of a molecule at various temperatures.
 :::
 
-:::{grid-item-card} Tutorial 2
+:::{grid-item-card} Tutorial: 2
 :link: 2_Tutorial_2.md
 
 Using the same machine learning potential in tutorial 1, you will calculate the heat capacity for various molecules as a function of time.  This tutorial will show you how to construct the geometries of multiple molecules to simulate them and calculate their potential energy.  Chemical properties can then be predicted using the simulation data.  
 :::
 
-:::{grid-item-card} Tutorial 3
+:::{grid-item-card} Tutorial: 3
 :link: 3_Tutorial_3.md
 
 Tutorials 1 and 2 predicted chemical properties of various molecules using molecular simulations and a machine learning potnetial.  While this tutorial will also determine chemical properties of various molecules, it accomplishes this task using a database of chemical properties.  In this tutorial, you will learn how to load the database to allow the code to read chemical properties that are listed in the database.  
@@ -114,3 +114,5 @@ Tutorial 2: Performing multiple molecular simulations using MACE-OFF, which will
 Tutorial 3: Use a given database to calculate standard enthalpy of formation instead of performing molecular simulations.  
 
 Error Analysis: Calculate standard enthalpy of formation using both molecular simulations as well as the database, and compare those values to the NIST.  
+
+**These Modules were made to instruct you on how to perform molecular simulations to calculate unknown or missing thermodynamic properties of new chemicals.  These values will be used as inputs in phase 2 where you will be performing a life cycle assessment (LCA) of different chemicals.**  
