@@ -467,7 +467,7 @@ In this code, you were able to see how a chemical impacts climate change using t
 :gutter: 3
 
 :::{grid-item-card} Machine Learning Background
-:link: 0_index_P2.md#tutorials
+:link: 0_index_P2.md
 
 Background information on Machine Learning and Artificial Neural Networks
 :::
