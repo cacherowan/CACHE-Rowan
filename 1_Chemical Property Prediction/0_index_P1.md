@@ -100,7 +100,7 @@ Tutorials 1 and 2 predicted chemical properties of various molecules using molec
 :::
 
 :::{grid-item-card} Error Analysis
-:link: 4_Tutorial_4.md
+:link: 4_Error_Comparison.md
 
 Learn how to calculate the standard enthalpy of formation for molecules using the atomic simulations environment (calculate chemical properties using data from MACE-OF) as well as MACE-OFF.  Similar to using tutorial 1 to get the enthalpy of a molecule, you will be doing this again for specific atoms and molecules to find the standard enthalpy of formation for 5 molecules.  Then you will compare the error in the machine learning method with the National Institute of Standards and Technology (NIST) and the database used in Tutorial 3 with NIST.  
 :::
