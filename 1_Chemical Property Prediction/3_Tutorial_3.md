@@ -187,7 +187,7 @@ Background information of Molecular Dynamics Simulations
 :::
 
 :::{grid-item-card} Error in MACE-OFF and Database Compared to NIST
-:link: 3_Tutorial_3.md
+:link: 4_Error_Comparison.md
 
 Calculate standard enthalpy of formation using both molecular simulations as well as the database, and compare those values to the NIST.  
 :::
