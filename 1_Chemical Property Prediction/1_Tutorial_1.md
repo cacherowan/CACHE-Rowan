@@ -9,7 +9,7 @@ In this tutorial you will learn how to use ASE and MACE-OFF to get Chemical Prop
 ### Code Overview: 
 
 
-This code will compute Chemical Properties of Methyl Nitrite using 2 methods.  The first calls for the geometry of the molecule from a list of common molecules in ASE, g2.  This list was made to allow users to quickly refer to common molecules.  The second method will build the molecule using the SMILES identificiation, and compute the same properties.  Then the code will compare the results to see how similar they are.  
+This code will compute Chemical Properties of Propanol.  First, the molecule is built using the SMILES identificiation.  The code then runs a simulations for the molecule which allows the chemical properties to be calculated.  Then the code will display the results.  
 
 
 <img src="/Reference_Files/Workflows/Tutorial_1_Workflow.svg"/>
@@ -317,15 +317,29 @@ MACE-OFF loaded.
 
 
 ```
-# Cell 4: Calculate Methyl Nitrite (CH3ONO) Chemical Properties
+# Cell 4: Calculate Propanol (CCCO) Chemical Properties
+# Build the Molecule using SMILES
 
-atoms_CH3ONO = molecule('CH3ONO') # Picks Molecule from g2 list (Quickly pick common molecules)
-atoms_CH3ONO.calc = calc_mol # Calls to MACE-OFF to be used
-dyn = QuasiNewton(atoms_CH3ONO, logfile=None)
+smiles = 'CCCO' # SMILES for Propanol (CCCO)
+seed = 42
+
+mol = Chem.MolFromSmiles(smiles)
+mol = Chem.AddHs(mol) # Adds explicit hydrogens to the molecule
+AllChem.EmbedMolecule(mol, randomSeed=seed) # Randomly places atoms at correct distances from each other
+AllChem.MMFFOptimizeMolecule(mol) # Optimizes the geometry using the MMFF94 classical force field (Starting Position for MACE-OFF optimization))
+conf = mol.GetConformer()
+symbols = [a.GetSymbol() for a in mol.GetAtoms()]
+positions = conf.GetPositions()
+
+atoms_CCCO = Atoms(symbols=symbols, positions=positions)
+
+# Same as last code except atoms_CCCO is defined instead of being called from g2 list
+atoms_CCCO.calc = calc_mol # Calls to MACE-OFF to be used
+dyn = QuasiNewton(atoms_CCCO, logfile=None)
 dyn.run(fmax=0.01) # Finding energy minimum
-potentialenergy_CH3ONO = atoms_CH3ONO.get_potential_energy() # Get potential energy
+potentialenergy_CCCO = atoms_CCCO.get_potential_energy() # Get potential energy
 
-vib = Vibrations(atoms_CH3ONO, name='ch3ono_vib')
+vib = Vibrations(atoms_CCCO, name='ccco_vib')
 vib.clean()
 vib.run()
 vib_energies = vib.get_energies() # Gets vibrational energy based on molecule geometry
@@ -334,8 +348,8 @@ vib_energies = np.array([e.real for e in vib_energies if e.real > 0.01]) # Filte
 # Takes inputs of vibrational energies, potential energy, and geometry to compute chemical properties
 thermo = IdealGasThermo(
     vib_energies=vib_energies,
-    potentialenergy=potentialenergy_CH3ONO,
-    atoms=atoms_CH3ONO,
+    potentialenergy=potentialenergy_CCCO,
+    atoms=atoms_CCCO,
     geometry='nonlinear', # Linear (Straight Line) or Nonlinear (Bent in any way)
     symmetrynumber=1, # How many times you can rotate the molecule and get the same configuration
     spin=0, # 0.5 for each unpaired electrons
@@ -355,139 +369,26 @@ for T in temps:
 
 df1 = pd.DataFrame(records)
 display(df1)
-
 ```
 <details>
 <summary>Expected output</summary>
 
 ```text
-T (K)	H (eV)	S (eV/K)	G (eV)
-0	298.15	-6669.853239	0.002861	-6670.706377
-1	400.00	-6669.779623	0.003073	-6671.008786
-2	500.00	-6669.695084	0.003261	-6671.325623
-3	600.00	-6669.600004	0.003434	-6671.660501
-4	700.00	-6669.496061	0.003594	-6672.012022
-5	800.00	-6669.384683	0.003743	-6672.378966
-
+	T (K)	H (eV)	S (eV/K)	G (eV)
+0	298.15	-5288.936388	0.003120	-5289.866516
+1	400.00	-5288.834825	0.003411	-5290.199227
+2	500.00	-5288.712134	0.003684	-5290.554071
+3	600.00	-5288.568944	0.003944	-5290.935592
+4	700.00	-5288.408152	0.004192	-5291.342519
+5	800.00	-5288.232302	0.004427	-5291.773550
 ```
 
 </details>
 
-
-
-
-
-```
-# Cell 5: Calculate Methyl Nitrite (CH3ONO) Chemical Properties without using g2 list
-# Build the Molecule using SMILES
-
-smiles = 'CON=O' # SMILES for Methyl Nitrite (CH3ONO)
-seed = 42
-
-mol = Chem.MolFromSmiles(smiles)
-mol = Chem.AddHs(mol) # Adds explicit hydrogens to the molecule
-AllChem.EmbedMolecule(mol, randomSeed=seed) # Randomly places atoms at correct distances from each other
-AllChem.MMFFOptimizeMolecule(mol) # Optimizes the geometry using the MMFF94 classical force field (Starting Position for MACE-OFF optimization))
-conf = mol.GetConformer()
-symbols = [a.GetSymbol() for a in mol.GetAtoms()]
-positions = conf.GetPositions()
-
-atoms_CH3ONO = Atoms(symbols=symbols, positions=positions)
-
-# Same as last code except atoms_CH3ONO is defined instead of being called from g2 list
-atoms_CH3ONO.calc = calc_mol # Calls to MACE-OFF to be used
-dyn = QuasiNewton(atoms_CH3ONO, logfile=None)
-dyn.run(fmax=0.01) # Finding energy minimum
-potentialenergy_CH3ONO = atoms_CH3ONO.get_potential_energy() # Get potential energy
-
-vib = Vibrations(atoms_CH3ONO, name='ch3ono_vib')
-vib.clean()
-vib.run()
-vib_energies = vib.get_energies() # Gets vibrational energy based on molecule geometry
-vib_energies = np.array([e.real for e in vib_energies if e.real > 0.01]) # Filters out imaginary numbers and very low frequencies
-
-# Takes inputs of vibrational energies, potential energy, and geometry to compute chemical properties
-thermo = IdealGasThermo(
-    vib_energies=vib_energies,
-    potentialenergy=potentialenergy_CH3ONO,
-    atoms=atoms_CH3ONO,
-    geometry='nonlinear', # Linear (Straight Line) or Nonlinear (Bent in any way)
-    symmetrynumber=1, # How many times you can rotate the molecule and get the same configuration
-    spin=0, # 0.5 for each unpaired electrons
-)
-
-
-# Records Chemical Property Data at 6 Temperatures at 1 atmosphere and Displays it
-temps = [298.15, 400, 500, 600, 700, 800]
-P = 101325.
-
-records = []
-for T in temps:
-    H = thermo.get_enthalpy(T, verbose=False)
-    S = thermo.get_entropy(T, P, verbose=False)
-    G = thermo.get_gibbs_energy(T, P, verbose=False)
-    records.append({"T (K)": T, "H (eV)": H, "S (eV/K)": S, "G (eV)": G})
-
-df2 = pd.DataFrame(records)
-display(df2)
-```
-<details>
-<summary>Expected output</summary>
-
-```text
-
-T (K)	H (eV)	S (eV/K)	G (eV)
-0	298.15	-6669.877876	0.002949	-6670.757160
-1	400.00	-6669.803150	0.003164	-6671.068716
-2	500.00	-6669.718645	0.003352	-6671.394665
-3	600.00	-6669.624145	0.003524	-6671.738591
-4	700.00	-6669.521014	0.003683	-6672.099041
-5	800.00	-6669.410517	0.003830	-6672.474791
-
-```
-</details>
-
-
-
-
-```
-# Cell 6: Side by Side Comparison
-
-print("Molecule Called from g2 List")
-display(df1)
-
-print("")
-print("Molecule Actually Being Build")
-display(df2)
-```
-<details>
-<summary>Expected output</summary>
-
-```text
-Molecule Called from g2 List
-T (K)	H (eV)	S (eV/K)	G (eV)
-0	298.15	-6669.853239	0.002861	-6670.706377
-1	400.00	-6669.779623	0.003073	-6671.008786
-2	500.00	-6669.695084	0.003261	-6671.325623
-3	600.00	-6669.600004	0.003434	-6671.660501
-4	700.00	-6669.496061	0.003594	-6672.012022
-5	800.00	-6669.384683	0.003743	-6672.378966
-
-Molecule Actually Being Build
-T (K)	H (eV)	S (eV/K)	G (eV)
-0	298.15	-6669.877876	0.002949	-6670.757160
-1	400.00	-6669.803150	0.003164	-6671.068716
-2	500.00	-6669.718645	0.003352	-6671.394665
-3	600.00	-6669.624145	0.003524	-6671.738591
-4	700.00	-6669.521014	0.003683	-6672.099041
-5	800.00	-6669.410517	0.003830	-6672.474791
-
-```
-</details>
 
 ### Discussion / Analysis
 
-In this code, you were able to calculate the Enthalpy, Entropy, and Gibbs Free Energy of Methyl Nitrite using the g2 shortcut as well as explicitly defining the geometry and constructing the molecule.  When calculating the chemical properties, both yielded extremely similar answers.  
+In this code, you were able to calculate the Enthalpy, Entropy, and Gibbs Free Energy of Propanol by explicitly defining the geometry and constructing the molecule.   
 
 ::::{grid} 2
 :gutter: 3
