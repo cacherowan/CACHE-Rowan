@@ -1055,7 +1055,7 @@ Background information of Molecular Dynamics Simulations
 :::
 
 :::{grid-item-card} Machine Learning Background
-:link: ../2_Production Phase Impact Prediction/index_P2.md
+:link: ../2_Production Phase Impact Prediction/0_index_P2.md
 
 Background information on Machine Learning and Artificial Neural Networks
 :::
