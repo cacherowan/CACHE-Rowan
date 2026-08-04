@@ -1049,13 +1049,13 @@ In this code, you were able to use ASE and MACE-OFF to compute Chemical Properti
 :gutter: 3
 
 :::{grid-item-card} Molecular Dynamics Simulation Background
-:link: index.md#Tutorials
+:link: index_P1.md#tutorials
 
 Background information of Molecular Dynamics Simulations
 :::
 
 :::{grid-item-card} Machine Learning Background
-:link: ../2_Production Phase Impact Prediction/index.md
+:link: ../2_Production Phase Impact Prediction/index_P2.md
 
 Background information on Machine Learning and Artificial Neural Networks
 :::

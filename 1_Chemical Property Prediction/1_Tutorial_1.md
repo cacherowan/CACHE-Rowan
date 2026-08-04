@@ -326,7 +326,7 @@ seed = 42
 mol = Chem.MolFromSmiles(smiles)
 mol = Chem.AddHs(mol) # Adds explicit hydrogens to the molecule
 AllChem.EmbedMolecule(mol, randomSeed=seed) # Randomly places atoms at correct distances from each other
-AllChem.MMFFOptimizeMolecule(mol) # Optimizes the geometry using the MMFF94 classical force field (Starting Position for MACE-OFF optimization))
+AllChem.MMFFOptimizeMolecule(mol) # Optimizes the geometry using the MMFF94 classical force field (Starting Position for MACE-OFF optimization)
 conf = mol.GetConformer()
 symbols = [a.GetSymbol() for a in mol.GetAtoms()]
 positions = conf.GetPositions()
@@ -394,7 +394,7 @@ In this code, you were able to calculate the Enthalpy, Entropy, and Gibbs Free E
 :gutter: 3
 
 :::{grid-item-card} Molecular Dynamics Simulation Background
-:link: index.md#Tutorials
+:link: index_P1.md#tutorials
 
 Background information of Molecular Dynamics Simulations
 :::
