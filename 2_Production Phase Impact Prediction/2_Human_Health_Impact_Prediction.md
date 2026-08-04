@@ -478,7 +478,7 @@ In this code, you were able to see how a chemical impacts human health using the
 :gutter: 3
 
 :::{grid-item-card} Machine Learning Background
-:link: index.md#Tutorials
+:link: index_P2.md#tutorials
 
 Background information on Machine Learning and Artificial Neural Networks
 :::
