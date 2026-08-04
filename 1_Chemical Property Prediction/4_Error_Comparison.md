@@ -38,7 +38,7 @@ The libraries / packages listed in cell 2 will have a brief explanation of their
 Click the link below to open the Colab notebook:
 
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Google_Colab_Files/Error_4.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Google_Colab_Files/model_validation_metrics.ipynb)
 
 
 ### Outputs Should Appear Like This:
