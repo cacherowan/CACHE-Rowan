@@ -462,3 +462,20 @@ update_graph(None)
 ### Discussion / Analysis
 
 In this code, you were able to see how a chemical impacts climate change using the ANN Model.  Then you could see how changing the amount of that chemical affects the climate change impact prediction.   
+
+::::{grid} 2
+:gutter: 3
+
+:::{grid-item-card} Machine Learning Background
+:link: index.md#Tutorials
+
+Background information on Machine Learning and Artificial Neural Networks
+:::
+
+:::{grid-item-card} Tutorial 1: Human Health Impact
+:link: 1_Climate_Change_Impact_Prediction.md
+
+Learn how to load a model weight and have the model take an input of a specific chemical and deliver a predicted value for Human Health Impact
+:::
+
+::::

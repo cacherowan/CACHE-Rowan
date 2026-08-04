@@ -473,3 +473,20 @@ update_graph(None)
 ### Discussion / Analysis
 
 In this code, you were able to see how a chemical impacts human health using the ANN Model.  Then you could see how changing the amount of that chemical affects the human health impact prediction.   
+
+::::{grid} 2
+:gutter: 3
+
+:::{grid-item-card} Machine Learning Background
+:link: index.md#Tutorials
+
+Background information on Machine Learning and Artificial Neural Networks
+:::
+
+:::{grid-item-card} Climate Change Impact Prediction Using a Power Law Correlation
+:link: ../3_Use and End of Life Phase Impact Prediction/Climate_Change_Impact_Prediction_Using_a_Power_Law_Correlation.md
+
+Description
+:::
+
+::::
