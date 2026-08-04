@@ -467,13 +467,13 @@ In this code, you were able to see how a chemical impacts climate change using t
 :gutter: 3
 
 :::{grid-item-card} Machine Learning Background
-:link: index_P2.md#tutorials
+:link: 0_index_P2.md#tutorials
 
 Background information on Machine Learning and Artificial Neural Networks
 :::
 
-:::{grid-item-card} Tutorial 1: Human Health Impact
-:link: 1_Climate_Change_Impact_Prediction.md
+:::{grid-item-card} Tutorial 2: Human Health Impact
+:link: 2_Human_Health_Impact_Prediction.md
 
 Learn how to load a model weight and have the model take an input of a specific chemical and deliver a predicted value for Human Health Impact
 :::
