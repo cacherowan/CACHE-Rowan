@@ -484,7 +484,7 @@ Background information on Machine Learning and Artificial Neural Networks
 :::
 
 :::{grid-item-card} Climate Change Impact Prediction Using a Power Law Correlation
-:link: ../3_Use and End of Life Phase Impact Prediction/Climate_Change_Impact_Prediction_Using_a_Power_Law_Correlation.md
+:link: ../3_Use and End of Life Phase Impact Prediction/Climate_Change_Impact_Prediction_Using_a_Power_Law_Correlation.ipynb
 
 Description
 :::
