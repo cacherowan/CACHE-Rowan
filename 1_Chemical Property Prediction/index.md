@@ -76,9 +76,7 @@ $$G=H-TS$$
 
 So the overall picture is straightforward: MACE provides the potential energy and the forces needed for vibrational frequencies, and statistical mechanics converts those microscopic quantities into the enthalpy, entropy, and free energy that engineers use every day.
 
-
-
-
+# Tutorials
 
 ::::{grid} 2
 :gutter: 3
@@ -101,7 +99,7 @@ Using the same machine learning potential in tutorial 1, you will calculate the 
 Tutorials 1 and 2 predicted chemical properties of various molecules using molecular simulations and a machine learning potnetial.  While this tutorial will also determine chemical properties of various molecules, it accomplishes this task using a database of chemical properties.  In this tutorial, you will learn how to load the database to allow the code to read chemical properties that are listed in the database.  
 :::
 
-:::{grid-item-card} Error Comparison
+:::{grid-item-card} Error Analysis
 :link: 4_Tutorial_4.md
 
 Learn how to calculate the standard enthalpy of formation for molecules using the atomic simulations environment (calculate chemical properties using data from MACE-OF) as well as MACE-OFF.  Similar to using tutorial 1 to get the enthalpy of a molecule, you will be doing this again for specific atoms and molecules to find the standard enthalpy of formation for 5 molecules.  Then you will compare the error in the machine learning method with the National Institute of Standards and Technology (NIST) and the database used in Tutorial 3 with NIST.  
@@ -109,10 +107,10 @@ Learn how to calculate the standard enthalpy of formation for molecules using th
 
 ::::
 
-Tutorial 1 shows the basics of using MACE-OFF and how to perform molecular simulations using a MACE potential and then using that data to calculate chemical properties
+Tutorial 1: Performing a molecular simulation using MACE-OFF, which will be used to calculate chemical properties of a molecule.  
 
-Tutorial 2 takes this a step further and calculates the heat capacity of a handful of molecules using this same method but takes some more time showing how to construct the molecule from scratch (if the molecule you are using doesn't have a g2 shortcut).  
+Tutorial 2: Performing multiple molecular simulations using MACE-OFF, which will be used to calculate the heat capacity of multiple molecules.  Also some of the molecules will be constructed using RDKit.  
 
-Tutorial 3 uses the database to give you chemical properties instead of performing simulations to obtain this data
+Tutorial 3: Use a given database to calculate standard enthalpy of formation instead of performing molecular simulations.  
 
-Tutorial 4 demonstrates the error in each method comparing the resuts to NIST
+Error Analysis: Calculate standard enthalpy of formation using both molecular simulations as well as the database, and compare those values to the NIST.  

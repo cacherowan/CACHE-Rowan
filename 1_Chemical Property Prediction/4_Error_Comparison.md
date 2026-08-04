@@ -1044,3 +1044,20 @@ display(df)
 ### Discussion / Analysis
 
 In this code, you were able to use ASE and MACE-OFF to compute Chemical Properties, and a few edge cases were shown to help if you need to compute the Standard Enthalpy of Formation of a molecule with a product that has a irregular natural form.  You also saw how to use the Database to compute any property of any chemical included in the excel sheet.  After that, the error in each method was shown.  The error in the Database compared to NIST was extremely small, but the error in MACE-OFF was small in some cases, but in others, it was extremely large.  That was due to trying to analyze elements that the model wasn't trained on specifically.  The Database is extensive and has many properties for known chemicals currently, but if you need a property for a chemical that isn't included, you will need to use another method.  MACE-OFF can be accurate on data it was trained on, but could significantly off when simulating atoms / molecules it has insufficient data on.  
+
+::::{grid} 2
+:gutter: 3
+
+:::{grid-item-card} Molecular Dynamics Simulation Background
+:link: index.md#Tutorials
+
+Background information of Molecular Dynamics Simulations
+:::
+
+:::{grid-item-card} Machine Learning Background
+:link: ../2_Production Phase Impact Prediction/index.md
+
+Background information on Machine Learning and Artificial Neural Networks
+:::
+
+::::

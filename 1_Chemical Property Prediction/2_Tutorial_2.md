@@ -1222,3 +1222,20 @@ Temperature in [K]	Cp [J/mol*K]	Percent Error in [%]
 ### Discusion / Analysis
 
 In this code, carbon dioxide, carbon monoxide, hydrogen peroxide, and methane were all simulated to estimate their heat capacities at different temperatures using ASE and MACE-OFF.  We then compared the error in MACE-OFF and NIST to see how close they were.  From the results you can see the error percentage was extremely low.  When looking into how NIST calculated their Cp at certain temperatures, it turns out, they also use a Rigid-Rotor Harmonic-Oscillator assumption for their values, so the error comparison ends up being between how well each calculated frequencies of the molecules.  Also keep in mind generally as temperature increases, different vibrational mode can occur, so the error could be higher as temperature increases, which is an interesting lens to look at the error again through.  
+
+::::{grid} 2
+:gutter: 3
+
+:::{grid-item-card} Molecular Dynamics Simulation Background
+:link: index.md#Tutorials
+
+Background information of Molecular Dynamics Simulations
+:::
+
+:::{grid-item-card} Tutorial 3: Standard Enthalpy of Formation for Gases
+:link: 3_Tutorial_3.md
+
+Use a given database to calculate standard enthalpy of formation instead of performing molecular simulations.  
+:::
+
+::::

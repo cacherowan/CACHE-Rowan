@@ -488,3 +488,20 @@ T (K)	H (eV)	S (eV/K)	G (eV)
 ### Discussion / Analysis
 
 In this code, you were able to calculate the Enthalpy, Entropy, and Gibbs Free Energy of Methyl Nitrite using the g2 shortcut as well as explicitly defining the geometry and constructing the molecule.  When calculating the chemical properties, both yielded extremely similar answers.  
+
+::::{grid} 2
+:gutter: 3
+
+:::{grid-item-card} Molecular Dynamics Simulation Background
+:link: index.md#Tutorials
+
+Background information of Molecular Dynamics Simulations
+:::
+
+:::{grid-item-card} Tutorial 2: Heat Capacity for Gases
+:link: 2_Tutorial_2.md
+
+Perform multiple molecular simulations using MACE-OFF, which will be used to calculate the heat capacity of multiple molecules.  Also some of the molecules will be constructed using RDKit.  
+:::
+
+::::

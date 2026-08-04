@@ -176,3 +176,20 @@ Name: CCCO, dtype: object
 ### Discussion / Analysis
 
 In this code, you call to an excel sheet which holds a few hundred chemicals and their properties.  You are also given an outline which you can modify to get any property from any chemical listed in the database.   
+
+::::{grid} 2
+:gutter: 3
+
+:::{grid-item-card} Molecular Dynamics Simulation Background
+:link: index.md#Tutorials
+
+Background information of Molecular Dynamics Simulations
+:::
+
+:::{grid-item-card} Error in MACE-OFF and Database Compared to NIST
+:link: 3_Tutorial_3.md
+
+Calculate standard enthalpy of formation using both molecular simulations as well as the database, and compare those values to the NIST.  
+:::
+
+::::
