@@ -2,8 +2,31 @@
 
 **This website was created with support from a CACHE (Computer Aids for Chemical Engineering) grant.  The modules contained on this site are made to educate undergraduate level students in courses related to sustainability.  These modules will teach students how to use molecular dynamics simulations to find chemical properties of novel chemicals as well as show them how to use a machine learning artificial neural network algorithm to determine the impact of chemicals on both climate change and human health.**
 
+
+<div style="display: flex; gap: 20px; justify-content: center;">
+
+  <!-- Left Column -->
+  <div style="flex: 1; text-align: center;">
+    <img src="/Reference_Files/Main_Page_1.png" alt="Image 1" style="width:100%; max-width:300px;">
+    <div style="border:1px solid #ccc; padding:10px; margin-top:10px; min-height:100px;">
+      Life Cycle Assessment (LCA) is the foundation of our environmental forecasting framework. It measures the environmental impacts of a chemical throughout its lifecycle by accounting for the energy consumed, materials used, and emissions generated from production through end-of-life. Depending on the objective of the study, different lifecycle boundaries can be selected to focus on specific stages of the product's journey. 
+    </div>
+  </div>
+
+  <!-- Right Column -->
+  <div style="flex: 1; text-align: center;">
+    <img src="water_box.gif" alt="Image 2" style="width:100%; max-width:300px;">
+    <div style="border:1px solid #ccc; padding:10px; margin-top:10px; min-height:100px;">
+      A molecular dynamics (MD) simulation is a computer experiment that tracks how atoms move over time. At every step, the computer looks at where the atoms are, calculates the forces between them, and nudges each atom forward by a tiny amount. That tiny amount is called the timestep, and it is usually about one femtosecond (10-15 seconds). String millions of these steps together and you get a movie of atomic motion. The heart of any MD simulation is the potential. This is the mathematical function that tells the computer how strongly atoms push or pull on each other based on their positions. Without a potential, there are no forces, and nothing moves. 
+    </div>
+  </div>
+
+</div>
+
+
+
 | <img src="/Reference_Files/Main_Page_1.png"> | <img src="/Reference_Files/water_box.gif"> |
-| :--: | :--: |
+| :-- | :-- |
 | Life Cycle Assessment (LCA) is the foundation of our environmental forecasting framework. It measures the environmental impacts of a chemical throughout its lifecycle by accounting for the energy consumed, materials used, and emissions generated from production through end-of-life. Depending on the objective of the study, different lifecycle boundaries can be selected to focus on specific stages of the product's journey. | A molecular dynamics (MD) simulation is a computer experiment that tracks how atoms move over time. At every step, the computer looks at where the atoms are, calculates the forces between them, and nudges each atom forward by a tiny amount. That tiny amount is called the timestep, and it is usually about one femtosecond (10-15 seconds). String millions of these steps together and you get a movie of atomic motion. The heart of any MD simulation is the potential. This is the mathematical function that tells the computer how strongly atoms push or pull on each other based on their positions. Without a potential, there are no forces, and nothing moves. |
 
 ## Common LCA System Boundaries
