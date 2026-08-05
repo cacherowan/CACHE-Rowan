@@ -48,6 +48,8 @@ import tensorflow as tf               # Loads the trained neural network (ANN) a
 
 import os                             # Allows interactions with the file system
 import requests                       # Makes requests to internet files
+
+import joblib                         # Parallel Computing
 ```
 <details>
 <summary>Expected output</summary>
@@ -100,14 +102,26 @@ HH_MODEL_URL = ("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/R
 # Name of weight file
 HH_MODEL_PATH = "model_v5_HH_okayvaltest.h5"
 
+# URL / path to download (.joblib file)
+MIN_MAX_SCALAR_URL = ("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/minmax_scaler_0_5-1.joblib")
+
+# Name of min_max_scalar file
+MIN_MAX_SCALAR_PATH = "minmax_scaler_0_5-1.joblib"
+
 # URL / path to database (the spreadsheet holding the molecular properties)
 DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
 
 # Call to Function to Download Weight (.h5 file)
 download_if_needed(HH_MODEL_URL, HH_MODEL_PATH)
 
+# Call to Function to Download Min Max Scalar
+download_if_needed(MIN_MAX_SCALAR_URL, MIN_MAX_SCALAR_PATH)
+
 # The trained model file (.h5) that predicts Human Health Impact
 HH_MODEL = HH_MODEL_PATH
+
+# Min Max Scalar
+Min_Max_Scalar = MIN_MAX_SCALAR_PATH
 ```
 
 <details>
@@ -115,6 +129,8 @@ HH_MODEL = HH_MODEL_PATH
 
 ```text
 Downloading model_v5_HH_okayvaltest.h5...
+Download complete.
+Downloading minmax_scaler_0_5-1.joblib...
 Download complete.
 ```
 
@@ -207,9 +223,54 @@ No Visible Output
 
 
 ```
-# Cell 7: Predict Human Health Impact for one molecule
-# This function takes a molecule, looks up its properties in the database, feeds them to the trained model, and returns the predicted Human Health Impact.  
-# Run this cell once.  It won't show any output on its own, it just sets yp the function so the cells below can use it.  
+# Cell 7: Load the scaler
+scaler = joblib.load(Min_Max_Scalar)
+
+feature_names = list(scaler.feature_names_in_)
+data_min = scaler.data_min_
+data_max = scaler.data_max_
+lo, hi = scaler.feature_range
+
+def scale_subset(values):
+    """Apply the fitted MinMax scaler to a subset of columns, by name."""
+    scaled_values = []
+
+    for feature_name in values.index:
+        if feature_name not in feature_names:
+            print(f"Warning: '{feature_name}' was not seen by the scaler at fit time.")
+            continue
+
+        # Find where this feature is in the scaler's arrays
+        position = feature_names.index(feature_name)
+
+        x = values[feature_name]
+        x_min = data_min[position]
+        x_max = data_max[position]
+
+        # MinMax formula: rescale x from [x_min, x_max] to [lo, hi]
+        x_scaled = (x - x_min) / (x_max - x_min) * (hi - lo) + lo
+
+        scaled_values.append(x_scaled)
+
+    return pd.Series(scaled_values, index=values.index)
+```
+
+<details>
+<summary>Expected output</summary>
+
+```text
+No Visible Output
+```
+
+</details>
+
+
+
+
+```
+# Cell 8: Predict Human Health Impact for one molecule
+# This function takes a molecule, looks up its properties in the database, feeds them to the trained model, and returns the predicted Human Health Impact.
+# Run this cell once.  It won't show any output on its own, it just sets yp the function so the cells below can use it.
 
 def predict_human_health_impact(molecule_name, smiles):
     """
@@ -221,6 +282,7 @@ def predict_human_health_impact(molecule_name, smiles):
     """
     descriptors = db.loc[smiles]
     descriptors_hh = descriptors.loc[thermo_feat_HH + mol_desc_feat_HH]
+    descriptors_hh_scaled = scale_subset(descriptors_hh)
 
     print(f"\n{molecule_name}  ({smiles})")
     print("-" * 40)
@@ -249,9 +311,9 @@ No Visible Output
 
 
 ```
-# Cell 8: Calculate the Human Health Impact of a chemical
-# Give the function below two things: the chemical's name (for display) and its SMILES code, which the model uses to look it up.  Run the cell to see its features and its predicted human health impact impact.  
-# To calculate the impact for another chemical, copy the line below into a new cell and change the name and SMILES.  
+# Cell 9: Calculate the Human Health Impact of a chemical
+# Give the function below two things: the chemical's name (for display) and its SMILES code, which the model uses to look it up.  Run the cell to see its features and its predicted human health impact impact.
+# To calculate the impact for another chemical, copy the line below into a new cell and change the name and SMILES.
 
 predict_human_health_impact("Methanol", "CO");
 ```
@@ -282,7 +344,7 @@ Methanol  (CO)
 
 
 ```
-# Cell 9: Example with Ethanol
+# Cell 10: Example with Ethanol
 
 predict_human_health_impact("Ethanol", "CCO");
 ```
@@ -313,7 +375,7 @@ Ethanol  (CCO)
 
 
 ```
-# Cell 10: Example with Benzene
+# Cell 11: Example with Benzene
 
 predict_human_health_impact("Benzene", "c1ccccc1");
 ```
@@ -344,7 +406,7 @@ Benzene  (c1ccccc1)
 
 
 ```
-# Cell 11: Example with Toluene
+# Cell 12: Example with Toluene
 
 predict_human_health_impact("Toluene", "Cc1ccccc1");
 ```
@@ -375,30 +437,33 @@ Toluene  (Cc1ccccc1)
 
 
 ```
-# Cell 12: Example using Phenol (Which will be displayed later on a slider and graph)
+# Cell 13: Example using Phenol (Which will be displayed later on a slider and graph)
 
 # 1. Example: Phenol
 MOLECULE = "PHENOL"
 SMILES = "Oc1ccccc1"
 
-# 2. Read the DB:
-descriptors = db.loc[SMILES]
-
-# Selected properties for Human Health Impact:
-thermo_feat_HH   = ['Heat of Vaporization(J/mol)', 'Heat Capacity (kJ/kgC)', 'XLogP','Pitzer’s Acentric Factor [-]', 'Critical Temperature [K]']
-mol_desc_feat_HH = ['Chi0n', 'HallKierAlpha', 'SMR_VSA7', 'VSA_EState6','NumValenceElectrons']
-
-# 3. Obtain the relevant properties:
-descriptors_hh = descriptors.loc[thermo_feat_HH + mol_desc_feat_HH]
-
-molecule_human_health_impact = model_HH.predict(np.array([list(descriptors_hh)]), verbose=0) # DALY/kg chemical
+impact_value_slider = predict_human_health_impact(MOLECULE, SMILES)
 ```
 
 <details>
 <summary>Expected output</summary>
 
 ```text
-No Visible Output
+PHENOL  (Oc1ccccc1)
+----------------------------------------
+  Heat of Vaporization(J/mol)      57735.3635
+  Heat Capacity (kJ/kgC)             2.1408
+  XLogP                              1.5000
+  Pitzer’s Acentric Factor [-]       0.4380
+  Critical Temperature [K]         694.2500
+  Chi0n                              3.8340
+  HallKierAlpha                     -0.9800
+  SMR_VSA7                          30.3318
+  VSA_EState6                        8.7127
+  NumValenceElectrons               36.0000
+----------------------------------------
+  Human Health Impact: 0.9596 DALY/kg
 ```
 
 </details>
@@ -407,27 +472,26 @@ No Visible Output
 
 
 ```
-# Cell 13: Phenol Continued, Creating Slider to Visualize Impact
+# Cell 14: Phenol Continued, Creating Slider to Visualize Impact
 
-kg_slider = widgets.FloatSlider(value=10, min=0, max=100, step=0.1, description='kg amount:')
+kg_slider = widgets.FloatSlider(value=(round(impact_value_slider, 4)), min=(round(impact_value_slider, 4)) * 0.5, max=(round(impact_value_slider, 4)) * 1.5, step=0.1, description='kg amount:')
 output_slider = widgets.Output()
 
 def update_slider(change):
     with output_slider:
         output_slider.clear_output()
         kg_slider_kg = kg_slider.value
-        total_hh_slider = molecule_human_health_impact[0][0] * kg_slider_kg
+        total_hh_slider = (round(impact_value_slider, 4)) * kg_slider_kg
         print(f"Health impact:  {total_hh_slider:.6f} Disability-Adjusted Life Years (DALY)")
 
 kg_slider.observe(update_slider, names='value')
 display(kg_slider, output_slider)
 update_slider(None)
 ```
-
 <details>
 <summary>Expected output</summary>
 
-<img src="/Reference_Files/Human_Health_Impact_Files/Cell_8.png"/>
+<img src="/Reference_Files/Human_Health_Impact_Files/Cell_14.png"/>
 
 </details>
 
@@ -435,13 +499,13 @@ update_slider(None)
 
 
 ```
-# Cell 14: Phenol Continued, Creating Slider and Graph to Visualize Impact
+# Cell 15: Phenol Continued, Creating Slider and Graph to Visualize Impact
 
-kg_slider_graph = widgets.FloatSlider(value=10, min=0, max=100, step=0.1, description='kg amount:')
+kg_slider_graph = widgets.FloatSlider(value=(round(impact_value_slider, 4)), min=(round(impact_value_slider, 4)) * 0.5, max=(round(impact_value_slider, 4)) * 1.5, step=0.1, description='kg amount:')
 output_graph = widgets.Output()
 
-hh_per_kg = molecule_human_health_impact[0][0]
-kg_range = np.linspace(0, 100, 200)
+hh_per_kg = (round(impact_value_slider, 4))
+kg_range = np.linspace((round(impact_value_slider, 4)) * 0.5, (round(impact_value_slider, 4)) * 1.5, 20)
 
 def update_graph(change):
     with output_graph:
@@ -466,7 +530,7 @@ update_graph(None)
 <details>
 <summary>Expected output</summary>
 
-<img src="/Reference_Files/Human_Health_Impact_Files/Cell_9.png"/>
+<img src="/Reference_Files/Human_Health_Impact_Files/Cell_15.png"/>
 
 </details>
 
@@ -490,3 +554,4 @@ Description
 :::
 
 ::::
+

@@ -48,6 +48,8 @@ import tensorflow as tf               # Loads the trained neural network (ANN) a
 
 import os                             # Allows interactions with the file system
 import requests                       # Makes requests to internet files
+
+import joblib                         # Parallel Computing
 ```
 <details>
 <summary>Expected output</summary>
@@ -100,14 +102,26 @@ CC_MODEL_URL = ("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/R
 # Name of weight file
 CC_MODEL_PATH = "model_v5_CC_okayvaltest.h5"
 
+# URL / path to download (.joblib file)
+MIN_MAX_SCALAR_URL = ("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/minmax_scaler_0_5-1.joblib")
+
+# Name of min_max_scalar file
+MIN_MAX_SCALAR_PATH = "minmax_scaler_0_5-1.joblib"
+
 # URL / path to database (the spreadsheet holding the molecular properties)
 DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
 
 # Call to Function to Download Weight (.h5 file)
 download_if_needed(CC_MODEL_URL, CC_MODEL_PATH)
 
+# Call to Function to Download Min Max Scalar
+download_if_needed(MIN_MAX_SCALAR_URL, MIN_MAX_SCALAR_PATH)
+
 # The trained model file (.h5) that predicts Climate Change Impact
 CC_MODEL = CC_MODEL_PATH
+
+# Min Max Scalar
+Min_Max_Scalar = MIN_MAX_SCALAR_PATH
 ```
 
 <details>
@@ -115,6 +129,8 @@ CC_MODEL = CC_MODEL_PATH
 
 ```text
 Downloading model_v5_CC_okayvaltest.h5...
+Download complete.
+Downloading minmax_scaler_0_5-1.joblib...
 Download complete.
 ```
 
@@ -204,9 +220,53 @@ No Visible Output
 
 
 ```
-# Cell 7: Predict Climate Change impact for one molecule (Build Prediction Function)
-# This function takes a molecule, looks up its properties in the database, feeds them to the trained model, and returns the predicted Climate Change Impact (kg CO2-eq per kg of chemical).  
-# Run this cell once.  It won't show any output on its own, it just sets up the function so the cells below can use it.  
+# Cell 7: Load the scaler
+scaler = joblib.load(Min_Max_Scalar)
+
+feature_names = list(scaler.feature_names_in_)
+data_min = scaler.data_min_
+data_max = scaler.data_max_
+lo, hi = scaler.feature_range
+
+def scale_subset(values):
+    """Apply the fitted MinMax scaler to a subset of columns, by name."""
+    scaled_values = []
+
+    for feature_name in values.index:
+        if feature_name not in feature_names:
+            print(f"Warning: '{feature_name}' was not seen by the scaler at fit time.")
+            continue
+
+        # Find where this feature is in the scaler's arrays
+        position = feature_names.index(feature_name)
+
+        x = values[feature_name]
+        x_min = data_min[position]
+        x_max = data_max[position]
+
+        # MinMax formula: rescale x from [x_min, x_max] to [lo, hi]
+        x_scaled = (x - x_min) / (x_max - x_min) * (hi - lo) + lo
+
+        scaled_values.append(x_scaled)
+
+    return pd.Series(scaled_values, index=values.index)
+```
+<details>
+<summary>Expected output</summary>
+
+```text
+No Visible Output
+```
+
+</details>
+
+
+
+
+```
+# Cell 8: Predict Climate Change impact for one molecule (Build Prediction Function)
+# This function takes a molecule, looks up its properties in the database, feeds them to the trained model, and returns the predicted Climate Change Impact (kg CO2-eq per kg of chemical).
+# Run this cell once.  It won't show any output on its own, it just sets up the function so the cells below can use it.
 
 def predict_climate_change_impact(molecule_name, smiles):
     """
@@ -218,13 +278,14 @@ def predict_climate_change_impact(molecule_name, smiles):
     """
     descriptors = db.loc[smiles]
     descriptors_cc = descriptors.loc[thermo_feat_CC + mol_desc_feat_CC]
+    descriptors_cc_scaled = scale_subset(descriptors_cc)
 
     # Show the feature values that go into the model for this molecule.
     print(f"\nFeatures for {molecule_name} ({smiles}):")
     for feature_name, value in descriptors_cc.items():
         print(f"   {feature_name}: {value}")
 
-    model_input = np.array([list(descriptors_cc)])
+    model_input = np.array([list(descriptors_cc_scaled)])
     prediction = model_CC.predict(model_input, verbose=0)
     impact_value = prediction.item()
 
@@ -245,9 +306,9 @@ No Visible Output
 
 
 ```
-# Cell 8: Calculate the Climate Change Impact of a chemical
-# Give the function below two things: the chemical's name (for display) and its SMILES code, which the model uses to look it up.  Run the cell to see its features and its predicted climate change impact.  
-# To calculate the impact for another chemical, copy the line below into a new cell and change the name and SMILES.  
+# Cell 9: Calculate the Climate Change Impact of a chemical
+# Give the function below two things: the chemical's name (for display) and its SMILES code, which the model uses to look it up.  Run the cell to see its features and its predicted climate change impact.
+# To calculate the impact for another chemical, copy the line below into a new cell and change the name and SMILES.
 
 predict_climate_change_impact("Methanol", "CO");
 ```
@@ -267,7 +328,7 @@ Features for Methanol (CO):
    HallKierAlpha: -0.04
    PEOE_VSA6: 0.0
    NOCount: 1
-Climate Change Impact of Methanol: 91.8481 kgCO2-eq/kg Methanol
+Climate Change Impact of Methanol: 0.6325 kgCO2-eq/kg Methanol
 ```
 
 </details>
@@ -275,8 +336,10 @@ Climate Change Impact of Methanol: 91.8481 kgCO2-eq/kg Methanol
 
 
 
+
 ```
-# Cell 9: Example with Ethanol
+# Cell 10: Example with Ethanol
+
 predict_climate_change_impact("Ethanol", "CCO");
 ```
 
@@ -295,7 +358,7 @@ Features for Ethanol (CCO):
    HallKierAlpha: -0.04
    PEOE_VSA6: 0.0
    NOCount: 1
-Climate Change Impact of Ethanol: 88.8233 kgCO2-eq/kg Ethanol
+Climate Change Impact of Ethanol: 2.3695 kgCO2-eq/kg Ethanol
 ```
 
 </details>
@@ -303,9 +366,8 @@ Climate Change Impact of Ethanol: 88.8233 kgCO2-eq/kg Ethanol
 
 
 
-
 ```
-# Cell 10: Example with Benzene
+# Cell 11: Example with Benzene
 
 predict_climate_change_impact("Benzene", "c1ccccc1");
 ```
@@ -325,7 +387,7 @@ Features for Benzene (c1ccccc1):
    HallKierAlpha: -0.78
    PEOE_VSA6: 36.39820241076966
    NOCount: 0
-Climate Change Impact of Benzene: 95.396 kgCO2-eq/kg Benzene
+Climate Change Impact of Benzene: 1.6787 kgCO2-eq/kg Benzene
 ```
 
 </details>
@@ -334,7 +396,7 @@ Climate Change Impact of Benzene: 95.396 kgCO2-eq/kg Benzene
 
 
 ```
-# Cell 11: Example with Toluene
+# Cell 12: Example with Toluene
 
 predict_climate_change_impact("Toluene", "Cc1ccccc1");
 ```
@@ -354,7 +416,7 @@ Features for Toluene (Cc1ccccc1):
    HallKierAlpha: -0.78
    PEOE_VSA6: 35.89528683400505
    NOCount: 0
-Climate Change Impact of Toluene: 93.1468 kgCO2-eq/kg Toluene
+Climate Change Impact of Toluene: 1.5449 kgCO2-eq/kg Toluene
 ```
 
 </details>
@@ -363,30 +425,31 @@ Climate Change Impact of Toluene: 93.1468 kgCO2-eq/kg Toluene
 
 
 ```
-# Cell 12: Example using Phenol (Which will be displayed later on a slider and graph)
+# Cell 13: Example using Phenol (Which will be displayed later on a slider and graph)
 
 # 1. Example: Phenol
 MOLECULE = "PHENOL" # Change name to another molecule if needed (display only)
 SMILES = "Oc1ccccc1" # Change SMILES to another molecule if needed (Required to change molecule)
 
-# 2. Read the DB:
-descriptors = db.loc[SMILES]
-
-# Selected properties for Climate Change:
-thermo_feat_CC   = ['Heat Capacity (kJ/kgC)', 'Boiling Point(K)', 'XLogP', 'Critical Temperature [K]', 'Critical Molar Volume [m3/mol]']
-mol_desc_feat_CC = ['BertzCT', 'ExactMolWt', 'HallKierAlpha', 'PEOE_VSA6', 'NOCount']
-
-# 3. Obtain the relevant properties:
-descriptors_cc = descriptors.loc[thermo_feat_CC + mol_desc_feat_CC]
-
-molecule_climate_change_impact = model_CC.predict(np.array([list(descriptors_cc)]), verbose=0)  # kgCO2-eq/kg chemcal
+impact_value_slider = predict_climate_change_impact(MOLECULE, SMILES)
 ```
 
 <details>
 <summary>Expected output</summary>
 
 ```text
-No Visible Output
+Features for PHENOL (Oc1ccccc1):
+   Heat Capacity (kJ/kgC): 2.1408
+   Boiling Point(K): 454.99
+   XLogP: 1.5
+   Critical Temperature [K]: 694.25
+   Critical Molar Volume [m3/mol]: 0.000229
+   BertzCT: 134.1073696954145
+   ExactMolWt: 94.041864812
+   HallKierAlpha: -0.9800000000000001
+   PEOE_VSA6: 18.19910120538483
+   NOCount: 1
+Climate Change Impact of PHENOL: 3.4357 kgCO2-eq/kg PHENOL
 ```
 
 </details>
@@ -395,42 +458,40 @@ No Visible Output
 
 
 ```
-# Cell 13: Phenol Continued, Creating Slider to Visualize Impact
+# Cell 14: Phenol Continued, Creating Slider to Visualize Impact
 
-kg_slider = widgets.FloatSlider(value=10, min=0, max=100, step=0.1, description='kg amount:')
+kg_slider = widgets.FloatSlider(value=(round(impact_value_slider, 4)), min=(round(impact_value_slider, 4)) * 0.5, max=(round(impact_value_slider, 4)) * 1.5, step=0.1, description='kg amount:')
 output_slider = widgets.Output()
 
 def update_slider(change):
     with output_slider:
         output_slider.clear_output()
         kg_slider_kg = kg_slider.value
-        total_cc_slider = molecule_climate_change_impact[0][0] * kg_slider_kg
+        total_cc_slider = (round(impact_value_slider, 4)) * kg_slider_kg
         print(f"Climate Impact: {total_cc_slider:.4f} kgCO2-eq")
 
 kg_slider.observe(update_slider, names='value')
 display(kg_slider, output_slider)
 update_slider(None)
 ```
-
 <details>
 <summary>Expected output</summary>
 
-<img src="/Reference_Files/Climate_Change_Impact_Files/Cell_8.png"/>
+<img src="/Reference_Files/Climate_Change_Impact_Files/Cell_14.png"/>
 
 </details>
 
 
 
 
-
 ```
-# Cell 14: Phenol Continued, Creating Slider and Graph to Visualize Impact
+# Cell 15: Phenol Continued, Creating Slider and Graph to Visualize Impact
 
-kg_slider_graph = widgets.FloatSlider(value=10, min=0, max=100, step=0.1, description='kg amount:')
+kg_slider_graph = widgets.FloatSlider(value=(round(impact_value_slider, 4)), min=(round(impact_value_slider, 4)) * 0.5, max=(round(impact_value_slider, 4)) * 1.5, step=0.1, description='kg amount:')
 output_graph = widgets.Output()
 
-cc_per_kg = molecule_climate_change_impact[0][0]
-kg_range = np.linspace(0, 100, 200)
+cc_per_kg = (round(impact_value_slider, 4))
+kg_range = np.linspace((round(impact_value_slider, 4)) * 0.5, (round(impact_value_slider, 4)) * 1.5, 20)
 
 def update_graph(change):
     with output_graph:
@@ -455,7 +516,7 @@ update_graph(None)
 <details>
 <summary>Expected output</summary>
 
-<img src="/Reference_Files/Climate_Change_Impact_Files/Cell_9.png"/>
+<img src="/Reference_Files/Climate_Change_Impact_Files/Cell_15.png"/>
 
 </details>
 
@@ -479,3 +540,4 @@ Learn how to load a model weight and have the model take an input of a specific 
 :::
 
 ::::
+
