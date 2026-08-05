@@ -1,8 +1,8 @@
 # Environmental Impact Forecasting of Chemicals and Processes with Molecular Simulation, Machine Learning and Data Analytics Tools
 
-Life Cycle Assessment (LCA) is the foundation of our environmental forecasting framework. It measures the environmental impacts of a chemical throughout its lifecycle by accounting for the energy consumed, materials used, and emissions generated from production through end-of-life. Depending on the objective of the study, different lifecycle boundaries can be selected to focus on specific stages of the product's journey.
-
-<img src="/Reference_Files/Main_Page_1.png">
+| <img src="/Reference_Files/Main_Page_1.png"> | <img src="/Reference_Files/water_box.gif"> |
+| :--: | :--: |
+| Life Cycle Assessment (LCA) is the foundation of our environmental forecasting framework. It measures the environmental impacts of a chemical throughout its lifecycle by accounting for the energy consumed, materials used, and emissions generated from production through end-of-life. Depending on the objective of the study, different lifecycle boundaries can be selected to focus on specific stages of the product's journey. | A molecular dynamics (MD) simulation is a computer experiment that tracks how atoms move over time. At every step, the computer looks at where the atoms are, calculates the forces between them, and nudges each atom forward by a tiny amount. That tiny amount is called the timestep, and it is usually about one femtosecond (10-15 seconds). String millions of these steps together and you get a movie of atomic motion. The heart of any MD simulation is the potential. This is the mathematical function that tells the computer how strongly atoms push or pull on each other based on their positions. Without a potential, there are no forces, and nothing moves. |
 
 ## Common LCA System Boundaries
 
