@@ -4,6 +4,10 @@
 
 A **molecular dynamics (MD) simulation** is a computer experiment that tracks how atoms move over time. At every step, the computer looks at where the atoms are, calculates the forces between them, and nudges each atom forward by a tiny amount. That tiny amount is called the timestep, and it is usually about one femtosecond (10<sup>-15</sup> seconds). String millions of these steps together and you get a movie of atomic motion. The heart of any MD simulation is the potential. This is the mathematical function that tells the computer how strongly atoms push or pull on each other based on their positions. Without a potential, there are no forces, and nothing moves.
 
+<img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/lj_potential.gif">
+
+Lennard-Jones Potential Animation
+
 There are two ways to build a potential:
 
 **Classical potentials** are written down using physics. Someone studies the chemistry of a material, picks a functional form (like Lennard-Jones for noble gases or EAM for metals), and fits a few parameters. These are fast and interpretable, but each one is tailored to a specific system.
