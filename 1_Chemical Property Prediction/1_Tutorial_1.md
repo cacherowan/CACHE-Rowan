@@ -333,7 +333,6 @@ positions = conf.GetPositions()
 
 atoms_CCCO = Atoms(symbols=symbols, positions=positions)
 
-# Same as last code except atoms_CCCO is defined instead of being called from g2 list
 atoms_CCCO.calc = calc_mol # Calls to MACE-OFF to be used
 dyn = QuasiNewton(atoms_CCCO, logfile=None)
 dyn.run(fmax=0.01) # Finding energy minimum
@@ -384,6 +383,10 @@ display(df1)
 ```
 
 </details>
+
+
+| <a href="/Reference_Files/Chemical_Property_Prediction/Tutorial_1/Propanol_View.ipynb"><img src="https://img.shields.io/badge/Propanol_View-blue?style=for-the-badge"></a> | Image |
+| :--: | :--: |
 
 
 ### Discussion / Analysis
