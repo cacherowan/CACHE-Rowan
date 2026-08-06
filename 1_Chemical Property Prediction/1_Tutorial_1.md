@@ -385,8 +385,7 @@ display(df1)
 </details>
 
 
-| <a href="/Reference_Files/Chemical_Property_Prediction/Tutorial_1/Propanol_View.ipynb"><img src="https://img.shields.io/badge/Propanol_View-blue?style=for-the-badge"></a> | Image |
-| :--: | :--: |
+
 
 
 ### Discussion / Analysis
