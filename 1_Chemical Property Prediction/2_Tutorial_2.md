@@ -237,8 +237,8 @@ No Visible Output
 ```
 </details>
 
-<a href="../Reference_Files/Chemical_Property_Prediction/Phase_1_Molecule_Viewer.ipynb#title">
-  <button>Go to Title</button>
+<a href="https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Chemical_Property_Prediction/Phase_1_Molecule_Viewer.ipynb#title">
+  <button>See Propanol Molecule</button>
 </a>
 
 <img src="/Reference_Files/Tutorial_2_Files/CO2-Molecular-Geometry.jpg"/>
