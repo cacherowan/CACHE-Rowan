@@ -241,7 +241,12 @@ No Visible Output
   <button>See Propanol Molecule</button>
 </a>
 
-<img src="/Reference_Files/Tutorial_2_Files/CO2-Molecular-Geometry.jpg"/>
+<a href="https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Chemical_Property_Prediction/Phase_1_Molecule_Viewer.ipynb#title" 
+   target="_blank"
+   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
+          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
+  ⚛️ See Propanol Molecule
+</a>
 
 Image of CO{sub}`2`
 
