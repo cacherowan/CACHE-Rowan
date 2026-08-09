@@ -237,7 +237,7 @@ No Visible Output
 ```
 </details>
 
-<a href="Phase_1_Molecule_Viewer.ipynb#title">
+<a href="../Reference_Files/Chemical_Property_Prediction/Phase_1_Molecule_Viewer.ipynb#title">
   <button>Go to Title</button>
 </a>
 
