@@ -237,7 +237,7 @@ No Visible Output
 ```
 </details>
 
-<a href="../5_Phase_1_Molecule_Viewer.ipynb#title" 
+<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#title" 
    target="_blank"
    style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
           text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
