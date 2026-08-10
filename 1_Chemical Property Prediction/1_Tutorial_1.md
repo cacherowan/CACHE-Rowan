@@ -385,7 +385,12 @@ T (K)	H (kJ)	S (kJ/K)	G (kJ)
 
 </details>
 
-<a href="/Reference_Files/Chemical_Property_PredictionTutorial_1/Propanol_View.ipynb"><img src="https://img.shields.io/badge/Propanol_View-blue?style=for-the-badge"></a>
+<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#tutorial-1" 
+   target="_blank"
+   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
+          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
+  See Propanol Molecule
+</a>
 
 ### Discussion / Analysis
 
