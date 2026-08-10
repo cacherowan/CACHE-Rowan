@@ -454,6 +454,12 @@ Enthalpy of NH3 at 298 K: -148494.0510 kJ/mol
 </details>
 
 
+<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#model-validation-metrics" 
+   target="_blank"
+   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
+          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
+  See Ammonia Molecule
+</a>
 
 
 ```
@@ -504,6 +510,12 @@ Enthalpy of CH3CHOHCH3 at 298 K: -510304.2678 kJ/mol
 </details>
 
 
+<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#tutorial-1" 
+   target="_blank"
+   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
+          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
+  See Propanol Molecule
+</a>
 
 
 ```
@@ -539,6 +551,12 @@ Enthalpy of CH3OH at 298 K: -303879.1149 kJ/mol
 </details>
 
 
+<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#model-validation-metrics" 
+   target="_blank"
+   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
+          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
+  See Methanol Molecule
+</a>
 
 
 ```
@@ -574,6 +592,12 @@ Enthalpy of C3H8 at 298 K: -312705.4433 kJ/mol
 </details>
 
 
+<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#model-validation-metrics" 
+   target="_blank"
+   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
+          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
+  See Propane Molecule
+</a>
 
 
 ```
@@ -607,6 +631,14 @@ Enthalpy of C4H4S at 298 K: -1452183.5026 kJ/mol
 ```
 
 </details>
+
+
+<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#model-validation-metrics" 
+   target="_blank"
+   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
+          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
+  See Thiophene Molecule
+</a>
 
 
 ### Compute Molecular Properties for Standard Forms
