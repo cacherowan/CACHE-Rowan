@@ -354,6 +354,7 @@ thermo = IdealGasThermo(
     spin=0, # 0.5 for each unpaired electrons
 )
 
+Conv_eV_kJ = 96.485 # eV -> kJ
 
 # Records Chemical Property Data at 6 Temperatures at 1 atmosphere and Displays it
 temps = [298.15, 400, 500, 600, 700, 800]
@@ -361,10 +362,10 @@ P = 101325.
 
 records = []
 for T in temps:
-    H = thermo.get_enthalpy(T, verbose=False)
-    S = thermo.get_entropy(T, P, verbose=False)
-    G = thermo.get_gibbs_energy(T, P, verbose=False)
-    records.append({"T (K)": T, "H (eV)": H, "S (eV/K)": S, "G (eV)": G})
+    H = thermo.get_enthalpy(T, verbose=False) * Conv_eV_kJ
+    S = thermo.get_entropy(T, P, verbose=False) * Conv_eV_kJ
+    G = thermo.get_gibbs_energy(T, P, verbose=False) * Conv_eV_kJ
+    records.append({"T (K)": T, "H (kJ)": H, "S (kJ/K)": S, "G (kJ)": G})
 
 df1 = pd.DataFrame(records)
 display(df1)
@@ -373,13 +374,13 @@ display(df1)
 <summary>Expected output</summary>
 
 ```text
-	T (K)	H (eV)	S (eV/K)	G (eV)
-0	298.15	-5288.936388	0.003120	-5289.866516
-1	400.00	-5288.834825	0.003411	-5290.199227
-2	500.00	-5288.712134	0.003684	-5290.554071
-3	600.00	-5288.568944	0.003944	-5290.935592
-4	700.00	-5288.408152	0.004192	-5291.342519
-5	800.00	-5288.232302	0.004427	-5291.773550
+T (K)	H (kJ)	S (kJ/K)	G (kJ)
+0	298.15	-510303.027435	0.301001	-510392.770753
+1	400.00	-510293.228129	0.329111	-510424.872461
+2	500.00	-510281.390242	0.355439	-510459.109522
+3	600.00	-510267.574571	0.380577	-510495.920554
+4	700.00	-510252.060535	0.404461	-510535.182949
+5	800.00	-510235.093697	0.427097	-510576.771020
 ```
 
 </details>

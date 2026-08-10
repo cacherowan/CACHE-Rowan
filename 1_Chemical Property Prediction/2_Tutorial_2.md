@@ -351,7 +351,7 @@ opt.run(fmax=FMAX)
 
 E0 = atoms.get_potential_energy()   # eV
 print(f"Optimisation complete.")
-print(f"  Energy        : {E0:.6f} eV")
+print(f"  Energy        : {E0:.6f} eV = {E0 * 96.485:.6f} kJ")
 print(f"  Max force     : {np.max(np.linalg.norm(atoms.get_forces(), axis=1)):.4f} eV/Å")
 ```
 <details>
@@ -373,7 +373,7 @@ Calculator ready.
 
 Optimising geometry with MACE-OFF...
 Optimisation complete.
-  Energy        : -5135.004490 eV
+  Energy        : -5135.004490 eV = -495450.908255 kJ
   Max force     : 0.0029 eV/Å
 ```
 </details>

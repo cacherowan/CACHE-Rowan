@@ -438,16 +438,16 @@ potentialenergy_NH3 = results['potential_energy']
 enthalpy_NH3_eV = results['enthalpy_eV']
 enthalpy_NH3_kJ_mol = results['enthalpy_kJ_mol']
 
-print("NH3 Potential Energy (eV):", potentialenergy_NH3)
-print(f"Enthalpy of NH3: {enthalpy_NH3_eV:.4f} eV")
+print(f"NH3 Potential Energy: {potentialenergy_NH3:.4f} eV = {potentialenergy_NH3 * (1 / (kJ / mol)):.4f} kJ")
+print(f"Enthalpy of NH3: {enthalpy_NH3_eV:.4f} eV = ")
 print(f"Enthalpy of NH3 at 298 K: {enthalpy_NH3_kJ_mol:.4f} kJ/mol")
 ```
 <details>
 <summary>Expected output</summary>
 
 ```text
-NH3 Potential Energy (eV): -1540.072116315489
-Enthalpy of NH3: -1539.0324 eV
+NH3 Potential Energy: -1540.0721 eV = -148594.3708 kJ
+Enthalpy of NH3: -1539.0324 eV = 
 Enthalpy of NH3 at 298 K: -148494.0510 kJ/mol
 ```
 
@@ -466,7 +466,7 @@ def smiles_to_atoms(smiles, seed=64):
     mol = Chem.MolFromSmiles(smiles)
     mol = Chem.AddHs(mol) # Adds explicit hydrogens to the molecule
     AllChem.EmbedMolecule(mol, randomSeed=64) # Randomly places atoms at correct distances from each other
-    AllChem.MMFFOptimizeMolecule(mol) # Optimizes the geometry using the MMFF94 classical force field (Starting Position for MACE-OFF optimization)
+    AllChem.MMFFOptimizeMolecule(mol) # Optimizes the geometry using the MMFF94 classical force field (Starting Position for MACE-OFF optimization))
     conf = mol.GetConformer()
     symbols = [a.GetSymbol() for a in mol.GetAtoms()]
     positions = conf.GetPositions()
@@ -488,7 +488,7 @@ potentialenergy_CH3CHOHCH3 = results['potential_energy']
 enthalpy_CH3CHOHCH3_eV = results['enthalpy_eV']
 enthalpy_CH3CHOHCH3_kJ_mol = results['enthalpy_kJ_mol']
 
-print("1-Propanol Potential Energy (eV):", potentialenergy_CH3CHOHCH3)
+print(f"1-Propanol Potential Energy: {potentialenergy_CH3CHOHCH3:.4f} eV = {potentialenergy_CH3CHOHCH3 * (1 / (kJ / mol)):.4f} kJ")
 print(f"Enthalpy of CH3CHOHCH3: {enthalpy_CH3CHOHCH3_eV:.4f} eV")
 print(f"Enthalpy of CH3CHOHCH3 at 298 K: {enthalpy_CH3CHOHCH3_kJ_mol:.4f} kJ/mol")
 ```
@@ -496,7 +496,7 @@ print(f"Enthalpy of CH3CHOHCH3 at 298 K: {enthalpy_CH3CHOHCH3_kJ_mol:.4f} kJ/mol
 <summary>Expected output</summary>
 
 ```text
-1-Propanol Potential Energy (eV): -5292.075774514455
+1-Propanol Potential Energy: -5292.0758 eV = -510607.6927 kJ
 Enthalpy of CH3CHOHCH3: -5288.9310 eV
 Enthalpy of CH3CHOHCH3 at 298 K: -510304.2678 kJ/mol
 ```
@@ -523,7 +523,7 @@ potentialenergy_CH3OH = results['potential_energy']
 enthalpy_CH3OH_eV = results['enthalpy_eV']
 enthalpy_CH3OH_kJ_mol = results['enthalpy_kJ_mol']
 
-print("CH3OH Potential Energy (eV):", potentialenergy_CH3OH)
+print(f"CH3OH Potential Energy: {potentialenergy_CH3OH:.4f} eV = {potentialenergy_CH3OH * (1 / (kJ / mol)):.4f} kJ")
 print(f"Enthalpy of CH3OH: {enthalpy_CH3OH_eV:.4f} eV")
 print(f"Enthalpy of CH3OH at 298 K: {enthalpy_CH3OH_kJ_mol:.4f} kJ/mol")
 ```
@@ -531,7 +531,7 @@ print(f"Enthalpy of CH3OH at 298 K: {enthalpy_CH3OH_kJ_mol:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-CH3OH Potential Energy (eV): -3151.001177868736
+CH3OH Potential Energy: -3151.0012 eV = -304025.3976 kJ
 Enthalpy of CH3OH: -3149.4851 eV
 Enthalpy of CH3OH at 298 K: -303879.1149 kJ/mol
 ```
@@ -558,7 +558,7 @@ potentialenergy_C3H8 = results['potential_energy']
 enthalpy_C3H8_eV = results['enthalpy_eV']
 enthalpy_C3H8_kJ_mol = results['enthalpy_kJ_mol']
 
-print("C3H8 Potential Energy (eV):", potentialenergy_C3H8)
+print(f"C3H8 Potential Energy: {potentialenergy_C3H8:.4f} eV = {potentialenergy_C3H8 * (1 / (kJ / mol)):.4f} kJ")
 print(f"Enthalpy of C3H8: {enthalpy_C3H8_eV:.4f} eV")
 print(f"Enthalpy of C3H8 at 298 K: {enthalpy_C3H8_kJ_mol:.4f} kJ/mol")
 ```
@@ -566,7 +566,7 @@ print(f"Enthalpy of C3H8 at 298 K: {enthalpy_C3H8_kJ_mol:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-C3H8 Potential Energy (eV): -3243.9350028262666
+C3H8 Potential Energy: -3243.9350 eV = -312992.1486 kJ
 Enthalpy of C3H8: -3240.9635 eV
 Enthalpy of C3H8 at 298 K: -312705.4433 kJ/mol
 ```
@@ -593,7 +593,7 @@ potentialenergy_C4H4S = results['potential_energy']
 enthalpy_C4H4S_eV = results['enthalpy_eV']
 enthalpy_C4H4S_kJ_mol = results['enthalpy_kJ_mol']
 
-print("C4H4S Potential Energy (eV):", potentialenergy_C4H4S)
+print(f"C4H4S Potential Energy: {potentialenergy_C4H4S:.4f} eV = {potentialenergy_C4H4S * (1 / (kJ / mol)):.4f} kJ")
 print(f"Enthalpy of C4H4S: {enthalpy_C4H4S_eV:.4f} eV")
 print(f"Enthalpy of C4H4S at 298 K: {enthalpy_C4H4S_kJ_mol:.4f} kJ/mol")
 ```
@@ -601,7 +601,7 @@ print(f"Enthalpy of C4H4S at 298 K: {enthalpy_C4H4S_kJ_mol:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-C4H4S Potential Energy (eV): -15052.781141933736
+C4H4S Potential Energy: -15052.7811 eV = -1452372.5993 kJ
 Enthalpy of C4H4S: -15050.8213 eV
 Enthalpy of C4H4S at 298 K: -1452183.5026 kJ/mol
 ```
@@ -631,7 +631,7 @@ H_C_atom_kJ = E_C_kJ + (5/2) * R * T # Thermal correction for C atom (Typically 
 # E_C(atom) = H(C, graphite) + H_sub  =>  H(C, graphite) = H(C, atom) - H_sub
 H_graphite_kJ = H_C_atom_kJ - H_sub_C_kJ
 
-print("C atom potential energy (eV):", E_C)
+print(f"C atom potential energy: {E_C:.4f} eV = {E_C * (1 / (kJ / mol)):.4f} kJ")
 print(f"Enthalpy of C atom at 298 K: {H_C_atom_kJ:.4f} kJ/mol")
 print(f"Enthalpy of C (graphite) at 298 K: {H_graphite_kJ:.4f} kJ/mol")
 ```
@@ -639,7 +639,7 @@ print(f"Enthalpy of C (graphite) at 298 K: {H_graphite_kJ:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-C atom potential energy (eV): -1030.5671648271828
+C atom potential energy: -1030.5672 eV = -99434.6160 kJ
 Enthalpy of C atom at 298 K: -99428.4186 kJ/mol
 Enthalpy of C (graphite) at 298 K: -100145.1186 kJ/mol
 ```
@@ -666,7 +666,7 @@ potentialenergy_H2 = results['potential_energy']
 enthalpy_H2_eV = results['enthalpy_eV']
 enthalpy_H2_kJ_mol = results['enthalpy_kJ_mol']
 
-print("H2 Potential Energy (eV):", potentialenergy_H2)
+print(f"H2 Potential Energy: {potentialenergy_H2:.4f} eV = {potentialenergy_H2 * (1 / (kJ / mol)):.4f} kJ")
 print(f"Enthalpy of H2: {enthalpy_H2_eV:.4f} eV")
 print(f"Enthalpy of H2 at 298 K: {enthalpy_H2_kJ_mol:.4f} kJ/mol")
 ```
@@ -674,7 +674,7 @@ print(f"Enthalpy of H2 at 298 K: {enthalpy_H2_kJ_mol:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-H2 Potential Energy (eV): -31.851215263161308
+H2 Potential Energy: -31.8512 eV = -3073.1751 kJ
 Enthalpy of H2: -31.5653 eV
 Enthalpy of H2 at 298 K: -3045.5872 kJ/mol
 ```
@@ -701,7 +701,7 @@ potentialenergy_N2 = results['potential_energy']
 enthalpy_N2_eV = results['enthalpy_eV']
 enthalpy_N2_kJ_mol = results['enthalpy_kJ_mol']
 
-print("N2 Potential Energy (eV):", potentialenergy_N2)
+print(f"N2 Potential Energy: {potentialenergy_N2:.4f} eV = {potentialenergy_N2 * (1 / (kJ / mol)):.4f} kJ")
 print(f"Enthalpy of N2: {enthalpy_N2_eV:.4f} eV")
 print(f"Enthalpy of N2 at 298 K: {enthalpy_N2_kJ_mol:.4f} kJ/mol")
 ```
@@ -709,7 +709,7 @@ print(f"Enthalpy of N2 at 298 K: {enthalpy_N2_kJ_mol:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-N2 Potential Energy (eV): -2980.978884535042
+N2 Potential Energy: -2980.9789 eV = -287620.7400 kJ
 Enthalpy of N2: -2980.7486 eV
 Enthalpy of N2 at 298 K: -287598.5243 kJ/mol
 ```
@@ -736,7 +736,7 @@ potentialenergy_O2 = results['potential_energy']
 enthalpy_O2_eV = results['enthalpy_eV']
 enthalpy_O2_kJ_mol = results['enthalpy_kJ_mol']
 
-print("O2 Potential Energy (eV):", potentialenergy_O2)
+print(f"O2 Potential Energy: {potentialenergy_O2:.4f} eV = {potentialenergy_O2 * (1 / (kJ / mol)):.4f} kJ")
 print(f"Enthalpy of O2: {enthalpy_O2_eV:.4f} eV")
 print(f"Enthalpy of O2 at 298 K: {enthalpy_O2_kJ_mol:.4f} kJ/mol")
 ```
@@ -744,7 +744,7 @@ print(f"Enthalpy of O2 at 298 K: {enthalpy_O2_kJ_mol:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-O2 Potential Energy (eV): -4092.385103643921
+O2 Potential Energy: -4092.3851 eV = -394855.1390 kJ
 Enthalpy of O2: -4092.2217 eV
 Enthalpy of O2 at 298 K: -394839.3741 kJ/mol
 ```
@@ -767,7 +767,7 @@ E_S_kJ = E_S * (1 / (kJ / mol))
 H_S_atom_kJ = E_S_kJ + (5/2) * R * T # Thermal Correction for S atom (Typically IdealGasThermo handles this)
 H_rhombic_S_kJ = H_S_atom_kJ - H_sub_S_kJ
 
-print("S atom potential energy (eV):", E_S)
+print(f"S atom potential energy: {E_S:.4f} eV = {E_S * (1 / (kJ / mol)):.4f} kJ")
 print(f"Enthalpy of S atom at 298 K: {H_S_atom_kJ:.4f} kJ/mol")
 print(f"Enthalpy of S (rhombic) at 298 K: {H_rhombic_S_kJ:.4f} kJ/mol")
 ```
@@ -775,7 +775,7 @@ print(f"Enthalpy of S (rhombic) at 298 K: {H_rhombic_S_kJ:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-S atom potential energy (eV): -10834.4844708122
+S atom potential energy: -10834.4845 eV = -1045368.8408 kJ
 Enthalpy of S atom at 298 K: -1045362.6434 kJ/mol
 Enthalpy of S (rhombic) at 298 K: -1045397.2684 kJ/mol
 ```
