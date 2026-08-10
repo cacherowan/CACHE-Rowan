@@ -237,10 +237,6 @@ No Visible Output
 ```
 </details>
 
-<a href="https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Chemical_Property_Prediction/Phase_1_Molecule_Viewer.ipynb#title">
-  <button>See Propanol Molecule</button>
-</a>
-
 <a href="../5_Phase_1_Molecule_Viewer.ipynb#title" 
    target="_blank"
    style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
