@@ -237,11 +237,11 @@ No Visible Output
 ```
 </details>
 
-<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#title" 
+<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb##_tutorial:_2" 
    target="_blank"
    style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
           text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
-  See Propanol Molecule
+  See Carbon Dioxide Molecule
 </a>
 
 Image of CO{sub}`2`
