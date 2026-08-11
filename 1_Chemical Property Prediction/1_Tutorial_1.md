@@ -405,6 +405,7 @@ T (K)	H (kJ)	S (kJ/K)	G (kJ)
 <span style="color:Red">**Chemical Formula: C**<sub style="color:red;">**3**</sub>**H**<sub style="color:red;">**8**</sub>**O**</span>
 
 ```{code-cell} python
+!pip install py3Dmol
 import py3Dmol
 import ipywidgets as widgets
 
