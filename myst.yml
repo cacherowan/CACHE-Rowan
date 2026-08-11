@@ -16,10 +16,3 @@ site:
   toc:
     - file: index.md
     - file: 3_Use and End of Life Phase Impact Prediction/Climate Change Impact Prediction Using a Power Law Correlation.ipynb
-    #- file: z_Phase_1_Molecule_Viewer.ipynb
-    #- file: Assignment_4_Example.ipynb
-    #- file: Interactive_Graph.md
-    #- file: Example_Page_2.md
-    #- file: Example_Page.md
-    #- file: MSD_Analysis.md
-    #- file: Gibbs_Free_Energy.md
