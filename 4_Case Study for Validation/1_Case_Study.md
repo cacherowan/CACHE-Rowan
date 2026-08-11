@@ -14,19 +14,6 @@ Celecoxib is the active ingredient in Celebrex, a medication used to treat arthr
 
 The table below summarizes the key stream flows and energy demands for the distillation and pervaporation stages
 
-| Parameter | Value |
-| :--: | :--: |
-| Waste Stream Feed (Distillation) [kg/h] | 1000 |
-| Distillate (Distillation) [kg/h] | 585 |
-| Bottom (Distillation) [kg/h] | 415 |
-| Cooling Energy (Distillation) [kW] | 576.22 |
-| Steam Energy (Distillation) [kW] | 608.06 |
-| Retentate (Pervaporation) [kg/h] | 511.89 |
-| Permeate (Pervaporation) [kg/h] | 73.31 |
-| Steam Energy (Pervaporation) [kW] | 3.3371 |
-| Flux (Pervaporation) [L/m{sup}`2`-h] | 555.00 |
-
-
 
 <table>
 <tr style="background-color:#552D20; color:white;">
