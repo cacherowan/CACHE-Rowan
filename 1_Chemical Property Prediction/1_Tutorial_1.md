@@ -1,3 +1,9 @@
+---
+kernelspec:
+  name: python3
+  display_name: Python 3
+---
+
 # Tutorial 1: Chemical Property Estimation (Enthalpy, Entropy, and Gibbs Free Energy for Gases)
 
 ***
@@ -391,6 +397,27 @@ T (K)	H (kJ)	S (kJ/K)	G (kJ)
           text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
   See Propanol Molecule
 </a>
+
+### <span style="color:Green">**Propanol**</span>
+
+<span style="color:Yellow">**SMILES: CCCO**</span>
+
+<span style="color:Red">**Chemical Formula: C**<sub style="color:red;">**3**</sub>**H**<sub style="color:red;">**8**</sub>**O**</span>
+
+```{code-cell} python
+import py3Dmol
+import ipywidgets as widgets
+
+with open("../5_Molecule_Viewer/Propanol(C3H8O).xyz") as f:
+    xyz = f.read()
+view = py3Dmol.view(width=800, height=400)
+view.addModel(xyz, "xyz")
+view.setStyle({"stick": {}, "sphere": {"scale": 0.3}})
+view.zoomTo()
+view.zoom(2)
+view.show()
+```
+
 
 ### Discussion / Analysis
 
