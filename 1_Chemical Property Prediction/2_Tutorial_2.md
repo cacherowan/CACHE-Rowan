@@ -1,3 +1,9 @@
+---
+kernelspec:
+  name: python3
+  display_name: Python 3
+---
+
 # Tutorial 2: Chemical Property Estimation (Heat Capacity for Gases)
 
 ***
