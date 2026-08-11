@@ -4,7 +4,7 @@
 
 Celecoxib is the active ingredient in Celebrex, a medication used to treat arthritis. Its production involves downstream purification steps such as centrifugation and drying, which generate isopropanol (IPA) laden waste streams. This case study focuses on the dryer distillate, which is modeled as a binary mixture containing 51 wt.% IPA and 49 wt.% water at a flow rate of 1,000 kg/hr. The recovery of IPA from this stream is limited by the IPA-water azeotrope, which occurs at approximately 87.7 wt.% IPA and 80.37 °C. As a result, distillation alone cannot achieve the required IPA purity. To overcome this limitation, distillation is combined with pervaporation, a membrane-based separation process that enables separation beyond the azeotropic composition and recovery of high-purity IPA.
 
-<img src="../Reference_Files/Case_Study_For_Validation_Files/ipa_flowsheet_animated.gif"/>
+<img src="../Reference_Files/Case_Study_For_Validation_Files/ipa_flowsheet_3d_front.gif"/>
 
 | Step 1: Distillation | Step 2: Pervaporation |
 | :--: | :--: |
