@@ -31,7 +31,7 @@ The table below summarizes the key stream flows and energy demands for the disti
 <table>
 <tr style="background-color:#552D20; color:white;">
   <th style="text-align:center;">Parameter</th>
-  <th style="text-align:center;">Result</th>
+  <th style="text-align:center;">Value</th>
 </tr>
 <tr style="background-color:#FFFFFF; color:#1a1a1a;">
   <td style="text-align:center;">Waste Stream Feed (Distillation) [kg/h]</td>
