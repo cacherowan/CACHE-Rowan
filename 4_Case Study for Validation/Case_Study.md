@@ -26,3 +26,34 @@ The table below summarizes the key stream flows and energy demands for the disti
 | Steam Energy (Pervaporation) [kW] | 3.3371 |
 | Flux (Pervaporation) [L/m{sup}`2`-h] | 555.00 |
 
+<style>
+.param-table thead tr {
+  background-color: #f9ab00;
+  color: white;
+}
+.param-table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+.param-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.param-table td, .param-table th {
+  padding: 8px 16px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+}
+</style>
+
+```{list-table}
+:header-rows: 1
+:class: param-table
+
+* - Parameter
+  - Value
+* - Text
+  - 34
+* - Text
+  - 34
+* - Text
+  - 34
+```
