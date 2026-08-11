@@ -10,6 +10,10 @@ Celecoxib is the active ingredient in Celebrex, a medication used to treat arthr
 | :--: | :--: |
 | The distillation column, equipped with a kettle reboiler and an overhead condenser, performs the initial separation by removing most of the water and concentrating IPA to approximately 88 wt.%, near its azeotropic limit. It handles the bulk separation; however, because of the IPA-water azeotrope, it cannot further increase the IPA purity on its own | The concentrated IPA-water mixture is sent to the pervaporation membrane, which selectively removes water under vacuum. This allows the separation to move beyond the azeotropic limit, producing high-purity IPA as the retentate. The water-rich permeate passes through the membrane, where it is subsequently condensed and removed |
 
+## Process results:
+
+The table below summarizes the key stream flows and energy demands for the distillation and pervaporation stages
+
 | Parameter | Value |
 | :--: | :--: |
 | Waste Stream Feed (Distillation) [kg/h] | 1000 |
