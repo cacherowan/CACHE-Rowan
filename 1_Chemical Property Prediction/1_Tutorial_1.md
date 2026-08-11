@@ -409,7 +409,7 @@ import micropip
 await micropip.install("py3Dmol")
 import py3Dmol
 
-with open("../5_Molecule_Viewer/Propanol(C3H8O).xyz") as f:
+with open("5_Molecule_Viewer/Propanol(C3H8O).xyz") as f:
     xyz = f.read()
 view = py3Dmol.view(width=800, height=400)
 view.addModel(xyz, "xyz")
