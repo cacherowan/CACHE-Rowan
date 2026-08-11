@@ -15,7 +15,7 @@ Hjorth Larsen et al., "The atomic simulation environment—a Python library for 
 
 MACE-OFF 23 was used in a majority of the thermodynamic tutorials as the machine learning potential.  It was used to capture the behavior of the organic molecules studied on the site.  
 
-Kovács et al., "MACE-OFF23: Transferable Machine Learning Force Fields for Organic Molecules," arXiv:2312.15211 (2023), DOI: 10.48550/arXiv.2312.15211
+Kovács et al., "MACE-OFF23: Transferable Machine Learning Force Fields for Organic Molecules," arXiv:2312.15211v1 (2023). https://arxiv.org/abs/2312.15211v1
 
 <a href="https://github.com/ACEsuit/mace-off" 
    target="_blank"
