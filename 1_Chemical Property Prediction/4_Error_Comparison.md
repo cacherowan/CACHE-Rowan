@@ -460,12 +460,32 @@ Enthalpy of NH3 at 298 K: -148494.0510 kJ/mol
 </details>
 
 
-<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#model-validation-metrics" 
-   target="_blank"
-   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
-          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
-  See Ammonia Molecule
-</a>
+### <span style="color:Green">**Ammonia**</span>
+
+SMILES: N
+
+Chemical Formula: NH{sub}`3`
+
+Click the power icon and then run the cell below to view an interactive model of an Ammonia Molecule
+
+```{code-cell} python
+import micropip
+await micropip.install("py3Dmol")
+
+from pyodide.http import pyfetch
+import py3Dmol
+
+
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Ammonia(NH3).xyz")
+xyz = await response.string()
+
+view = py3Dmol.view(width=800, height=400)
+view.addModel(xyz, "xyz")
+view.setStyle({"stick": {}, "sphere": {"scale": 0.3}})
+view.zoomTo()
+view.zoom(2)
+view.show()
+```
 
 
 ```
@@ -516,12 +536,32 @@ Enthalpy of CH3CHOHCH3 at 298 K: -510304.2678 kJ/mol
 </details>
 
 
-<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#tutorial-1" 
-   target="_blank"
-   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
-          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
-  See Propanol Molecule
-</a>
+### <span style="color:Green">**Propanol**</span>
+
+SMILES: CCCO
+
+Chemical Formula: C{sub}`3`H{sub}`8`O
+
+Click the power icon and then run the cell below to view an interactive model of a Propanol Molecule
+
+```{code-cell} python
+import micropip
+await micropip.install("py3Dmol")
+
+from pyodide.http import pyfetch
+import py3Dmol
+
+
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Propanol(C3H8O).xyz")
+xyz = await response.string()
+
+view = py3Dmol.view(width=800, height=400)
+view.addModel(xyz, "xyz")
+view.setStyle({"stick": {}, "sphere": {"scale": 0.3}})
+view.zoomTo()
+view.zoom(2)
+view.show()
+```
 
 
 ```
@@ -557,12 +597,32 @@ Enthalpy of CH3OH at 298 K: -303879.1149 kJ/mol
 </details>
 
 
-<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#model-validation-metrics" 
-   target="_blank"
-   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
-          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
-  See Methanol Molecule
-</a>
+### <span style="color:Green">**Methanol**</span>
+
+SMILES: CO
+
+Chemical Formula: CH{sub}`4`O
+
+Click the power icon and then run the cell below to view an interactive model of a Methanol Molecule
+
+```{code-cell} python
+import micropip
+await micropip.install("py3Dmol")
+
+from pyodide.http import pyfetch
+import py3Dmol
+
+
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Methanol(CH4O).xyz")
+xyz = await response.string()
+
+view = py3Dmol.view(width=800, height=400)
+view.addModel(xyz, "xyz")
+view.setStyle({"stick": {}, "sphere": {"scale": 0.3}})
+view.zoomTo()
+view.zoom(2)
+view.show()
+```
 
 
 ```
@@ -598,12 +658,32 @@ Enthalpy of C3H8 at 298 K: -312705.4433 kJ/mol
 </details>
 
 
-<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#model-validation-metrics" 
-   target="_blank"
-   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
-          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
-  See Propane Molecule
-</a>
+### <span style="color:Green">**Propane**</span>
+
+SMILES: CCC
+
+Chemical Formula: C{sub}`3`H{sub}`8`
+
+Click the power icon and then run the cell below to view an interactive model of a Propane Molecule
+
+```{code-cell} python
+import micropip
+await micropip.install("py3Dmol")
+
+from pyodide.http import pyfetch
+import py3Dmol
+
+
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Propane(C3H8).xyz")
+xyz = await response.string()
+
+view = py3Dmol.view(width=800, height=400)
+view.addModel(xyz, "xyz")
+view.setStyle({"stick": {}, "sphere": {"scale": 0.3}})
+view.zoomTo()
+view.zoom(2)
+view.show()
+```
 
 
 ```
@@ -639,12 +719,32 @@ Enthalpy of C4H4S at 298 K: -1452183.5026 kJ/mol
 </details>
 
 
-<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#model-validation-metrics" 
-   target="_blank"
-   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
-          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
-  See Thiophene Molecule
-</a>
+### <span style="color:Green">**Thiophene**</span>
+
+SMILES: c1ccsc1
+
+Chemical Formula: C{sub}`4`H{sub}`4`S
+
+Click the power icon and then run the cell below to view an interactive model of a Thiophene Molecule
+
+```{code-cell} python
+import micropip
+await micropip.install("py3Dmol")
+
+from pyodide.http import pyfetch
+import py3Dmol
+
+
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Thiophene(C4H4S).xyz")
+xyz = await response.string()
+
+view = py3Dmol.view(width=800, height=400)
+view.addModel(xyz, "xyz")
+view.setStyle({"stick": {}, "sphere": {"scale": 0.3}})
+view.zoomTo()
+view.zoom(2)
+view.show()
+```
 
 
 ### Compute Molecular Properties for Standard Forms

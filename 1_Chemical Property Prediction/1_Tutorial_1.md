@@ -407,7 +407,7 @@ from pyodide.http import pyfetch
 import py3Dmol
 
 
-response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/5_Molecule_Viewer/Propanol(C3H8O).xyz")
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Propanol(C3H8O).xyz")
 xyz = await response.string()
 
 view = py3Dmol.view(width=800, height=400)

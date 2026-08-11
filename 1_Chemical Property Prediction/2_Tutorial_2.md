@@ -259,7 +259,7 @@ from pyodide.http import pyfetch
 import py3Dmol
 
 
-response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/5_Molecule_Viewer/Carbon_Dioxide(CO_2).xyz")
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Carbon_Dioxide(CO_2).xyz")
 xyz = await response.string()
 
 view = py3Dmol.view(width=800, height=400)
@@ -782,7 +782,7 @@ from pyodide.http import pyfetch
 import py3Dmol
 
 
-response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/5_Molecule_Viewer/Carbon_Monoxide(CO).xyz")
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Carbon_Monoxide(CO).xyz")
 xyz = await response.string()
 
 view = py3Dmol.view(width=800, height=400)
@@ -1025,7 +1025,7 @@ from pyodide.http import pyfetch
 import py3Dmol
 
 
-response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/5_Molecule_Viewer/Hydrogen_Peroxide(H2O2).xyz")
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Hydrogen_Peroxide(H2O2).xyz")
 xyz = await response.string()
 
 view = py3Dmol.view(width=800, height=400)
@@ -1243,7 +1243,7 @@ from pyodide.http import pyfetch
 import py3Dmol
 
 
-response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/5_Molecule_Viewer/Methane(CH4).xyz")
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Methane(CH4).xyz")
 xyz = await response.string()
 
 view = py3Dmol.view(width=800, height=400)
