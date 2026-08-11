@@ -26,34 +26,41 @@ The table below summarizes the key stream flows and energy demands for the disti
 | Steam Energy (Pervaporation) [kW] | 3.3371 |
 | Flux (Pervaporation) [L/m{sup}`2`-h] | 555.00 |
 
-<style>
-.param-table thead tr {
-  background-color: #f9ab00;
-  color: white;
-}
-.param-table tbody tr:nth-child(odd) {
-  background-color: #ffffff;
-}
-.param-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-.param-table td, .param-table th {
-  padding: 8px 16px;
-  text-align: center;
-  border: 1px solid #e0e0e0;
-}
-</style>
-
-```{list-table}
-:header-rows: 1
-:class: param-table
-
-* - Parameter
-  - Value
-* - Text
-  - 34
-* - Text
-  - 34
-* - Text
-  - 34
-```
+<table style="text-align:center;">
+<tr style="background-color:#552D20; color:white;">
+  <th>Parameter</th>
+  <th>Result</th>
+</tr>
+<tr style="background-color:#FFFFFF;">
+  <td>Waste Stream Feed (Distillation) [kg/h]</td>
+  <td>1000</td>
+</tr>
+<tr style="background-color:#ECEBE8;">
+  <td>Distillate (Distillation) [kg/h]</td>
+  <td>585</td>
+<tr style="background-color:#FFFFFF;">
+  <td>Bottom (Distillation) [kg/h]</td>
+  <td>415</td>
+</tr>
+<tr style="background-color:#ECEBE8;">
+  <td>Cooling Energy (Distillation) [kW]</td>
+  <td>576.22</td>
+<tr style="background-color:#FFFFFF;">
+  <td>Steam Energy (Distillation) [kW]</td>
+  <td>608.06</td>
+</tr>
+<tr style="background-color:#ECEBE8;">
+  <td>Retentate (Pervaporation) [kg/h]</td>
+  <td>511.89</td>
+<tr style="background-color:#FFFFFF;">
+  <td>Permeate (Pervaporation) [kg/h]</td>
+  <td>73.31</td>
+</tr>
+<tr style="background-color:#ECEBE8;">
+  <td>Steam Energy (Pervaporation) [kW]</td>
+  <td>3.3371</td>
+<tr style="background-color:#FFFFFF;">
+  <td>Flux (Pervaporation) [L/m{sup}`2`-h]</td>
+  <td>550.00</td>
+</tr>
+</table>
