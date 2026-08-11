@@ -760,12 +760,32 @@ Vibrational frequencies (real modes):
 </details>
 
 
-<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#tutorial-2" 
-   target="_blank"
-   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
-          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
-  See Carbon Monoxide Molecule
-</a>
+### <span style="color:Green">**Carbon Monoxide**</span>
+
+SMILES: [C-]#[O+]
+
+Chemical Formula: CO
+
+Click the power icon and then run the cell below to view an interactive model of a Carbon Monoxide Molecule
+
+```{code-cell} python
+import micropip
+await micropip.install("py3Dmol")
+
+from pyodide.http import pyfetch
+import py3Dmol
+
+
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/5_Molecule_Viewer/Carbon_Monoxide(CO).xyz")
+xyz = await response.string()
+
+view = py3Dmol.view(width=800, height=400)
+view.addModel(xyz, "xyz")
+view.setStyle({"stick": {}, "sphere": {"scale": 0.3}})
+view.zoomTo()
+view.zoom(2)
+view.show()
+```
 
 
 ```
@@ -983,12 +1003,32 @@ Vibrational frequencies (real modes):
 </details>
 
 
-<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#tutorial-2" 
-   target="_blank"
-   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
-          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
-  See Hydrogen Peroxide Molecule
-</a>
+### <span style="color:Green">**Hydrogen Peroxide**</span>
+
+SMILES: [H]OO[H]
+
+Chemical Formula: H{sub}`2`O{sub}`2`
+
+Click the power icon and then run the cell below to view an interactive model of a Hydrogen Peroxide Molecule
+
+```{code-cell} python
+import micropip
+await micropip.install("py3Dmol")
+
+from pyodide.http import pyfetch
+import py3Dmol
+
+
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/5_Molecule_Viewer/Hydrogen_Peroxide(H2O2).xyz")
+xyz = await response.string()
+
+view = py3Dmol.view(width=800, height=400)
+view.addModel(xyz, "xyz")
+view.setStyle({"stick": {}, "sphere": {"scale": 0.3}})
+view.zoomTo()
+view.zoom(2)
+view.show()
+```
 
 
 ```
@@ -1181,12 +1221,32 @@ Vibrational frequencies (real modes):
 </details>
 
 
-<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#tutorial-2" 
-   target="_blank"
-   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
-          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
-  See Methane Molecule
-</a>
+### <span style="color:Green">**Methane**</span>
+
+SMILES: C
+
+Chemical Formula: CH{sub}`4`
+
+Click the power icon and then run the cell below to view an interactive model of a Methane Molecule
+
+```{code-cell} python
+import micropip
+await micropip.install("py3Dmol")
+
+from pyodide.http import pyfetch
+import py3Dmol
+
+
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/5_Molecule_Viewer/Methane(CH4).xyz")
+xyz = await response.string()
+
+view = py3Dmol.view(width=800, height=400)
+view.addModel(xyz, "xyz")
+view.setStyle({"stick": {}, "sphere": {"scale": 0.3}})
+view.zoomTo()
+view.zoom(2)
+view.show()
+```
 
 
 ```
