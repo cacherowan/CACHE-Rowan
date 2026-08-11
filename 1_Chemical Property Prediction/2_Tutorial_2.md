@@ -237,12 +237,32 @@ No Visible Output
 ```
 </details>
 
-<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#tutorial-2" 
-   target="_blank"
-   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
-          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
-  See Carbon Dioxide Molecule
-</a>
+### <span style="color:Green">**Carbon Dioxide**</span>
+
+SMILES: O=C=O
+
+Chemical Formula: CO{sub}`2`
+
+Click the power icon and then run the cell below to view an interactive model of a Carbon Dioxide Molecule
+
+```{code-cell} python
+import micropip
+await micropip.install("py3Dmol")
+
+from pyodide.http import pyfetch
+import py3Dmol
+
+
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/5_Molecule_Viewer/Carbon_Dioxide(CO_2).xyz")
+xyz = await response.string()
+
+view = py3Dmol.view(width=800, height=400)
+view.addModel(xyz, "xyz")
+view.setStyle({"stick": {}, "sphere": {"scale": 0.3}})
+view.zoomTo()
+view.zoom(2)
+view.show()
+```
 
 ```
 # Cell 4: Defines Fucntion that takes a SMILES and returns if it is valid.  Then it prints some information about the molecule

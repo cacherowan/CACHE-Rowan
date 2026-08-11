@@ -391,18 +391,13 @@ T (K)	H (kJ)	S (kJ/K)	G (kJ)
 
 </details>
 
-<a href="../5_Molecule_Viewer/5_Phase_1_Molecule_Viewer.ipynb#tutorial-1" 
-   target="_blank"
-   style="display:inline-block; padding:10px 20px; background-color:#f9ab00; color:white; 
-          text-decoration:none; border-radius:6px; font-family:sans-serif; font-weight:bold;">
-  See Propanol Molecule
-</a>
-
 ### <span style="color:Green">**Propanol**</span>
 
-<span style="color:Yellow">**SMILES: CCCO**</span>
+SMILES: CCCO
 
-<span style="color:Red">**Chemical Formula: C**<sub style="color:red;">**3**</sub>**H**<sub style="color:red;">**8**</sub>**O**</span>
+Chemical Formula: C{sub}`3`H{sub}`8`O
+
+Click the power icon and then run the cell below to view an interactive model of a Propanol Molecule
 
 ```{code-cell} python
 import micropip
