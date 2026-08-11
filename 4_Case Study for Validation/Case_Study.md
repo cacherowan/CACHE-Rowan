@@ -20,7 +20,5 @@ Celecoxib is the active ingredient in Celebrex, a medication used to treat arthr
 | Retentate (Pervaporation) [kg/h] | 511.89 |
 | Permeate (Pervaporation) [kg/h] | 73.31 |
 | Steam Energy (Pervaporation) [kW] | 3.3371 |
-| Flux (Pervaporation) [L/m{sup}`2`-h] |
+| Flux (Pervaporation) [L/m{sup}`2`-h] | 555.00 |
 
-m{sub}`2`
-m{sup}`2`
