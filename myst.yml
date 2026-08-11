@@ -6,7 +6,6 @@ project:
   jupyter: lite
   resources:
     #- lj_widget.html
-    - 5_Molecule_Viewer/Propanol(C3H8O).xyz
   exclude:
     - Reference_Files/*
 

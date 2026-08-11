@@ -407,10 +407,13 @@ T (K)	H (kJ)	S (kJ/K)	G (kJ)
 ```{code-cell} python
 import micropip
 await micropip.install("py3Dmol")
+
+from pyodide.http import pyfetch
 import py3Dmol
 
-with open("5_Molecule_Viewer/Propanol(C3H8O).xyz") as f:
-    xyz = f.read()
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/5_Molecule_Viewer/Propanol(C3H8O).xyz")
+xyz = await response.string()
+
 view = py3Dmol.view(width=800, height=400)
 view.addModel(xyz, "xyz")
 view.setStyle({"stick": {}, "sphere": {"scale": 0.3}})
