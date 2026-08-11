@@ -405,9 +405,9 @@ T (K)	H (kJ)	S (kJ/K)	G (kJ)
 <span style="color:Red">**Chemical Formula: C**<sub style="color:red;">**3**</sub>**H**<sub style="color:red;">**8**</sub>**O**</span>
 
 ```{code-cell} python
-!pip install py3Dmol
+import micropip
+await micropip.install("py3Dmol")
 import py3Dmol
-import ipywidgets as widgets
 
 with open("../5_Molecule_Viewer/Propanol(C3H8O).xyz") as f:
     xyz = f.read()
