@@ -1,6 +1,6 @@
 # Environmental Impact Forecasting of Chemicals and Processes with Molecular Simulation, Machine Learning and Data Analytics Tools
 
-**This website was created with support from a CACHE (Computer Aids for Chemical Engineering) grant.  The modules contained on this site are made to educate undergraduate level students in courses related to sustainability.  These modules will teach students how to use molecular dynamics simulations to find chemical properties of novel chemicals as well as show them how to use a machine learning artificial neural network algorithm to determine the impact of chemicals on both climate change and human health.**
+**The modules contained on this site are made to educate undergraduate level students in courses related to sustainability.  These modules will teach students how to use molecular dynamics simulations to find chemical properties of novel chemicals as well as show them how to use a machine learning artificial neural network algorithm to determine the impact of chemicals on both climate change and human health.**
 
 
 <div style="display: flex; gap: 20px; justify-content: center;">

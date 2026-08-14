@@ -1,5 +1,7 @@
 # Citations
 
+This website was created with support from a CACHE (Computer Aids for Chemical Engineering) grant.
+
 Atomic Simulations Environment (ASE) was used extensively through the thermodynamic tutorials to compute thermodynamic properties of different gas molecules.  
 
 Hjorth Larsen et al., "The atomic simulation environment—a Python library for working with atoms," J. Phys.: Condens. Matter 29, 273002 (2017), DOI: 10.1088/1361-648X/aa680e
