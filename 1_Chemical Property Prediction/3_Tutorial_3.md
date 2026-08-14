@@ -168,7 +168,7 @@ In this code, you call to an excel sheet which holds a few hundred chemicals and
 Background information of Molecular Dynamics Simulations
 :::
 
-:::{grid-item-card} Error in MACE-OFF and Database Compared to NIST
+:::{grid-item-card} Model Validation Metrics in MACE-OFF and Database Compared to NIST
 :link: 4_Error_Comparison.md
 
 Calculate standard enthalpy of formation using both molecular simulations as well as the database, and compare those values to the NIST.  

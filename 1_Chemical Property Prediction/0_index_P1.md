@@ -117,6 +117,6 @@ Tutorial 2: Performing multiple molecular simulations using MACE-OFF, which will
 
 Tutorial 3: Use a given database to calculate standard enthalpy of formation instead of performing molecular simulations.  
 
-Error Analysis: Calculate standard enthalpy of formation using both molecular simulations as well as the database, and compare those values to the NIST.  
+Model Validation Metrics: Calculate standard enthalpy of formation using both molecular simulations as well as the database, and compare those values to the NIST.  
 
 **These Modules were made to instruct you on how to perform molecular simulations to calculate unknown or missing thermodynamic properties of new chemicals.  These values will be used as inputs in phase 2 where you will be performing a life cycle assessment (LCA) of different chemicals.**  
