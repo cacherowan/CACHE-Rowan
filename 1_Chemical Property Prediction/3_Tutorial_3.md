@@ -36,13 +36,7 @@ Click the button below to open this code in Google Colab
 import numpy as np    # Stores numbers in arrays and runs fast calculations on them
 import pandas as pd   # Opens the data file as a table and find rows by their SMILES string
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-</details>
 
 
 
@@ -53,13 +47,7 @@ No Visible Output
 DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
 df = pd.read_excel(DATABASE_PATH)
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-</details>
 
 
 
@@ -146,13 +134,7 @@ def obtain_Enthalpy_Of_Formation(MOLECULE, SMILES):
 
     return Property
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-</details>
 
 
 

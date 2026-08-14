@@ -415,14 +415,7 @@ def compute_thermo(
         'enthalpy_kJ_mol': enthalpy_kJ_mol,
     }
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 
@@ -1028,14 +1021,7 @@ Percent Error: 198.44%
 DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
 df = pd.read_excel(DATABASE_PATH)
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 
@@ -1132,14 +1118,7 @@ Percent_Error_C3H8_ANN = abs((Propane_Enthalpy_Of_Formation - -104.7) / -104.7) 
 
 Percent_Error_C4H4S_ANN = abs((Thiophene_Enthalpy_Of_Formation - 116.4) / 116.4) * 100
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 

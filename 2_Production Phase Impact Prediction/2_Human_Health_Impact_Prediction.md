@@ -51,14 +51,7 @@ import requests                       # Makes requests to internet files
 
 import joblib                         # Parallel Computing
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 
@@ -81,14 +74,7 @@ def download_if_needed(url, local_path):
 
     print("Download complete.")
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 
@@ -155,14 +141,7 @@ model_HH = tf.keras.models.load_model(
 )
 ```
 
-</details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 
@@ -175,14 +154,7 @@ db = pd.read_excel(DATABASE_PATH)
 db = db.set_index('SMILES')
 ```
 
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 
@@ -210,14 +182,7 @@ mol_desc_feat_HH = [
 ]
 ```
 
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 
@@ -255,14 +220,7 @@ def scale_subset(values):
     return pd.Series(scaled_values, index=values.index)
 ```
 
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 
@@ -298,14 +256,7 @@ def predict_human_health_impact(molecule_name, smiles):
     return impact_value
 ```
 
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 

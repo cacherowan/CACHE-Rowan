@@ -235,13 +235,7 @@ MODEL_SIZE     = "small"  # 'small' (fast) | 'medium' | 'large' (A greater size 
 DEVICE         = "cpu"    # 'cpu' or 'cuda' (Determines what the code will be running on, a cpu or cuda core (gpu))
 FMAX           = 0.01     # eV/Å optimisation threshold use between 0.01 and 0.05 depending on how long the code runs for (higher threshold runs faster)
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-</details>
 
 ### <span style="color:Green">**Carbon Dioxide**</span>
 

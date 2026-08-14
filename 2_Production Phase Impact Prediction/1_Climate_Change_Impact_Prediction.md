@@ -51,14 +51,6 @@ import requests                       # Makes requests to internet files
 
 import joblib                         # Parallel Computing
 ```
-<details>
-<summary>Expected output</summary>
-
-```text
-No Visible Output
-```
-
-</details>
 
 
 
@@ -81,14 +73,7 @@ def download_if_needed(url, local_path):
 
     print("Download complete.")
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 
@@ -154,14 +139,7 @@ model_CC = tf.keras.models.load_model(
     compile=False
 )
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 
@@ -173,14 +151,7 @@ No Visible Output
 db = pd.read_excel(DATABASE_PATH)
 db = db.set_index('SMILES')
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 
@@ -207,14 +178,7 @@ mol_desc_feat_CC = [
     'NOCount'            # count of Nitrogen and Oxygen atoms
 ]
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 
@@ -251,14 +215,7 @@ def scale_subset(values):
 
     return pd.Series(scaled_values, index=values.index)
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 
@@ -293,14 +250,7 @@ def predict_climate_change_impact(molecule_name, smiles):
           f"{round(impact_value, 4)} kgCO2-eq/kg {molecule_name}")
     return impact_value
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
 
 
 
