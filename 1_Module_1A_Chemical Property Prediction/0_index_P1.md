@@ -22,11 +22,7 @@ Both approaches give the MD simulation the same thing: a way to calculate forces
 
 ## Why Cartesian Coordinates are used
 
-When we set up an MD simulation, we have to pick a coordinate system to describe where each atom is. In principle, we could use internal coordinates (bond lengths and angles) or polar coordinates, but almost every MD code uses plain Cartesian coordinates: each atom gets an (x, y, z) position and a velocity in each direction. There are two main reasons for this.
-
-| Cartesian Coordinates | Polar Coordinates or Spherical Coordinates (3D) |
-| :--: | :--: |
-| <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Cartesian_Coordinates.png"> | <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Polar_Coordinates.png"> |
+When we set up an MD simulation, we have to pick a coordinate system to describe where each atom is. In principle, we could use internal coordinates (geometry defined based on bond lengths and angles) or polar coordinates, but almost every MD code uses plain Cartesian coordinates: each atom gets an (x, y, z) position and a velocity in each direction. There are two main reasons for this.
 
 **The equations of motion are simpler:**
 
@@ -50,9 +46,23 @@ When you load a MACE-MP-0 model as "small", "medium", or "large", the sizes do n
 
 All molecules have a stable form that corresponds to their minimum energy. Left alone, they naturally settle into this state. A geometry optimization uses a numerical algorithm to nudge the atoms toward that stable form before the simulation begins. The algorithm makes small adjustments to each atom's position, checks whether the total potential energy went down, and repeats until the forces on every atom fall below a small threshold. A useful mental picture is a spring at its natural length. If we start the simulation with the spring already stretched or compressed, it will snap violently the moment we let go, and the dynamics will explode. Geometry optimization lets the spring relax first, so the system begins from a calm state rather than one primed to fly apart.  
 
-| Unoptimized Geometry | Optimized Geometry |
-| :--: | :--: |
-| <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Unoptimized.png"> | <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Optimized.png"> |
+<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+  <div style="flex: 1; text-align: center;">
+    Unoptimized Geometry
+  </div>
+  <div style="flex: 1; text-align: center;">
+    Optimized Geometry
+  </div>
+</div>
+
+<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+  <div style="flex: 1; text-align: center;">
+    <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Unoptimized.png" style="max-width: 100%; height: auto;">
+  </div>
+  <div style="flex: 1; text-align: center;">
+  <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/Optimized.png" style="max-width: 100%; height: auto;">
+  </div>
+</div>
 
 ## Reference State for Potential Energy Calculation and Ideal Gas Approximation 
 
