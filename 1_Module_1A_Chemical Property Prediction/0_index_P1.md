@@ -64,6 +64,17 @@ All molecules have a stable form that corresponds to their minimum energy. Left 
   </div>
 </div>
 
+<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+  <div style="flex: 1; text-align: center;">
+    Side View of 17.2582Å Cube: Molecules are on top of each other which makes the initial force between molecuels exrtemely high
+  </div>
+  <div style="flex: 1; text-align: center;">
+    Side View of 17.2582Å Cube: Molecules are much more spaced out to allow the overall force between molecules to be initially minimal
+  </div>
+</div>
+
+
+
 ## Reference State for Potential Energy Calculation and Ideal Gas Approximation 
 
 The potential energy that MACE (or any similar model) returns is not an absolute number with a universal zero. The zero point is set by the atomic reference energies used during training. The energy assigned to each isolated atom in the reference DFT calculations. This means the absolute value of the potential energy is not physically meaningful on its own. What is meaningful are differences in energy (reaction energies, binding energies, energy barriers), because the constant offset from the reference cancels out when you subtract. 
