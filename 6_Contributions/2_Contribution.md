@@ -46,6 +46,14 @@
 </div>
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
   <div style="flex: 1; text-align: center;">
+    <img src="/Reference_Files/Contributions/Ronald.png" style="max-width: 100%; height: auto;">
+  </div>
+  <div style="flex: 1; text-align: center;">
+    Ronald Borja-Roman is a Ph.D. student in Chemical Engineering at Rowan University. He holds a bachelor's degree in chemical engineering from Universidad del Atlántico and is currently completing a degree in Software Engineering at Universidad de Cartagena, Colombia. His research combines physics-based simulation, artificial intelligence, and computational optimization to model and optimize complex engineering systems, with applications in functional materials, additive manufacturing, and sustainable chemical processes. 
+  </div>
+</div>
+<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+  <div style="flex: 1; text-align: center;">
     Add the next contributor photo here.
   </div>
   <div style="flex: 1; text-align: center;">
