@@ -30,9 +30,9 @@
 </div>
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
   <div style="flex: 1; text-align: center;">
-    <img src="/Reference_Files/Contributions/NAME.jpg" style="max-width: 100%; height: auto;">
+    Add the next contributor photo here.
   </div>
   <div style="flex: 1; text-align: center;">
-  BIO HERE
+    Add the next contributor's bio here.
   </div>
 </div>
