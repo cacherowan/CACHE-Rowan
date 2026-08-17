@@ -38,7 +38,7 @@
 
 LCA relies on Life Cycle Inventory (LCI) data that describes the resources consumed and emissions generated during chemical production. While these data are available for established chemicals, they are unavailable for newly developed compounds. Our framework enables the prediction of environmental impact categories, including climate change and human health, even in the absence of complete LCI data.
 
-<img src="/Reference_Files/Main_Page_2.png">
+<img src="/Reference_Files/MainPage_2.png">
 
 ## Module 1A: Thermodynamic and Molecular Descriptor Generation through Molecular Simulation
 
