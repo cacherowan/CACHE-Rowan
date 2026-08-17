@@ -13,9 +13,11 @@ The specific model used in this phase is an artificial neural network, a machine
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
   <div style="flex: 1; text-align: center;">
     <img src="/Reference_Files/Production_Phase_Impact_Prediction/ANN.png" style="max-width: 100%; height: auto;">
+    <p><em>Figure 2. Architecture of a fully connected artificial neural network, showing the input layer, hidden layers, and output layer.</em></p>
   </div>
   <div style="flex: 1; text-align: center;">
     <img src="/Reference_Files/Production_Phase_Impact_Prediction/image.png" style="max-width: 100%; height: auto;">
+    <p><em>Figure 3. Structure of a single neuron, showing how inputs, weights, and a bias combine through an activation function to produce an output.</em></p>
   </div>
 </div>
 Figure 3 details how a single neuron performs this computation. Each input xᵢ is multiplied by its corresponding weight wᵢ, and the weighted inputs are summed together with a bias term b that shifts the result up or down. This value then passes through an activation function f, which introduces the nonlinearity that lets the network learn curved relationships rather than being limited to straight lines. Learning consists of adjusting these weights and biases: during training, the network compares its predictions to the correct answers and updates each one to reduce the resulting error, gradually tuning itself to fit the data.
