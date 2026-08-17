@@ -4,10 +4,13 @@
 
 **Machine learning**  is a branch of artificial intelligence that enables computers to learn from data rather than relying on explicitly programmed rules. During training, a model is shown many examples so it can identify the underlying patterns and relationships in the data; once trained, it applies what it has learned to new, similar data to make predictions or solve problems. Because a model's performance depends on what it was trained on, it generally performs best on data that resembles its training examples.
 Machine learning approaches are typically grouped by how a model learns from data. In supervised learning, each training example is paired with a known, correct answer that the model learns to reproduce. In unsupervised learning, the model instead identifies patterns or groupings within unlabeled data. In reinforcement learning, the model learns through trial and error, receiving rewards for favorable decisions.
+
 This work uses a supervised learning approach, which covers two main types of problems: regression, which predicts a continuous numerical value such as a quantity or rate, and classification, which assigns an input to one of several discrete categories. Figure 1 illustrates the simplest case of a regression model: a straight line, y = β0 + β1x, fit through a scatter of data points so that it captures the overall upward trend between the two variables. The line itself is the model's prediction, for any value of the independent variable, the corresponding point on the line is the model's best estimate of the dependent variable.
 
-<img src="/Reference_Files/Production_Phase_Impact_Prediction/regression.png"/>
-Figure 1. A linear regression model fit to a set of data points. The line represents the predicted relationship between the independent and dependent variables.
+<img src="/Reference_Files/Production_Phase_Impact_Prediction/regression.png" style="max-width: 100%; width: 600px; height: auto; display: block; margin: 0 auto;">
+
+**Figure 1.** A linear regression model fit to a set of data points. The line represents the predicted relationship between the independent and dependent variables.
+
 The specific model used in this phase is an artificial neural network, a machine learning architecture inspired by the structure of the human brain and well suited to capturing complex, nonlinear relationships that a single straight line cannot. As shown in Figure 2, a neural network is built from layers of simple, interconnected units, or neurons: an input layer, one or more hidden layers, and an output layer, with every connection between neurons carrying a weight that adjusts as the network learns. Here, the network is applied to a regression problem: predicting a continuous value, the climate-change impact of a chemical, from that chemical's input properties
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
   <div style="flex: 1; text-align: center;">
