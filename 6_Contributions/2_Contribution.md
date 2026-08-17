@@ -30,6 +30,14 @@
 </div>
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
   <div style="flex: 1; text-align: center;">
+    <img src="/Reference_Files/Contributions/Harriet.png" style="max-width: 100%; height: auto;">
+  </div>
+  <div style="flex: 1; text-align: center;">
+    Harriet Dufie Appiah is pursuing a Ph.D. in Chemical Engineering at Rowan University, with research centered on sustainable process design. Her work spans three core areas: developing decision-making frameworks for food waste disposal and recycling, applying machine learning and life cycle assessment to forecast the environmental footprint of chemical processes at early design stages, and modeling the recovery and purification of sulfur hexafluoride (SF6) and octafluorocyclobutane (C4F8) to reduce pollution from electrical power systems and microelectronics processing. Together, these projects reflect her broader interest in using data-driven, systems-level approaches to solve real-world sustainability challenges across the chemical process industry..
+  </div>
+</div>
+<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+  <div style="flex: 1; text-align: center;">
     Add the next contributor photo here.
   </div>
   <div style="flex: 1; text-align: center;">
