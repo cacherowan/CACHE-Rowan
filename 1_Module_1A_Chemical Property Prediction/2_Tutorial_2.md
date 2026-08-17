@@ -1333,7 +1333,7 @@ In this code, carbon dioxide, carbon monoxide, hydrogen peroxide, and methane we
 Background information of Molecular Dynamics Simulations
 :::
 
-:::{grid-item-card} Tutorial 3: Standard Enthalpy of Formation for Gases
+:::{grid-item-card} Tutorial 3: Standard Enthalpy of Formation for Gases using the Database
 :link: 3_Tutorial_3.md
 
 Use a given database to calculate standard enthalpy of formation instead of performing molecular simulations.  
