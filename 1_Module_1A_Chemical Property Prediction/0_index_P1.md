@@ -74,7 +74,6 @@ All molecules have a stable form that corresponds to their minimum energy. Left 
 </div>
 
 
-
 ## Reference State for Potential Energy Calculation and Ideal Gas Approximation 
 
 The potential energy that MACE (or any similar model) returns is not an absolute number with a universal zero. The zero point is set by the atomic reference energies used during training. The energy assigned to each isolated atom in the reference DFT calculations. This means the absolute value of the potential energy is not physically meaningful on its own. What is meaningful are differences in energy (reaction energies, binding energies, energy barriers), because the constant offset from the reference cancels out when you subtract. 
@@ -106,25 +105,25 @@ So the overall picture is straightforward: MACE provides the potential energy an
 ::::{grid} 2
 :gutter: 3
 
-:::{grid-item-card} Tutorial: 1
+:::{grid-item-card} Tutorial 1: Enthalpy, Entropy, and Gibbs Free Energy for Gases
 :link: 1_Tutorial_1.md
 
 Learn the basics of using a machine learning potential (MACE-OFF) to calculate the enthalpy, entropy, and Gibbs free energy of a molecule at various temperatures.
 :::
 
-:::{grid-item-card} Tutorial: 2
+:::{grid-item-card} Tutorial 2: Heat Capacity for Gases
 :link: 2_Tutorial_2.md
 
 Using the same machine learning potential in tutorial 1, you will calculate the heat capacity for various molecules as a function of time.  This tutorial will show you how to construct the geometries of multiple molecules to simulate them and calculate their potential energy.  Chemical properties can then be predicted using the simulation data.  
 :::
 
-:::{grid-item-card} Tutorial: 3
+:::{grid-item-card} Tutorial 3: Standard Enthalpy of Formation for Gases using the Database
 :link: 3_Tutorial_3.md
 
 Tutorials 1 and 2 predicted chemical properties of various molecules using molecular simulations and a machine learning potnetial.  While this tutorial will also determine chemical properties of various molecules, it accomplishes this task using a database of chemical properties.  In this tutorial, you will learn how to load the database to allow the code to read chemical properties that are listed in the database.  
 :::
 
-:::{grid-item-card} Model Validation Metrics
+:::{grid-item-card} Tutorial 4: Model Validation Metrics
 :link: 4_Error_Comparison.md
 
 Learn how to calculate the standard enthalpy of formation for molecules using the atomic simulations environment (calculate chemical properties using data from MACE-OF) as well as MACE-OFF.  Similar to using tutorial 1 to get the enthalpy of a molecule, you will be doing this again for specific atoms and molecules to find the standard enthalpy of formation for 5 molecules.  Then you will compare the error in the machine learning method with the National Institute of Standards and Technology (NIST) and the database used in Tutorial 3 with NIST.  
