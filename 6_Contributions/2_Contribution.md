@@ -2,14 +2,7 @@
 
 
 
-<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-  <div style="flex: 1; text-align: center;">
-    <img src="/Reference_Files/Contributions/Greg.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;">
-  </div>
-   <div style="flex: 2; text-align: justify;">
-    Gregory Santilli is a mechanical engineer at Maarky Thermal Systems, designing large equipment for powerplants.  He holds B.S. in Mechanical Engineering.  He also completed an internship at Rowan University which involved designing this website and creating codes to obtain thermodynamic properties of molecules as well as implementing learning modules and research from Dr. Yenkie’s group.  
-  </div>
-</div>
+
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
   <div style="flex: 1; text-align: center;">
     <img src="/Reference_Files/Contributions/Yenkie.png" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;">
@@ -49,6 +42,14 @@
   </div>
   <div style="flex: 2; text-align: justify;">
     Ronald Borja-Roman is a Ph.D. student in Chemical Engineering at Rowan University. He holds a bachelor's degree in chemical engineering from Universidad del Atlántico and is currently completing a degree in Software Engineering at Universidad de Cartagena, Colombia. His research combines physics-based simulation, artificial intelligence, and computational optimization to model and optimize complex engineering systems, with applications in functional materials, additive manufacturing, and sustainable chemical processes. 
+  </div>
+</div>
+<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+  <div style="flex: 1; text-align: center;">
+    <img src="/Reference_Files/Contributions/Greg.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;">
+  </div>
+   <div style="flex: 2; text-align: justify;">
+    Gregory Santilli is a mechanical engineer at Maarky Thermal Systems, designing large equipment for powerplants.  He holds B.S. in Mechanical Engineering.  He also completed an internship at Rowan University which involved designing this website and creating codes to obtain thermodynamic properties of molecules as well as implementing learning modules and research from Dr. Yenkie’s group.  
   </div>
 </div>
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
