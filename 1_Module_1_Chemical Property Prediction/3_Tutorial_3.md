@@ -37,7 +37,7 @@ import numpy as np    # Stores numbers in arrays and runs fast calculations on t
 import pandas as pd   # Opens the data file as a table and find rows by their SMILES string
 ```
 
-
+Cell 1 Purpose: Import required libraries to run codes in subsequent cells
 
 
 
@@ -48,7 +48,7 @@ DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/R
 df = pd.read_excel(DATABASE_PATH)
 ```
 
-
+Cell 2 Purpose: Defines path to database in the GitHub repository and defines a variable to read the database.  
 
 
 
@@ -98,7 +98,7 @@ dtype: object
 ```
 </details>
 
-
+Cell 3 Purpose: Split descriptors into climate change impact and human health impact, and then display properties of propanol.  
 
 
 ```
@@ -135,7 +135,7 @@ def obtain_Enthalpy_Of_Formation(MOLECULE, SMILES):
     return Property
 ```
 
-
+Cell 4 Purpose: Show how you can change which property from the database you want to display.  Here, a function is being created to show the enthalpy of formation for a molecule.  
 
 
 
@@ -154,6 +154,7 @@ Name: CCCO, dtype: object
 ```
 </details>
 
+Cell 5 Purpose: Call the function created above in cell 4 to show the enthalpy of formation for propanol.  
 
 ### Discussion / Analysis
 
