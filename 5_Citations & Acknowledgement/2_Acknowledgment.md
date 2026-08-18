@@ -1,4 +1,9 @@
 # Citations
+
+This website was created with support from a [CACHE](https://cache.org/information-center) (Computer Aids for Chemical Engineering) [grant](https://cache.org/computational-tools-development).
+
+The following publications, software packages, computational resources, databases, and documentation were used in the development of the educational modules and tutorials.
+
 ***
 
 <a id="ref-1"></a>
