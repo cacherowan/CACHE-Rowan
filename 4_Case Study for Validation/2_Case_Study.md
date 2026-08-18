@@ -91,3 +91,5 @@ $$
     </tr>
   </tbody>
 </table>
+
+## 2.3 Total GWP of IPA-Water Case Study
