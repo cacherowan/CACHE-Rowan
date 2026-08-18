@@ -1,4 +1,4 @@
-# Tutorial 3: Chemical Property Estimation (Standard Enthalpy of Formation for Gases using the Database)
+# Tutorial 3: Chemical Property Extraction (Standard Enthalpy of Formation for Gases from the Excel Database)
 
 ***
 
