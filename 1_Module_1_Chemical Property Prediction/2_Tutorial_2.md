@@ -179,7 +179,7 @@ Successfully installed rdkit-2026.3.3
 
 </details>
 
-
+Cell 1 Purpose: Install packages for ASE, MACE-OFF, and RDKit.  
 
 
 
@@ -215,7 +215,7 @@ cuequivariance or cuequivariance_torch is not available. Cuequivariance accelera
 ```
 </details>
 
-
+Cell 2 Purpose: Import required libraries to run codes in subsequent cells.  
 
 
 
@@ -231,11 +231,12 @@ SMILES = "O=C=O"          # Carbon Dioxide
 # SMILES = "CCCC"       # Butane
 
 TEMPERATURE_K  = 298.15   # Temperature in [K] (temperature focused on in the chart below)
-MODEL_SIZE     = "small"  # 'small' (fast) | 'medium' | 'large' (A greater size generally correlates to higher accuracy with the cost of computational time)
+MODEL_SIZE     = "medium"  # 'small' (fast) | 'medium' | 'large' (A greater size generally correlates to higher accuracy with the cost of computational time)
 DEVICE         = "cpu"    # 'cpu' or 'cuda' (Determines what the code will be running on, a cpu or cuda core (gpu))
 FMAX           = 0.01     # eV/Å optimisation threshold use between 0.01 and 0.05 depending on how long the code runs for (higher threshold runs faster)
 ```
 
+Cell 3 Purpose: Defines carbon dioxide molecule using SMILES and some input parameters for using MACE-OFF in subsequent cells
 
 ### <span style="color:Green">**Carbon Dioxide**</span>
 
@@ -310,6 +311,7 @@ Validating molecule...
 ```
 </details>
 
+Cell 4 Purpose: Validates SMILES and outputs some property information.  
 
 ```
 # Cell 5: Defines Function to Create Atom layout to be optimized later by MACE-OFF
@@ -349,7 +351,7 @@ Symbols: ['O', 'C', 'O']
 ```
 </details>
 
-
+Cell 5 Purpose: After validation of SMILES, this cell takes the SMILES and constructs the molecule using RDKit.  
 
 
 ```
@@ -374,14 +376,14 @@ print(f"  Max force     : {np.max(np.linalg.norm(atoms.get_forces(), axis=1)):.4
 <summary>Expected output</summary>
 
 ```text
-Loading MACE-OFF (small) on cpu...
-Downloading MACE model from 'https://raw.githubusercontent.com/ACEsuit/mace-off/main/mace_off23/MACE-OFF23_small.model'
+Loading MACE-OFF (medium) on cpu...
+Downloading MACE model from 'https://raw.githubusercontent.com/ACEsuit/mace-off/main/mace_off23/MACE-OFF23_medium.model'
 The model is distributed under the Academic Software License (ASL) license, see https://github.com/gabor1/ASL 
  To use the model you accept the terms of the license.
 ASL is based on the Gnu Public License, but does not permit commercial use
-Downloading: 100.0% (7.0 MB / 7.0 MB)
-Cached MACE model to /root/.cache/mace/MACE-OFF23_small.model
-Using MACE-OFF23 MODEL for MACECalculator with /root/.cache/mace/MACE-OFF23_small.model
+Downloading: 100.0% (17.5 MB / 17.5 MB)
+Cached MACE model to /root/.cache/mace/MACE-OFF23_medium.model
+Using MACE-OFF23 MODEL for MACECalculator with /root/.cache/mace/MACE-OFF23_medium.model
 Using float64 for MACECalculator, which is slower but more accurate. Recommended for geometry optimization.
 /usr/local/lib/python3.12/dist-packages/mace/calculators/mace.py:226: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
   torch.load(f=model_path, map_location=device)
@@ -389,10 +391,12 @@ Calculator ready.
 
 Optimising geometry with MACE-OFF...
 Optimisation complete.
-  Energy        : -5135.004490 eV = -495450.908255 kJ
-  Max force     : 0.0029 eV/Å
+  Energy        : -5135.151897 eV = -495465.130773 kJ
+  Max force     : 0.0048 eV/Å
 ```
 </details>
+
+Cell 6 Purpose: Load MACE-OFF and optimize molecule.  
 
 | <img src="/Reference_Files/Tutorial_2_Files/Before_Optimization_Image.png"/> | <img src="/Reference_Files/Tutorial_2_Files/After_Optimization_Image.png"/> |
 | :--: | :--: |
@@ -454,12 +458,14 @@ Imaginary/zero   : 5
 Real modes kept  : 4
 
 Vibrational frequencies (real modes):
-  Mode   1:     544.67 cm⁻¹
-  Mode   2:     545.31 cm⁻¹
-  Mode   3:    1248.69 cm⁻¹
-  Mode   4:    2170.02 cm⁻¹
+  Mode   1:     673.48 cm⁻¹
+  Mode   2:     673.87 cm⁻¹
+  Mode   3:    1384.89 cm⁻¹
+  Mode   4:    2395.61 cm⁻¹
 ```
 </details>
+
+Cell 7 Purpose: Find the total energy of the molecule including vibrational energy.  This cell also filters out imaginary frequencies.  
 
 <img src="/Reference_Files/Tutorial_2_Files/Possible_Molecular_Moves.jpg"/>
 
@@ -509,12 +515,12 @@ print(f"{'='*45}")
   GAS HEAT CAPACITY — CO2
   T = 298.15 K
 =============================================
-  Cₚ =    39.49  J/(mol·K)
+  Cₚ =    36.94  J/(mol·K)
 =============================================
 ```
 </details>
 
-
+Cell 8 Purpose: Uses IdealGasThermo class to the enthalpy of the molecule.  Then you use finite difference to estimate the heat capacity of a molecule at a specific temperature.  
 
 
 ```
@@ -546,7 +552,7 @@ plt.show()
 
 </details>
 
-
+Cell 9 Purpose: Plots the heat capacity as a function of temperature.  
 
 
 ```
@@ -598,29 +604,29 @@ display(df_1)
 
 ```text
 	Temperature in [K]	Cp [J/mol*K]	Percent Error in [%]
-0	298	39.481254	6.361137
-1	300	39.569514	6.312503
-2	400	43.418865	5.028701
-3	500	46.457367	4.141149
-4	600	48.939651	3.422763
-5	700	50.986733	2.858046
-6	800	52.674306	2.399506
-7	900	54.063725	2.007029
-8	1000	55.208434	1.672990
-9	1100	56.154236	1.361438
-10	1200	56.939247	1.045691
+0	298	36.938209	0.489740
+1	300	37.028206	0.515298
+2	400	41.068667	0.656344
+3	500	44.321863	0.645902
+4	600	46.988889	0.699728
+5	700	49.203705	0.738944
+6	800	51.050402	0.757383
+7	900	52.591041	0.771621
+8	1000	53.877118	0.778788
+9	1100	54.952677	0.807443
+10	1200	55.855037	0.878373
 
 
 
 Temperature in [K]	Cp [J/mol*K]	Percent Error in [%]
-0	3000	61.308486	1.480819
-1	4000	61.757324	2.359961
-2	5000	61.970529	3.261740
-3	6000	62.087835	4.450855
+0	3000	61.058247	1.882940
+1	4000	61.611573	2.590399
+2	5000	61.875708	3.409760
+3	6000	62.021393	4.553104
 ```
 </details>
 
-
+Cell 10 Purpose: Evaluates the difference between MACE-OFF values and NIST values for carbon dioxide.  
 
 
 ```
@@ -723,18 +729,18 @@ plt.show()
 <summary>Expected output</summary>
 
 ```text
- Validating molecule...
+Validating molecule...
   SMILES   : [C-]#[O+]
   Formula  : CO
   Mol. wt  : 28.01 g/mol
-  Elements : {'C', 'O'}
+  Elements : {'O', 'C'}
   MACE-OFF compatible: ✓
 3D structure generated: 2 atoms
 Symbols: ['C', 'O']
 Optimising geometry with MACE-OFF...
 Optimisation complete.
-  Energy        : -3083.728132 eV
-  Max force     : 0.0004 eV/Å
+  Energy        : -3083.920346 eV
+  Max force     : 0.0078 eV/Å
 Running vibrational analysis (6 force evaluations)...
 ✓  0 imaginary mode(s) filtered — looks clean.
 
@@ -743,13 +749,13 @@ Imaginary/zero   : 5
 Real modes kept  : 1
 
 Vibrational frequencies (real modes):
-  Mode   1:    2199.85 cm⁻¹
+  Mode   1:    2074.55 cm⁻¹
 
 =============================================
   GAS HEAT CAPACITY — CO
   T = 298.15 K
 =============================================
-  Cₚ =    29.12  J/(mol·K)
+  Cₚ =    29.14  J/(mol·K)
 =============================================
 ```
 
@@ -757,6 +763,7 @@ Vibrational frequencies (real modes):
 
 </details>
 
+Cell 11 Purpose: Computes the same information from the previous cells except this time for carbon monoxide.  
 
 ### <span style="color:Green">**Carbon Monoxide**</span>
 
@@ -835,30 +842,30 @@ display(df_1)
 
 ```text
 	Temperature in [K]	Cp [J/mol*K]	Percent Error in [%]
-0	298	29.123484	0.090963
-1	300	29.124837	0.086323
-2	400	29.291302	0.029686
-3	500	29.696333	0.414713
-4	600	30.296759	0.568563
-5	700	30.989528	0.578991
-6	800	31.688677	0.600136
-7	900	32.343927	0.633096
-8	1000	32.933110	0.744094
-9	1100	33.450880	0.827513
-10	1200	33.900440	0.875906
-11	1300	34.288624	0.756515
+0	298	29.137868	0.041619
+1	300	29.139912	0.034606
+2	400	29.366873	0.228236
+3	500	29.861576	0.139423
+4	600	30.542401	0.237615
+5	700	31.288024	0.378646
+6	800	32.012644	0.416072
+7	900	32.673001	0.377884
+8	1000	33.254282	0.223876
+9	1100	33.756773	0.079373
+10	1200	34.187455	0.036682
+11	1300	34.555511	0.015950
 
 
 
 Temperature in [K]	Cp [J/mol*K]	Percent Error in [%]
-0	3000	36.684925	1.384611
-1	4000	36.994491	1.923408
-2	5000	37.142889	2.435279
-3	6000	37.224902	2.984356
+0	3000	36.761837	1.177857
+1	4000	37.039759	1.803397
+2	5000	37.172479	2.357556
+3	6000	37.245688	2.930185
 ```
 </details>
 
-
+Cell 12 Purpose: Evaluates the difference between MACE-OFF values and NIST values for carbon monoxide.  
 
 
 ```
@@ -961,18 +968,18 @@ plt.show()
 <summary>Expected output</summary>
 
 ```text
- Validating molecule...
+Validating molecule...
   SMILES   : [H]OO[H]
   Formula  : H2O2
   Mol. wt  : 34.01 g/mol
-  Elements : {'H', 'O'}
+  Elements : {'O', 'H'}
   MACE-OFF compatible: ✓
 3D structure generated: 4 atoms
 Symbols: ['O', 'O', 'H', 'H']
 Optimising geometry with MACE-OFF...
 Optimisation complete.
-  Energy        : -4126.604231 eV
-  Max force     : 0.0008 eV/Å
+  Energy        : -4126.617787 eV
+  Max force     : 0.0024 eV/Å
 Running vibrational analysis (12 force evaluations)...
 ✓  0 imaginary mode(s) filtered — looks clean.
 
@@ -981,18 +988,18 @@ Imaginary/zero   : 6
 Real modes kept  : 6
 
 Vibrational frequencies (real modes):
-  Mode   1:     423.91 cm⁻¹
-  Mode   2:    1007.43 cm⁻¹
-  Mode   3:    1520.81 cm⁻¹
-  Mode   4:    1521.78 cm⁻¹
-  Mode   5:    3787.79 cm⁻¹
-  Mode   6:    3791.16 cm⁻¹
+  Mode   1:     346.89 cm⁻¹
+  Mode   2:    1014.10 cm⁻¹
+  Mode   3:    1413.11 cm⁻¹
+  Mode   4:    1575.46 cm⁻¹
+  Mode   5:    3818.13 cm⁻¹
+  Mode   6:    3843.96 cm⁻¹
 
 =============================================
   GAS HEAT CAPACITY — H2O2
   T = 298.15 K
 =============================================
-  Cₚ =    41.32  J/(mol·K)
+  Cₚ =    42.05  J/(mol·K)
 =============================================
 ```
 
@@ -1000,6 +1007,7 @@ Vibrational frequencies (real modes):
 
 </details>
 
+Cell 13 Purpose: Computes the same information from the previous cells except this time for hydrogen peroxide.  
 
 ### <span style="color:Green">**Hydrogen Peroxide**</span>
 
@@ -1054,25 +1062,25 @@ display(df)
 <summary>Expected output</summary>
 
 ```text
-	Temperature in [K]	Cp [J/mol*K]	Percent Error in [%]
-0	298	41.312224	4.081206
-1	300	41.389589	4.190765
-2	400	45.322031	6.840636
-3	500	49.063961	6.562634
-4	600	52.347185	5.680748
-5	700	55.169714	4.748422
-6	800	57.627260	3.794223
-7	900	59.810186	2.826668
-8	1000	61.778230	1.861429
-9	1100	63.566036	0.941193
-10	1200	65.193738	0.116841
-11	1300	66.674707	0.565170
-12	1400	68.019790	1.024492
-13	1500	69.239161	1.197254
+Temperature in [K]	Cp [J/mol*K]	Percent Error in [%]
+0	298	42.047975	2.372940
+1	300	42.120797	2.498155
+2	400	45.893051	5.666904
+3	500	49.538508	5.658906
+4	600	52.740797	4.971536
+5	700	55.487803	4.199235
+6	800	57.875608	3.379619
+7	900	59.996516	2.523939
+8	1000	61.911483	1.649748
+9	1100	63.655332	0.802038
+10	1200	65.247597	0.034324
+11	1300	66.700623	0.604259
+12	1400	68.024088	1.030875
+13	1500	69.227024	1.179515
 ```
 </details>
 
-
+Cell 14 Purpose: Evaluates the difference between MACE-OFF values and NIST values for hydrogen peroxide. 
 
 
 ```
@@ -1173,7 +1181,7 @@ plt.show()
 <summary>Expected output</summary>
 
 ```text
- Validating molecule...
+Validating molecule...
   SMILES   : C
   Formula  : CH4
   Mol. wt  : 16.04 g/mol
@@ -1183,7 +1191,7 @@ plt.show()
 Symbols: ['C', 'H', 'H', 'H', 'H']
 Optimising geometry with MACE-OFF...
 Optimisation complete.
-  Energy        : -1103.060024 eV
+  Energy        : -1103.060054 eV
   Max force     : 0.0016 eV/Å
 Running vibrational analysis (15 force evaluations)...
 ✓  0 imaginary mode(s) filtered — looks clean.
@@ -1193,29 +1201,29 @@ Imaginary/zero   : 6
 Real modes kept  : 9
 
 Vibrational frequencies (real modes):
-  Mode   1:    1329.32 cm⁻¹
-  Mode   2:    1329.40 cm⁻¹
-  Mode   3:    1329.56 cm⁻¹
-  Mode   4:    1546.79 cm⁻¹
-  Mode   5:    1546.97 cm⁻¹
-  Mode   6:    3046.53 cm⁻¹
-  Mode   7:    3166.93 cm⁻¹
-  Mode   8:    3167.10 cm⁻¹
-  Mode   9:    3167.34 cm⁻¹
+  Mode   1:    1333.47 cm⁻¹
+  Mode   2:    1333.55 cm⁻¹
+  Mode   3:    1333.71 cm⁻¹
+  Mode   4:    1544.11 cm⁻¹
+  Mode   5:    1544.29 cm⁻¹
+  Mode   6:    3056.75 cm⁻¹
+  Mode   7:    3162.55 cm⁻¹
+  Mode   8:    3162.71 cm⁻¹
+  Mode   9:    3162.93 cm⁻¹
 
 =============================================
   GAS HEAT CAPACITY — CH4
   T = 298.15 K
 =============================================
-  Cₚ =    35.48  J/(mol·K)
+  Cₚ =    35.46  J/(mol·K)
 =============================================
-
 ```
 
 <img src="/Reference_Files/Tutorial_2_Files/heat_capacity_CH4.png"/>
 
 </details>
 
+Cell 15 Purpose: Computes the same information from the previous cells except this time for methane. 
 
 ### <span style="color:Green">**Methane**</span>
 
@@ -1292,29 +1300,32 @@ display(df_1)
 <summary>Expected output</summary>
 
 ```text
-	Temperature in [K]	Cp [J/mol*K]	Percent Error in [%]
-0	298	35.471427	0.612420
-1	300	35.541741	0.610345
-2	400	40.161323	1.153525
-3	500	45.839422	1.695428
-4	600	51.548170	2.259821
-5	700	56.936600	2.838567
-6	800	61.916711	3.375919
-7	900	66.467289	3.865652
-8	1000	70.586276	4.289795
-9	1100	74.284478	4.665711
-10	1200	77.583887	5.014829
-11	1300	80.514526	5.354972
+Temperature in [K]	Cp [J/mol*K]	Percent Error in [%]
+0	298	35.453303	0.663202
+1	300	35.523286	0.661953
+2	400	40.130441	1.229533
+3	500	45.805146	1.768934
+4	600	51.516004	2.320812
+5	700	56.908704	2.886171
+6	800	61.893504	3.412135
+7	900	66.448430	3.892927
+8	1000	70.571158	4.310295
+9	1100	74.272452	4.681145
+10	1200	77.574359	5.026495
+11	1300	80.506991	5.363829
 
 
 
 Temperature in [K]	Cp [J/mol*K]	Percent Error in [%]
-0	3000	36.684925	1.384611
-1	4000	36.994491	1.923408
-2	5000	37.142889	2.435279
-3	6000	37.224902	2.984356
+0	3000	36.761837	1.177857
+1	4000	37.039759	1.803397
+2	5000	37.172479	2.357556
+3	6000	37.245688	2.930185
 ```
 </details>
+
+Cell 16 Purpose: Evaluates the difference between MACE-OFF values and NIST values for methane. 
+
 
 ### Discusion / Analysis
 

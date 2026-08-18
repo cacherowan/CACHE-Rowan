@@ -452,7 +452,7 @@ Enthalpy of NH3 at 298 K: -148494.0501 kJ/mol
 
 </details>
 
-Cell 5 Purpose: Utilize the result function created above to compute chemical properties for Ammonia.  
+Cell 5 Purpose: Utilize the result function created above to compute chemical properties for ammonia.  
 
 ### <span style="color:Green">**Ammonia**</span>
 
@@ -529,7 +529,7 @@ Enthalpy of CH3CHOHCH3 at 298 K: -510304.2282 kJ/mol
 
 </details>
 
-Cell 6 Purpose: Utilize the result function created above to compute chemical properties for Propanol.  
+Cell 6 Purpose: Utilize the result function created above to compute chemical properties for propanol.  
 
 ### <span style="color:Green">**Propanol**</span>
 
@@ -591,7 +591,7 @@ Enthalpy of CH3OH at 298 K: -303878.8150 kJ/mol
 
 </details>
 
-Cell 7 Purpose: Utilize the result function created above to compute chemical properties for Methanol.  
+Cell 7 Purpose: Utilize the result function created above to compute chemical properties for methanol.  
 
 ### <span style="color:Green">**Methanol**</span>
 
@@ -653,7 +653,7 @@ Enthalpy of C3H8 at 298 K: -312705.5004 kJ/mol
 
 </details>
 
-Cell 8 Purpose: Utilize the result function created above to compute chemical properties for Propane.  
+Cell 8 Purpose: Utilize the result function created above to compute chemical properties for propane.  
 
 ### <span style="color:Green">**Propane**</span>
 
@@ -715,7 +715,7 @@ Enthalpy of C4H4S at 298 K: -1452184.0486 kJ/mol
 
 </details>
 
-Cell 9 Purpose: Utilize the result function created above to compute chemical properties for Thiophene.  
+Cell 9 Purpose: Utilize the result function created above to compute chemical properties for thiophene.  
 
 ### <span style="color:Green">**Thiophene**</span>
 
@@ -1111,6 +1111,8 @@ Chemical Name	MACE-OFF Standard Formation Enthalpy [kJ/mol]	Database Standard Fo
 ```
 
 </details>
+
+Cell 20 Purpose: Display percent error between simulated values and the database values.  
 
 ### Discussion / Analysis
 
