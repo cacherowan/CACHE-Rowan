@@ -254,7 +254,7 @@ Successfully installed appdirs-1.4.4 configargparse-1.7.5 e3nn-0.4.4 jedi-0.20.0
 
 </details>
 
-
+Cell 1 Purpose: Install packages for ASE and MACE-OFF. 
 
 
 ```
@@ -286,7 +286,7 @@ cuequivariance or cuequivariance_torch is not available. Cuequivariance accelera
 ```
 </details>
 
-
+Cell 2 Purpose: Import required libraries to run codes in subsequent cells. 
 
 
 ```
@@ -318,7 +318,7 @@ MACE-OFF loaded.
 
 </details>
 
-
+Cell 3 Purpose: Load MACE-OFF medium model to get the energy of molecules that are simulated. 
 
 
 ```
@@ -389,6 +389,8 @@ display(df1)
 ```
 
 </details>
+
+Cell 4 Purpose: Build the Propanol molecule, minimize the force on the molecule, obtain energies using MACE-OFF potential.  Then you use this energy and ASE to compute the properties including enthalpy, entropy, and gibbs free energy at various temperatures.  
 
 ### <span style="color:Green">**Propanol**</span>
 
