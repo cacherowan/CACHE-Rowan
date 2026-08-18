@@ -91,3 +91,8 @@ $$
     </tr>
   </tbody>
 </table>
+
+## 2.3 Total GWP of IPA-Water Case Study
+$$
+GWP_{Total} = GWP_{Production-phase} + GWP_{Use-phase}
+$$
