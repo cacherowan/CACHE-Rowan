@@ -34,11 +34,28 @@ $$
 
 The ANN predicts IPA's production GWP directly from its molecular and thermodynamic descriptors  as 1.902 kg CO₂-eq/kg
 
-| Chemical      | Impact (Production Phase, kg CO₂-eq/kg) |
-|---------------|:-----------------------------------------:|
-| Isopropanol   |                                             |
-| Water         |                                             |
-| **Total**     |                                             |
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+  <thead>
+    <tr style="background-color: #8B1E2E; color: white;">
+      <th style="border: 1px solid #ccc; padding: 10px; text-align: left;">Chemical</th>
+      <th style="border: 1px solid #ccc; padding: 10px; text-align: center;">Impact (Production Phase, kg CO₂-eq/kg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 10px;">Isopropanol</td>
+      <td style="border: 1px solid #ccc; padding: 10px; text-align: center;"></td>
+    </tr>
+    <tr style="background-color: #f5f5f5;">
+      <td style="border: 1px solid #ccc; padding: 10px;">Water</td>
+      <td style="border: 1px solid #ccc; padding: 10px; text-align: center;"></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold;">Total</td>
+      <td style="border: 1px solid #ccc; padding: 10px; text-align: center;"></td>
+    </tr>
+  </tbody>
+</table>
 
 :::{note}
 To calculate this yourself, go to Production Phase Impact Prediction → Tutorial 1: Climate Change Impact Prediction Using ANN Model, select IPA as the chemical, and run the prediction to obtain its climate change (GWP) impact directly from the ANN model.
@@ -52,8 +69,25 @@ $$
 \frac{GWP_{new}}{GWP_{ref}} = (\frac{F_{new}}{F_{ref}})^\alpha = (\frac{E_{new}}{E_{ref}})^\beta
 $$
 
-| Technology     | Impact (Use Phase, kg CO₂-eq/kg) |
-|----------------|:-----------------------------------:|
-| Distillation   |                                       |
-| Pervaporation  |                                       |
-| **Total**      |                                       |
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+  <thead>
+    <tr style="background-color: #8B1E2E; color: white;">
+      <th style="border: 1px solid #ccc; padding: 10px; text-align: left;">Technology</th>
+      <th style="border: 1px solid #ccc; padding: 10px; text-align: center;">Impact (Use Phase, kg CO₂-eq/kg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 10px;">Distillation</td>
+      <td style="border: 1px solid #ccc; padding: 10px; text-align: center;"></td>
+    </tr>
+    <tr style="background-color: #f5f5f5;">
+      <td style="border: 1px solid #ccc; padding: 10px;">Pervaporation</td>
+      <td style="border: 1px solid #ccc; padding: 10px; text-align: center;"></td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold;">Total</td>
+      <td style="border: 1px solid #ccc; padding: 10px; text-align: center;"></td>
+    </tr>
+  </tbody>
+</table>
