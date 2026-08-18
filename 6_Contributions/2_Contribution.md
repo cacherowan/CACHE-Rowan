@@ -60,6 +60,14 @@
     Andres Castellar-Freile is a Chemical Engineering Ph.D. candidate at Rowan University, conducting research in the Sustainable Design and Systems Medicine Lab. He holds a B.S. in Chemical Engineering from Universidad del Atlántico, where he graduated with top honors and the highest GPA in the Faculty of Engineering. His research bridges artificial intelligence, process optimization, and sustainable systems design. Andres specializes in combining graph-theoretic frameworks with machine learning, vision-language models, and molecular dynamics simulations to solve complex engineering problems. His core projects focus on improving wastewater treatment networks, decision-making in plastic pyrolysis pathways, and modeling reverse micelle exchange dynamics for targeted biomolecule delivery. 
   </div>
 </div>
+div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+  <div style="flex: 1; text-align: center;">
+    <img src="/Reference_Files/Contributions/Barnabas.png" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;">
+  </div>
+   <div style="flex: 2; text-align: justify;">
+    Barnabas Gao is a passionate chemical engineer currently pursuing his PhD at Rowan University in Glassboro, New Jersey at the Sustainable Design and Systems Medicine lab (SDSML). His research is centered around systems-level analysis, mathematical modeling, process design, process development, scale-up & optimization, with the integration of machine learning and high-performance computing to innovate and improve process efficiencies. He has contributed to the development of educational modules, and videos for STEM outreach on Sustainability, as well as mentoring several undergraduate students. He has received multiple awards throughout his research and professional journey from STLE, ACS, and AIChE Divisions among others. He received his Bachelor of Science degree from Kwame Nkrumah University of Science and Technology in Ghana.  
+  </div>
+</div>
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
   <div style="flex: 1; text-align: center;">
     Add the next contributor photo here.
