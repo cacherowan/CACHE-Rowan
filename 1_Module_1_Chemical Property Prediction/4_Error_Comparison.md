@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# Tutoiral 4: Model Validation Metrics
+# Tutorial 4: Model Validation Metrics
 
 ***
 
