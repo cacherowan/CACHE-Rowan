@@ -51,3 +51,9 @@ The recovery-phase GWP sums over k ∈ {distillation, pervaporation, each scaled
 $$
 \frac{GWP_{new}}{GWP_{ref}} = (\frac{F_{new}}{F_{ref}})^\alpha = (\frac{E_{new}}{E_{ref}})^\beta
 $$
+
+| Technology     | Impact (Use Phase, kg CO₂-eq/kg) |
+|----------------|:-----------------------------------:|
+| Distillation   |                                       |
+| Pervaporation  |                                       |
+| **Total**      |                                       |
