@@ -4,11 +4,11 @@ kernelspec:
   display_name: Python 3
 ---
 
-# Tutorial 1: Chemical Property Estimation (Enthalpy, Entropy, and Gibbs Free Energy for Gases)
+# Tutorial 1: Thermochemical Property Estimation (Enthalpy, Entropy, and Gibbs Free Energy for Gases)
 
 ***
 
-In this tutorial you will learn how to use ASE and MACE-OFF to get Chemical Properties of Atoms and Molecules using a Machine Learning Potential (MACE-OFF)
+In this tutorial you will learn how to use ASE [6] and MACE-OFF [1] to estimate Thermohemical Properties of Atoms and Molecules using a Machine Learning Potential (MACE-OFF)
 
 ***
 
@@ -25,21 +25,20 @@ The libraries / packages listed in cell 2 will have a brief explanation of their
 
 | Library / Package | Link to Documentations |
 | :--: | :--: |
-| numpy | [NumPy Documentation](https://numpy.org/doc/stable/) |
-| pandas | [Pandas Documentation](https://pandas.pydata.org/docs/) |
-| chem | [rdkit.chem Documentation](https://www.rdkit.org/docs/source/rdkit.html) |
+| numpy | [NumPy Documentation [7]](https://numpy.org/doc/stable/) | 
+| pandas | [Pandas Documentation [8]](https://pandas.pydata.org/docs/) |
+| chem | [rdkit.chem Documentation [9]](https://www.rdkit.org/docs/source/rdkit.html) |
 | AllChem | Same Link as above |
-| mace_off | [MACE Calculator Documentation](https://mace-web-interface.readthedocs.io/en/latest/guide/mace-calculator-parameters/#mace_off-organic-force-field-mace-off23) |
-| mace_off | [MACE Descriptors Documentation](https://mace-docs.readthedocs.io/en/latest/guide/descriptors.html) |
-| atoms | [Atoms Object Documentation](https://ase.gitlab.io/ase/ase/atoms.html#ase.Atoms) |
-| molecule | [Molecules Documentation](https://docs.ase-lib.org/ase/build/build.html#ase.build.molecule) |
-| QuasiNewton | [Structure Optimization Documentation](https://docs.ase-lib.org/ase/optimize.html) |
-| Vibrations | [Vibrational Modes Documentation](https://ase.gitlab.io/ase/ase/vibrations/modes.html#module-ase.vibrations) |
-| IdealGasThermo | [Ideal-gas limit Documentation](https://ase.gitlab.io/ase/ase/thermochemistry/thermochemistry.html#ase.thermochemistry.IdealGasThermo) |
-| units | [Units Documentation](https://ase.gitlab.io/ase/ase/units.html#module-ase.units) |
+| mace_off | [MACE Calculator Documentation [10]](https://mace-web-interface.readthedocs.io/en/latest/guide/mace-calculator-parameters/#mace_off-organic-force-field-mace-off23) |
+| mace_off | [MACE Descriptors Documentation [11]](https://mace-docs.readthedocs.io/en/latest/guide/descriptors.html) |
+| atoms | [Atoms Object Documentation [12]](https://ase.gitlab.io/ase/ase/atoms.html#ase.Atoms) |
+| molecule | [Molecules Documentation [13]](https://docs.ase-lib.org/ase/build/build.html#ase.build.molecule) |
+| QuasiNewton | [Structure Optimization Documentation [14]](https://docs.ase-lib.org/ase/optimize.html) |
+| Vibrations | [Vibrational Modes Documentation [15]](https://ase.gitlab.io/ase/ase/vibrations/modes.html#module-ase.vibrations) |
+| IdealGasThermo | [Ideal-gas limit Documentation [16]](https://ase.gitlab.io/ase/ase/thermochemistry/thermochemistry.html#ase.thermochemistry.IdealGasThermo) |
+| units | [Units Documentation [17]](https://ase.gitlab.io/ase/ase/units.html#module-ase.units) |
 
 Click the button below to open this code in Google Colab
-
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Google_Colab_Files/Tutorial_1.ipynb)
 
@@ -54,7 +53,7 @@ Click the button below to open this code in Google Colab
 !pip install mace-torch ase rdkit weas-widget
 ```
 <details>
-<summary>Expected output</summary>
+<summary>Expected output: Required packages installed</summary>
 
 ```text
 
@@ -278,7 +277,7 @@ from ase.thermochemistry import IdealGasThermo  # Allows you to calculate entrop
 from ase.units import kJ, mol                   # Conversion for units
 ```
 <details>
-<summary>Expected output</summary>
+<summary>Expected output: Libraries imported successfully</summary>
 
 ```text
 /usr/local/lib/python3.12/dist-packages/e3nn/o3/_wigner.py:10: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
@@ -298,7 +297,7 @@ calc_mol = mace_off(model="small", default_dtype="float64")
 print("MACE-OFF loaded.")
 ```
 <details>
-<summary>Expected output</summary>
+<summary>Expected output: MACE-OFF model loaded</summary>
 
 ```text
 
@@ -377,16 +376,16 @@ df1 = pd.DataFrame(records)
 display(df1)
 ```
 <details>
-<summary>Expected output</summary>
+<summary>Expected output: Thermodynamic properties of propanol</summary>
 
 ```text
-T (K)	H (kJ)	S (kJ/K)	G (kJ)
-0	298.15	-510303.027435	0.301001	-510392.770753
-1	400.00	-510293.228129	0.329111	-510424.872461
-2	500.00	-510281.390242	0.355439	-510459.109522
-3	600.00	-510267.574571	0.380577	-510495.920554
-4	700.00	-510252.060535	0.404461	-510535.182949
-5	800.00	-510235.093697	0.427097	-510576.771020
+      T(K)	   H (kJ/mol)	     S (kJ/mol K)	 G (kJ)
+0	    298.15	-510303.027435	 0.301001	    -510392.770753
+1	    400.00	-510293.228129	 0.329111	    -510424.872461
+2	    500.00	-510281.390242	 0.355439	    -510459.109522
+3	    600.00	-510267.574571	 0.380577	    -510495.920554
+4	    700.00	-510252.060535	 0.404461	    -510535.182949
+5	    800.00	-510235.093697	 0.427097	    -510576.771020
 ```
 
 </details>
@@ -417,7 +416,6 @@ view.zoomTo()
 view.zoom(2)
 view.show()
 ```
-
 
 ### Discussion / Analysis
 

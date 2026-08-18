@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# Tutorial 2: Chemical Property Estimation (Heat Capacity for Gases)
+# Tutorial 2: Thermochemical Property Estimation (Heat Capacity for Gases)
 
 ***
 
@@ -14,7 +14,7 @@ In this tutorial you will learn how to compute the heat capacity of a gas using 
 
 ### Background Information: 
 
-Heat capacity is the amount of energy it takes to raise the temperature of a specific substance by 1 degree Kelvin.  This code estimate this value using the idea that at constant pressure, the change in enthalpy with respect to the change in temperature is equal to the heat capacity. 
+The molar heat capacity at constant pressure, describes how the enthalpy of a substance changes with temperature at constant pressure.  This code estimate this value using the idea that at constant pressure, the change in enthalpy with respect to the change in temperature is equal to the heat capacity. 
 
 
 $$
@@ -36,20 +36,20 @@ The libraries / packages listed in cell 2 will have a brief explanation of their
 
 | Library / Package | Link to Documentations |
 | :--: | :--: |
-| numpy | [NumPy Documentation](https://numpy.org/doc/stable/) |
-| matplotlib.pyplot | [Matplotlib.pyplot](https://matplotlib.org/stable/api/pyplot_summary.html) |
-| pandas | [Pandas Documentation](https://pandas.pydata.org/docs/) |
-| chem | [rdkit.chem Documentation](https://www.rdkit.org/docs/source/rdkit.html) |
+| numpy | [NumPy Documentation [7]](https://numpy.org/doc/stable/) |
+| matplotlib.pyplot | [Matplotlib.pyplot [18]](https://matplotlib.org/stable/api/pyplot_summary.html) |
+| pandas | [Pandas Documentation [8]](https://pandas.pydata.org/docs/) |
+| chem | [rdkit.chem Documentation [9]](https://www.rdkit.org/docs/source/rdkit.html) |
 | AllChem | Same link as above |
 | Descriptors | Same link as above |
 | rdMolDescriptors | Same Link as above |
-| mace_off | [MACE Calculator Documentation](https://mace-web-interface.readthedocs.io/en/latest/guide/mace-calculator-parameters/#mace_off-organic-force-field-mace-off23) |
-| mace_off | [MACE Descriptors Documentation](https://mace-docs.readthedocs.io/en/latest/guide/descriptors.html) |
-| atoms | [Atoms Object Documentation](https://ase.gitlab.io/ase/ase/atoms.html#ase.Atoms) |
-| units | [Units Documentation](https://ase.gitlab.io/ase/ase/units.html#module-ase.units) |
-| LBFGS | [Structure Optimization Documentation](https://docs.ase-lib.org/ase/optimize.html) |
-| Vibrations | [Vibrational Modes Documentation](https://ase.gitlab.io/ase/ase/vibrations/modes.html#module-ase.vibrations) |
-| IdealGasThermo | [Ideal-gas limit Documentation](https://ase.gitlab.io/ase/ase/thermochemistry/thermochemistry.html#ase.thermochemistry.IdealGasThermo) |
+| mace_off | [MACE Calculator Documentation [10]](https://mace-web-interface.readthedocs.io/en/latest/guide/mace-calculator-parameters/#mace_off-organic-force-field-mace-off23) |
+| mace_off | [MACE Descriptors Documentation [11]](https://mace-docs.readthedocs.io/en/latest/guide/descriptors.html) |
+| atoms | [Atoms Object Documentation [12]](https://ase.gitlab.io/ase/ase/atoms.html#ase.Atoms) |
+| units | [Units Documentation [17]](https://ase.gitlab.io/ase/ase/units.html#module-ase.units) |
+| LBFGS | [Structure Optimization Documentation [14]](https://docs.ase-lib.org/ase/optimize.html) |
+| Vibrations | [Vibrational Modes Documentation [15]](https://ase.gitlab.io/ase/ase/vibrations/modes.html#module-ase.vibrations) |
+| IdealGasThermo | [Ideal-gas limit Documentation [16]](https://ase.gitlab.io/ase/ase/thermochemistry/thermochemistry.html#ase.thermochemistry.IdealGasThermo) |
 
 Click the button below to open this code in Google Colab
 
@@ -309,8 +309,6 @@ Validating molecule...
   MACE-OFF compatible: ✓
 ```
 </details>
-
-
 
 
 ```
@@ -1102,8 +1100,6 @@ E0 = atoms.get_potential_energy()   # eV
 print(f"Optimisation complete.")
 print(f"  Energy        : {E0:.6f} eV")
 print(f"  Max force     : {np.max(np.linalg.norm(atoms.get_forces(), axis=1)):.4f} eV/Å")
-
-
 
 shutil.rmtree("vib_cache", ignore_errors=True)
 

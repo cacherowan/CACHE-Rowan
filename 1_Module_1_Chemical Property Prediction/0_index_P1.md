@@ -2,7 +2,7 @@
 
 ## What is a Molecular Dynamics Simulation?
 
-A **molecular dynamics (MD) simulation** is a computer experiment that tracks how atoms move over time. At every step, the computer looks at where the atoms are, calculates the forces between them, and nudges each atom forward by a tiny amount. That tiny amount is called the timestep, and it is usually about one femtosecond (10<sup>-15</sup> seconds). String millions of these steps together and you get a movie of atomic motion. The heart of any MD simulation is the potential. This is the mathematical function that tells the computer how strongly atoms push or pull on each other based on their positions. Without a potential, there are no forces, and nothing moves.
+A **molecular dynamics (MD) simulation** is a computer experiment that tracks how atoms move over time. At every step, the computer looks at where the atoms are, calculates the forces between them, and nudges each atom forward by a tiny amount. That tiny amount is called the timestep, and it is usually about one femtosecond (10<sup>-15</sup> seconds). String millions of these steps together and you get a movie of atomic motion. The heart of any MD simulation is the potential. The potential assigns an energy to an atomic configuration, and the forces on the atoms are obtained from how that energy changes with their positions. Without a potential, there are no forces, and nothing moves.
 
 <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/lj_potential.gif">
 
@@ -16,7 +16,7 @@ There are two ways to build a potential:
 
 Image of Lennard-Jones Potential
 
-**Machine learning (ML) potentials**, like MACE, take a different approach. Instead of writing down a physics-based formula, we train a neural network on a large dataset of accurate quantum mechanical calculations. The network learns the relationship between atomic arrangements and energies directly from the data. Once trained, it predicts energies and forces on new configurations quickly, often with accuracy close to the underlying quantum calculations.
+**Machine learning (ML) potentials**, like MACE (Message Passing Atomic Cluster Expansion) [1], take a different approach. Instead of writing down a physics-based formula, we train a neural network on a large dataset of accurate quantum mechanical calculations. The network learns the relationship between atomic arrangements and energies directly from the data. Once trained, it predicts energies and forces on new configurations quickly, often with accuracy close to the underlying quantum calculations.
 
 Both approaches give the MD simulation the same thing: a way to calculate forces so atoms can be moved forward in time. The difference is in how that function is built. Classical potentials come from physical intuition. ML potentials come from data.  
 
@@ -25,24 +25,23 @@ Both approaches give the MD simulation the same thing: a way to calculate forces
 When we set up an MD simulation, we have to pick a coordinate system to describe where each atom is. In principle, we could use internal coordinates (geometry defined based on bond lengths and angles) or polar coordinates, but almost every MD code uses plain Cartesian coordinates: each atom gets an (x, y, z) position and a velocity in each direction. There are two main reasons for this.
 
 **The equations of motion are simpler:**
-
-In Cartesian coordinates, motion along x, y, and z is independent, so Newton's equations reduce to three straightforward updates per atom. Internal coordinates couple the directions together, and the integrator has to untangle them at every step. That extra work is expensive, especially for large systems.
+In Cartesian coordinates, Newton’s equations can be written directly as separate x, y, and z component-wise updates for each atom. Internal coordinates couple the directions together, and the integrator has to untangle them at every step. That extra work is expensive, especially for large systems.
 
 **Bookkeeping scales cleanly:**
 
 A simulation box might contain thousands of molecules translating, rotating, and colliding. In Cartesian coordinates, every atom is described the same way regardless of what molecule it belongs to. Internal coordinates would require tracking which atom is bonded to which and updating those relationships as molecules move or react, which quickly becomes challenging.
 
-Because these advantages are so strong for MD, the entire software ecosystem (LAMMPS, GROMACS, trajectory formats, analysis tools, visualizers) is built around Cartesian coordinates.
+Because these advantages are so strong for MD, the entire software ecosystem (LAMMPS [2], GROMACS [3], trajectory formats, analysis tools, visualizers) is built around Cartesian coordinates.
 
 :::{note}
 Internal coordinates are not useless. They are the natural choice for normal mode analysis, some Monte Carlo methods, and small-molecule quantum chemistry, where the number of atoms is small and the connectivity does not change. For MD of many interacting molecules, Cartesian coordinates win.
 ::: 
 
-## Mace Model Sizes
+## MACE Model Sizes
 
-When you load a MACE-MP-0 model as "small", "medium", or "large", the sizes do not refer to the training data. All three models are trained on the same Materials Project dataset (about 1.5 million atomic configurations covering 89 elements) and use the same underlying MACE architecture. What differs is the internal feature representation each atom carries through the network, which grows from about 3.8 million parameters in the small model, to 4.7 million in the medium, to 5.7 million in the large. A larger internal representation lets the model capture more subtle chemistry, at the cost of slower computation per timestep. In practice, the small model is useful for quick screening or very large systems, the large model is worth it when you need high accuracy on a small system, and the medium model is the recommended default for almost everything in between. For class-sized simulations on Anvil, start with medium unless you have a reason not to.  
+When you load a MACE-MP-0 model as "small", "medium", or "large", the sizes do not refer to the training data. All three models are trained on the same Materials Project dataset (about 1.5 million atomic configurations covering 89 elements) and use the same underlying MACE architecture. What differs is the internal feature representation each atom carries through the network, which grows from about 3.8 million parameters in the small model, to 4.7 million in the medium, to 5.7 million in the large. A larger internal representation lets the model capture more subtle chemistry, at the cost of slower computation per timestep. In practice, the small model is useful for quick screening or very large systems, the large model is worth it when you need high accuracy on a small system, and the medium model is the recommended default for almost everything in between. For class-sized simulations on Anvil [4], a U.S. academic high-performance computing (HPC) cluster, the medium model is a reasonable starting point.
 
-## Stability and Optimizaion of MD Systems
+## Stability and Optimization of MD Systems
 
 All molecules have a stable form that corresponds to their minimum energy. Left alone, they naturally settle into this state. A geometry optimization uses a numerical algorithm to nudge the atoms toward that stable form before the simulation begins. The algorithm makes small adjustments to each atom's position, checks whether the total potential energy went down, and repeats until the forces on every atom fall below a small threshold. A useful mental picture is a spring at its natural length. If we start the simulation with the spring already stretched or compressed, it will snap violently the moment we let go, and the dynamics will explode. Geometry optimization lets the spring relax first, so the system begins from a calm state rather than one primed to fly apart.  
 
@@ -66,7 +65,7 @@ All molecules have a stable form that corresponds to their minimum energy. Left 
 
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
   <div style="flex: 1; text-align: center;">
-    Side View of 17.2582Å Cube: Molecules are on top of each other which makes the initial force between molecuels exrtemely high
+    Side View of 17.2582Å Cube: Molecules are on top of each other which makes the initial force between molecules extremely high
   </div>
   <div style="flex: 1; text-align: center;">
     Side View of 17.2582Å Cube: Molecules are much more spaced out to allow the overall force between molecules to be initially minimal
@@ -82,8 +81,8 @@ For thermochemistry, we feed this potential energy along with the computed vibra
 
 ## Machine Learning Values and Obtaining Thermodynamic Properties
 
-The machine learning model gives us one number for a given molecular geometry: the electronic potential energy E{sub}`elec`. But a real molecule at room temperature is not sitting still. It vibrates, it rotates, and it translates through space. Each of these motions carries energy and contributes to the thermodynamic properties we actually care about, like enthalpy and Gibbs free energy. So how do we get from that one ML number to a full thermodynamic description? The answer comes from statistical mechanics, which connects the behavior of individual molecules to bulk thermodynamic quantities. Under the ideal gas approximation (molecules do not interact, they rotate as rigid bodies, and they vibrate like tiny springs), statistical mechanics gives us clean formulas for each type of motion. The inputs it needs are:
-1. The electronic potential energy E{sub}`elec` (from MACE)
+The machine learning model gives us one number for a given molecular geometry: the electronic energy E{sub}`elec`. But a real molecule at room temperature is not sitting still. It vibrates, it rotates, and it translates through space. Each of these motions carries energy and contributes to the thermodynamic properties we actually care about, like enthalpy and Gibbs free energy. So how do we get from that one ML number to a full thermodynamic description? The answer comes from statistical mechanics, which connects the behavior of individual molecules to bulk thermodynamic quantities. Under the ideal gas approximation (molecules do not interact, they rotate as rigid bodies, and they vibrate like tiny springs), statistical mechanics gives provides well-defined expressions for each contribution. The inputs it needs are:
+1. The electronic energy E{sub}`elec` (from MACE)
 1. The vibrational frequencies of the molecule (computed by slightly displacing each atom and re-evaluating the forces with MACE)
 1. The molecular geometry, mass, and symmetry
 1. The temperature and pressure
@@ -92,13 +91,13 @@ from these ingredients, standard formulas give the enthalpy H, which is the tota
 
 $$ H = E_{\text{elec}} + E_{\text{ZPE}} + E_{\text{vib}}(T) + E_{\text{rot}}(T) + E_{\text{trans}}(T) + PV $$
 
-Each term has a clear physical meaning. E{sub}`ZPE` is the zero-point energy, the residual vibrational energy that molecules retain even at 0 K. The three thermal terms E{sub}`vib`, E{sub}`rot`, and E{sub}`trans` are the additional energy the molecule holds because it is vibrating, rotating, and translating at temperature T. The PVterm comes from the ideal gas law. The entropy S measures how many different microscopic states the molecule can occupy at a given temperature. More accessible states means higher entropy. Statistical mechanics gives separate contributions from translation, rotation, and vibration, which are added together.
+Each term has a clear physical meaning. E{sub}`ZPE` is the zero-point energy, the residual vibrational energy that molecules retain even at 0 K. The three thermal terms E{sub}`vib`, E{sub}`rot`, and E{sub}`trans` are the additional energy the molecule holds because it is vibrating, rotating, and translating at temperature T. The PV term comes from the ideal gas law. The entropy S measures how many different microscopic states the molecule can occupy at a given temperature. More accessible states means higher entropy. Statistical mechanics gives separate contributions from translation, rotation, and vibration, which are added together.
 
 Finally, the Gibbs free energy follows from its familiar thermodynamic definition:
 
 $$G=H-TS$$
 
-So the overall picture is straightforward: MACE provides the potential energy and the forces needed for vibrational frequencies, and statistical mechanics converts those microscopic quantities into the enthalpy, entropy, and free energy that engineers use every day.
+The overall workflow is therefore: MACE provides the potential energy and the forces needed for vibrational frequencies, and statistical mechanics converts those microscopic quantities into the enthalpy, entropy, and free energy that engineers use every day.
 
 # Tutorials
 
@@ -114,19 +113,19 @@ Learn the basics of using a machine learning potential (MACE-OFF) to calculate t
 :::{grid-item-card} Tutorial 2: Heat Capacity for Gases
 :link: 2_Tutorial_2.md
 
-Using the same machine learning potential in tutorial 1, you will calculate the heat capacity for various molecules as a function of time.  This tutorial will show you how to construct the geometries of multiple molecules to simulate them and calculate their potential energy.  Chemical properties can then be predicted using the simulation data.  
+Using the same machine learning potential in tutorial 1, you will calculate the heat capacity for various molecules as a function of temperature.  This tutorial will show you how to construct the geometries of multiple molecules to simulate them and calculate their potential energy.  Chemical properties can then be predicted using the simulation data.  
 :::
 
-:::{grid-item-card} Tutorial 3: Standard Enthalpy of Formation for Gases using the Database
+:::{grid-item-card} Tutorial 3: Standard Enthalpy of Formation for Gases using Databases
 :link: 3_Tutorial_3.md
 
-Tutorials 1 and 2 predicted chemical properties of various molecules using molecular simulations and a machine learning potnetial.  While this tutorial will also determine chemical properties of various molecules, it accomplishes this task using a database of chemical properties.  In this tutorial, you will learn how to load the database to allow the code to read chemical properties that are listed in the database.  
+Tutorials 1 and 2 predicted chemical properties of various molecules using molecular simulations and a machine learning potnetial.  While this tutorial will also determine chemical properties of various molecules, it accomplishes this task using a database of chemical properties.  In this tutorial, you will learn how to load a chemical-property database and retrieve reference values for the standard enthalpy of formation. 
 :::
 
 :::{grid-item-card} Tutorial 4: Model Validation Metrics
 :link: 4_Error_Comparison.md
 
-Learn how to calculate the standard enthalpy of formation for molecules using the atomic simulations environment (calculate chemical properties using data from MACE-OF) as well as MACE-OFF.  Similar to using tutorial 1 to get the enthalpy of a molecule, you will be doing this again for specific atoms and molecules to find the standard enthalpy of formation for 5 molecules.  Then you will compare the error in the machine learning method with the National Institute of Standards and Technology (NIST) and the database used in Tutorial 3 with NIST.  
+Learn how to calculate the standard enthalpy of formation for molecules using the atomic simulations environment (calculate chemical properties using data from MACE-OF) as well as MACE-OFF.  Similar to using tutorial 1 to get the enthalpy of a molecule, you will be doing this again for specific atoms and molecules to find the standard enthalpy of formation for 5 molecules.  You will compare the standard enthalpy-of-formation values obtained from molecular simulations against a curated database containing NIST reference values, developed as part of a research project in the Sustainable Design and Systems Medicine Lab  [5], and calculate the corresponding errors.
 :::
 
 ::::

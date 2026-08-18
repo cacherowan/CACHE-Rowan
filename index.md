@@ -38,9 +38,9 @@
 
 LCA relies on Life Cycle Inventory (LCI) data that describes the resources consumed and emissions generated during chemical production. While these data are available for established chemicals, they are unavailable for newly developed compounds. Our framework enables the prediction of environmental impact categories, including climate change and human health, even in the absence of complete LCI data.
 
-<img src="/Reference_Files/Main_Page_2.png">
+<img src="/Reference_Files/MainPage_2.png">
 
-## Module 1A: Thermodynamic and Molecular Descriptor Generation through Molecular Simulation
+## Module 1: Thermodynamic and Molecular Descriptor Generation through Molecular Simulation
 
 - SMILES fingerprints serve as the input to the framework. 
 
@@ -48,13 +48,13 @@ LCA relies on Life Cycle Inventory (LCI) data that describes the resources consu
 
 - The predicted descriptors provide the input features required by the Artificial Neural Network (ANN) model.
 
-## Module 2B: Environmental Impact Prediction Using Artificial Neural Networks (ANN)
+## Module 2A: Environmental Impact Prediction Using Artificial Neural Networks (ANN)
 
 - The predicted thermodynamic and molecular descriptors are provided as inputs to the ANN.
 
 - The ANN predicts human health and climate change impact categories.
 
-## Module 2C: Climate Change Impact Prediction Using Data Analytics
+## Module 2B: Climate Change Impact Prediction Using Data Analytics
 
 - Collect process throughput, energy consumption, and climate change impact data for representative separation technologies. 
 

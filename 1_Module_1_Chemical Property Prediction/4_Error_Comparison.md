@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# Model Validation Metrics
+# Tutoiral 4: Model Validation Metrics
 
 ***
 
@@ -26,19 +26,19 @@ The libraries / packages listed in cell 2 will have a brief explanation of their
 
 | Library / Package | Link to Documentations |
 | :--: | :--: |
-| numpy | [NumPy Documentation](https://numpy.org/doc/stable/) |
-| matplotlib.pyplot | [Matplotlib.pyplot](https://matplotlib.org/stable/api/pyplot_summary.html) |
-| pandas | [Pandas Documentation](https://pandas.pydata.org/docs/) |
-| chem | [rdkit.chem Documentation](https://www.rdkit.org/docs/source/rdkit.html) |
-| AllChem | Same link as above |
-| mace_off | [MACE Calculator Documentation](https://mace-web-interface.readthedocs.io/en/latest/guide/mace-calculator-parameters/#mace_off-organic-force-field-mace-off23) |
-| mace_off | [MACE Descriptors Documentation](https://mace-docs.readthedocs.io/en/latest/guide/descriptors.html) |
-| atoms | [Atoms Object Documentation](https://ase.gitlab.io/ase/ase/atoms.html#ase.Atoms) |
-| molecule | [Molecules Documentation](https://docs.ase-lib.org/ase/build/build.html#ase.build.molecule) |
-| QuasiNewton | [Structure Optimization Documentation](https://docs.ase-lib.org/ase/optimize.html) |
-| Vibrations | [Vibrational Modes Documentation](https://ase.gitlab.io/ase/ase/vibrations/modes.html#module-ase.vibrations) |
-| IdealGasThermo | [Ideal-gas limit Documentation](https://ase.gitlab.io/ase/ase/thermochemistry/thermochemistry.html#ase.thermochemistry.IdealGasThermo) |
-| kJ, mol | [Units Documentation](https://ase.gitlab.io/ase/ase/units.html#module-ase.units) |
+| numpy | [NumPy Documentation [7]](https://numpy.org/doc/stable/) |
+| matplotlib.pyplot | [Matplotlib.pyplot [18]](https://matplotlib.org/stable/api/pyplot_summary.html) |
+| pandas | [Pandas Documentation [8]](https://pandas.pydata.org/docs/) |
+| chem | [rdkit.chem Documentation [19]](https://www.rdkit.org/docs/source/rdkit.html) |
+| AllChem | Same link as above [19] |
+| mace_off | [MACE Calculator Documentation [10]](https://mace-web-interface.readthedocs.io/en/latest/guide/mace-calculator-parameters/#mace_off-organic-force-field-mace-off23) |
+| mace_off | [MACE Descriptors Documentation [11]](https://mace-docs.readthedocs.io/en/latest/guide/descriptors.html) |
+| atoms | [Atoms Object Documentation [12]](https://ase.gitlab.io/ase/ase/atoms.html#ase.Atoms) |
+| molecule | [Molecules Documentation [13]](https://docs.ase-lib.org/ase/build/build.html#ase.build.molecule) |
+| QuasiNewton | [Structure Optimization Documentation [14]](https://docs.ase-lib.org/ase/optimize.html) |
+| Vibrations | [Vibrational Modes Documentation [15]](https://ase.gitlab.io/ase/ase/vibrations/modes.html#module-ase.vibrations) |
+| IdealGasThermo | [Ideal-gas limit Documentation [20]](https://ase.gitlab.io/ase/ase/thermochemistry/thermochemistry.html#ase.thermochemistry.IdealGasThermo) |
+| kJ, mol | [Units Documentation [17]](https://ase.gitlab.io/ase/ase/units.html#module-ase.units) |
 
 
 Click the link below to open the Colab notebook:
