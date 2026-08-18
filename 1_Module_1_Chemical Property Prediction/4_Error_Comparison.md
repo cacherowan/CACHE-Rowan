@@ -16,7 +16,7 @@ Standard Enthalpy of Formation of H{sub}`2`O = H(H{sub}`2`O) - H(H{sub}`2`) - $ 
 
 ### Code Overview: 
 
-The Code below will go through using Atomic Simulation Environment (ASE) and Multi Atomic Cluster Expansion - Organic Force Field (MACE-OFF) to calculate the Standard Enthalpy of Formation of Molecules including, Ammonia, Propanol, Methanol, Propane, and Thiophene.  Then you will see how to use the Database of Chemical Properties to obtain the Standard Enthalpy of Formation of the same materials, and then finally compare the values from both methods against the National Institute of Standards and Technologies (NIST) Database.  
+The Code below will go through using Atomic Simulation Environment (ASE) and Multi Atomic Cluster Expansion - Organic Force Field (MACE-OFF) to calculate the Standard Enthalpy of Formation of Molecules including, Ammonia, Propanol, Methanol, Propane, and Thiophene.  Then you will see how to use the Database of Chemical Properties to obtain the Standard Enthalpy of Formation of the same molecules, and then finally compare the values from MACE-OFF and ASE against the Database values which are based on the National Institute of Standards and Technologies (NIST) Database.  
 
 
 <img src="/Reference_Files/Workflows/Error_4_Workflow.svg"/>
@@ -258,7 +258,7 @@ Successfully installed appdirs-1.4.4 configargparse-1.7.5 e3nn-0.4.4 jedi-0.20.0
 
 </details>
 
-
+Cell 1 Purpose: Install packages for ASE and MACE-OFF.  
 
 
 ```
@@ -295,14 +295,14 @@ cuequivariance or cuequivariance_torch is not available. Cuequivariance accelera
 
 </details>
 
-
+Cell 2 Purpose: Import required libraries to run codes in subsequent cells.  
 
 
 ```
 # Cell 3: Load MACE-OFF
 
 print("Loading MACE-OFF (medium model)...")
-calc_mol = mace_off(model="small", default_dtype="float64")
+calc_mol = mace_off(model="medium", default_dtype="float64")
 print("MACE-OFF loaded.")
 ```
 <details>
@@ -310,22 +310,22 @@ print("MACE-OFF loaded.")
 
 ```text
 Loading MACE-OFF (medium model)...
-Downloading MACE model from 'https://raw.githubusercontent.com/ACEsuit/mace-off/main/mace_off23/MACE-OFF23_small.model'
+Downloading MACE model from 'https://raw.githubusercontent.com/ACEsuit/mace-off/main/mace_off23/MACE-OFF23_medium.model'
 The model is distributed under the Academic Software License (ASL) license, see https://github.com/gabor1/ASL 
  To use the model you accept the terms of the license.
 ASL is based on the Gnu Public License, but does not permit commercial use
-Downloading: 100.0% (7.0 MB / 7.0 MB)
-Cached MACE model to /root/.cache/mace/MACE-OFF23_small.model
-Using MACE-OFF23 MODEL for MACECalculator with /root/.cache/mace/MACE-OFF23_small.model
+Downloading: 100.0% (17.5 MB / 17.5 MB)
+Cached MACE model to /root/.cache/mace/MACE-OFF23_medium.model
+Using MACE-OFF23 MODEL for MACECalculator with /root/.cache/mace/MACE-OFF23_medium.model
 Using float64 for MACECalculator, which is slower but more accurate. Recommended for geometry optimization.
+MACE-OFF loaded.
 /usr/local/lib/python3.12/dist-packages/mace/calculators/mace.py:226: UserWarning: Environment variable TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD detected, since the`weights_only` argument was not explicitly passed to `torch.load`, forcing weights_only=False.
   torch.load(f=model_path, map_location=device)
-MACE-OFF loaded.
 ```
 
 </details>
 
-
+Cell 3 Purpose: Load MACE-OFF medium model to get the energy of molecules that are simulated.  
 
 
 ```
@@ -416,7 +416,7 @@ def compute_thermo(
     }
 ```
 
-
+Cell 4 Purpose: Create a function to pass MACE-OFF energy data from simulations and compute chemical properties using that data, ASE, and IdealGasThermo class.  
 
 
 
@@ -445,13 +445,14 @@ print(f"Enthalpy of NH3 at 298 K: {enthalpy_NH3_kJ_mol:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-NH3 Potential Energy: -1540.0721 eV = -148594.3708 kJ
+NH3 Potential Energy: -1540.0717 eV = -148594.3308 kJ
 Enthalpy of NH3: -1539.0324 eV = 
-Enthalpy of NH3 at 298 K: -148494.0510 kJ/mol
+Enthalpy of NH3 at 298 K: -148494.0501 kJ/mol
 ```
 
 </details>
 
+Cell 5 Purpose: Utilize the result function created above to compute chemical properties for Ammonia.  
 
 ### <span style="color:Green">**Ammonia**</span>
 
@@ -521,13 +522,14 @@ print(f"Enthalpy of CH3CHOHCH3 at 298 K: {enthalpy_CH3CHOHCH3_kJ_mol:.4f} kJ/mol
 <summary>Expected output</summary>
 
 ```text
-1-Propanol Potential Energy: -5292.0758 eV = -510607.6927 kJ
-Enthalpy of CH3CHOHCH3: -5288.9310 eV
-Enthalpy of CH3CHOHCH3 at 298 K: -510304.2678 kJ/mol
+1-Propanol Potential Energy: -5292.0725 eV = -510607.3760 kJ
+Enthalpy of CH3CHOHCH3: -5288.9306 eV
+Enthalpy of CH3CHOHCH3 at 298 K: -510304.2282 kJ/mol
 ```
 
 </details>
 
+Cell 6 Purpose: Utilize the result function created above to compute chemical properties for Propanol.  
 
 ### <span style="color:Green">**Propanol**</span>
 
@@ -582,13 +584,14 @@ print(f"Enthalpy of CH3OH at 298 K: {enthalpy_CH3OH_kJ_mol:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-CH3OH Potential Energy: -3151.0012 eV = -304025.3976 kJ
-Enthalpy of CH3OH: -3149.4851 eV
-Enthalpy of CH3OH at 298 K: -303879.1149 kJ/mol
+CH3OH Potential Energy: -3150.9995 eV = -304025.2403 kJ
+Enthalpy of CH3OH: -3149.4820 eV
+Enthalpy of CH3OH at 298 K: -303878.8150 kJ/mol
 ```
 
 </details>
 
+Cell 7 Purpose: Utilize the result function created above to compute chemical properties for Methanol.  
 
 ### <span style="color:Green">**Methanol**</span>
 
@@ -643,13 +646,14 @@ print(f"Enthalpy of C3H8 at 298 K: {enthalpy_C3H8_kJ_mol:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-C3H8 Potential Energy: -3243.9350 eV = -312992.1486 kJ
-Enthalpy of C3H8: -3240.9635 eV
-Enthalpy of C3H8 at 298 K: -312705.4433 kJ/mol
+C3H8 Potential Energy: -3243.9339 eV = -312992.0455 kJ
+Enthalpy of C3H8: -3240.9641 eV
+Enthalpy of C3H8 at 298 K: -312705.5004 kJ/mol
 ```
 
 </details>
 
+Cell 8 Purpose: Utilize the result function created above to compute chemical properties for Propane.  
 
 ### <span style="color:Green">**Propane**</span>
 
@@ -704,13 +708,14 @@ print(f"Enthalpy of C4H4S at 298 K: {enthalpy_C4H4S_kJ_mol:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-C4H4S Potential Energy: -15052.7811 eV = -1452372.5993 kJ
-Enthalpy of C4H4S: -15050.8213 eV
-Enthalpy of C4H4S at 298 K: -1452183.5026 kJ/mol
+C4H4S Potential Energy: -15052.7935 eV = -1452373.7928 kJ
+Enthalpy of C4H4S: -15050.8270 eV
+Enthalpy of C4H4S at 298 K: -1452184.0486 kJ/mol
 ```
 
 </details>
 
+Cell 9 Purpose: Utilize the result function created above to compute chemical properties for Thiophene.  
 
 ### <span style="color:Green">**Thiophene**</span>
 
@@ -777,7 +782,7 @@ Enthalpy of C (graphite) at 298 K: -100145.1186 kJ/mol
 
 </details>
 
-
+Cell 10 Purpose: Computes the energy of carbon gas, and adds the energy to turn directly into a solid (sublimation).  Getting the enthalpy of carbon solid is required here to adhere to the rules of standard enthalpy of formation being based on the standard state of a substance.  
 
 
 ```
@@ -805,14 +810,14 @@ print(f"Enthalpy of H2 at 298 K: {enthalpy_H2_kJ_mol:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-H2 Potential Energy: -31.8512 eV = -3073.1751 kJ
-Enthalpy of H2: -31.5653 eV
-Enthalpy of H2 at 298 K: -3045.5872 kJ/mol
+H2 Potential Energy: -31.8642 eV = -3074.4309 kJ
+Enthalpy of H2: -31.6056 eV
+Enthalpy of H2 at 298 K: -3049.4744 kJ/mol
 ```
 
 </details>
 
-
+Cell 11 Purpose: Utilize the result function created above to compute chemical properties for H{sub}`2`.  
 
 
 ```
@@ -840,14 +845,14 @@ print(f"Enthalpy of N2 at 298 K: {enthalpy_N2_kJ_mol:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-N2 Potential Energy: -2980.9789 eV = -287620.7400 kJ
-Enthalpy of N2: -2980.7486 eV
-Enthalpy of N2 at 298 K: -287598.5243 kJ/mol
+N2 Potential Energy: -2980.7254 eV = -287596.2781 kJ
+Enthalpy of N2: -2980.4811 eV
+Enthalpy of N2 at 298 K: -287572.7094 kJ/mol
 ```
 
 </details>
 
-
+Cell 12 Purpose: Utilize the result function created above to compute chemical properties for N{sub}`2`.  
 
 
 ```
@@ -875,14 +880,14 @@ print(f"Enthalpy of O2 at 298 K: {enthalpy_O2_kJ_mol:.4f} kJ/mol")
 <summary>Expected output</summary>
 
 ```text
-O2 Potential Energy: -4092.3851 eV = -394855.1390 kJ
-Enthalpy of O2: -4092.2217 eV
-Enthalpy of O2 at 298 K: -394839.3741 kJ/mol
+O2 Potential Energy: -4092.5523 eV = -394871.2723 kJ
+Enthalpy of O2: -4092.3447 eV
+Enthalpy of O2 at 298 K: -394851.2359 kJ/mol
 ```
 
 </details>
 
-
+Cell 13 Purpose: Utilize the result function created above to compute chemical properties for O{sub}`2`.  
 
 
 ```
@@ -913,104 +918,63 @@ Enthalpy of S (rhombic) at 298 K: -1045397.2684 kJ/mol
 
 </details>
 
-
+Cell 14 Purpose: Similar to the carbon case, we need to add the energy of sublimation to S (rhombic) to get the energy of solid sulfur.  
 
 
 ```
-# Cell 15: Compute Error in MACE-OFF vs Experimental Data
+# Cell 15: Compute Standard Enthalpy of Formation in MACE-OFF
 
 # Ammonia
 dH_NH3 = enthalpy_NH3_kJ_mol - (0.5*enthalpy_N2_kJ_mol + 1.5 * enthalpy_H2_kJ_mol)
-dH_Act_NH3 = -45.9 # Experimental, kJ/mol
 
 print(f"Enthalpy change for NH3 formation at 298 K: {(dH_NH3):.4f} kJ/mol")
-print(f"Experimental: {dH_Act_NH3} kJ/mol")
-
-Percent_Error_NH3_MACE = abs((dH_NH3 - dH_Act_NH3) / dH_Act_NH3) * 100
-print(f"Percent Error: {Percent_Error_NH3_MACE:.2f}%")
 print("")
-
 
 
 # Propanol
 dH_Pro = enthalpy_CH3CHOHCH3_kJ_mol - (3*H_graphite_kJ + 4*enthalpy_H2_kJ_mol + 0.5*enthalpy_O2_kJ_mol)
-dH_Act_Pro = -256.0 # Experimental, kJ/mol
 
 print(f"Enthalpy change for ISP formation at 298 K: {(dH_Pro):.4f} kJ/mol")
-print(f"Experimental: {dH_Act_Pro} kJ/mol")
-
-Percent_Error_Pro_MACE = abs((dH_Pro - dH_Act_Pro) / dH_Act_Pro) * 100
-print(f"Percent Error: {Percent_Error_Pro_MACE:.2f}%")
 print("")
-
 
 
 # Methanol
 dH_CH3OH = enthalpy_CH3OH_kJ_mol - (H_graphite_kJ + 2*enthalpy_H2_kJ_mol + 0.5*enthalpy_O2_kJ_mol)
 
-dH_Act_CH3OH = -205.0  # Experimental, kJ/mol
-
 print(f"Enthalpy change for CH3OH formation at 298 K: {dH_CH3OH:.4f} kJ/mol")
-print(f"Experimental: {dH_Act_CH3OH} kJ/mol")
-
-Percent_Error_CH3OH_MACE = abs((dH_CH3OH - dH_Act_CH3OH) / dH_Act_CH3OH) * 100
-print(f"Percent Error: {Percent_Error_CH3OH_MACE:.2f}%")
 print("")
-
 
 
 # Propane
 dH_C3H8 = enthalpy_C3H8_kJ_mol - (3*H_graphite_kJ + 4*enthalpy_H2_kJ_mol)
 
-dH_Act_C3H8 = -104.7  # Experimental, kJ/mol
-
 print(f"Enthalpy change for C3H8 formation at 298 K: {dH_C3H8:.4f} kJ/mol")
-print(f"Experimental: {dH_Act_C3H8} kJ/mol")
-
-Percent_Error_C3H8_MACE = abs((dH_C3H8 - dH_Act_C3H8) / dH_Act_C3H8) * 100
-print(f"Percent Error: {Percent_Error_C3H8_MACE:.2f}%")
 print("")
-
 
 
 # Thiophene
 dH_C4H4S = enthalpy_C4H4S_kJ_mol - (4*H_graphite_kJ + 2*enthalpy_H2_kJ_mol + H_rhombic_S_kJ)
 
-dH_Act_C4H4S = 116.4  # Experimental, kJ/mol
-
 print(f"Enthalpy change for C4H4S formation at 298 K: {dH_C4H4S:.4f} kJ/mol")
-print(f"Experimental: {dH_Act_C4H4S} kJ/mol")
-
-Percent_Error_C4H4S_MACE = abs((dH_C4H4S - dH_Act_C4H4S) / dH_Act_C4H4S) * 100
-print(f"Percent Error: {Percent_Error_C4H4S_MACE:.2f}%")
 ```
 <details>
 <summary>Expected output</summary>
 
 ```text
-Enthalpy change for NH3 formation at 298 K: -126.4080 kJ/mol
-Experimental: -45.9 kJ/mol
-Percent Error: 175.40%
+Enthalpy change for NH3 formation at 298 K: -133.4838 kJ/mol
 
-Enthalpy change for ISP formation at 298 K: -266.8762 kJ/mol
-Experimental: -256.0 kJ/mol
-Percent Error: 4.25%
+Enthalpy change for ISP formation at 298 K: -245.3568 kJ/mol
 
-Enthalpy change for CH3OH formation at 298 K: -223.1348 kJ/mol
-Experimental: -205.0 kJ/mol
-Percent Error: 8.85%
+Enthalpy change for CH3OH formation at 298 K: -209.1296 kJ/mol
 
-Enthalpy change for C3H8 formation at 298 K: -87.7388 kJ/mol
-Experimental: -104.7 kJ/mol
-Percent Error: 16.20%
+Enthalpy change for C3H8 formation at 298 K: -72.2470 kJ/mol
 
-Enthalpy change for C4H4S formation at 298 K: -114.5856 kJ/mol
-Experimental: 116.4 kJ/mol
-Percent Error: 198.44%
+Enthalpy change for C4H4S formation at 298 K: -107.3572 kJ/mol
 ```
 
 </details>
 
+Cell 15 Purpose: Compute the standard enthalpy of formation for the 5 molecules above using the change in enthalpy of the base elements of each molecule.  
 
 ### Obtain Values from Database Method
 
@@ -1022,7 +986,7 @@ DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/R
 df = pd.read_excel(DATABASE_PATH)
 ```
 
-
+Cell 16 Purpose: Define path of the database that will be utilized later on.  
 
 
 
@@ -1052,15 +1016,8 @@ def obtain_Enthalpy_Of_Formation(MOLECULE, SMILES):
 
     return descriptors['Standard Formation Enthalpy (Gas) [J/mol]']
 ```
-<details>
-<summary>Expected output</summary>
 
-```text
-No Visible Output
-```
-
-</details>
-
+Cell 17 Purpose: Create a function that will search the database looking for the standard enthalpy of formation of the specific molecule input.  
 
 
 
@@ -1095,11 +1052,11 @@ Thiophene Enthalpy of Formation 114900.0 J/mol
 
 </details>
 
-
+Cell 18 Purpose: Utilize the function in cell 17 to obtain the standard enthalpy of formation for the 5 molecules used above.  
 
 
 ```
-# Cell 19: Calculate Percent Error in ANN Model vs Experimental Data (NIST)
+# Cell 19: Calculate Percent Error in MACE-OFF vs Database Based on NIST Data
 
 # Convert from J/mol to kJ/mol
 Ammonia_Enthalpy_Of_Formation = Ammonia_Enthalpy_Of_Formation / 1000
@@ -1108,23 +1065,23 @@ Methanol_Enthalpy_Of_Formation = Methanol_Enthalpy_Of_Formation / 1000
 Propane_Enthalpy_Of_Formation = Propane_Enthalpy_Of_Formation / 1000
 Thiophene_Enthalpy_Of_Formation = Thiophene_Enthalpy_Of_Formation / 1000
 
-Percent_Error_NH3_ANN = abs((Ammonia_Enthalpy_Of_Formation - -45.9) / -45.9) * 100
+Percent_Error_NH3 = abs((dH_NH3 - Ammonia_Enthalpy_Of_Formation) / Ammonia_Enthalpy_Of_Formation) * 100
 
-Percent_Error_CH3CHOHCH3_ANN = abs((Propanol_Enthalpy_Of_Formation - -256.0) / -256.0) * 100
+Percent_Error_CH3CHOHCH3 = abs((dH_Pro - Propanol_Enthalpy_Of_Formation) / Propanol_Enthalpy_Of_Formation) * 100
 
-Percent_Error_CH3OH_ANN = abs((Methanol_Enthalpy_Of_Formation - -205.0) / -205.0) * 100
+Percent_Error_CH3OH = abs((dH_CH3OH - Methanol_Enthalpy_Of_Formation) / Methanol_Enthalpy_Of_Formation) * 100
 
-Percent_Error_C3H8_ANN = abs((Propane_Enthalpy_Of_Formation - -104.7) / -104.7) * 100
+Percent_Error_C3H8 = abs((dH_C3H8 - Propane_Enthalpy_Of_Formation) / Propane_Enthalpy_Of_Formation) * 100
 
-Percent_Error_C4H4S_ANN = abs((Thiophene_Enthalpy_Of_Formation - 116.4) / 116.4) * 100
+Percent_Error_C4H4S = abs((dH_C4H4S - Thiophene_Enthalpy_Of_Formation) / Thiophene_Enthalpy_Of_Formation) * 100
 ```
 
-
+Cell 19 Purpose: Calculate the percent error of each molecule comparing the results from MACE-OFF to the database which is based on NIST data.  
 
 
 
 ```
-# Cell 20: Show Table of All Percent Errors
+# Cell 20: Show Table of Percent Errors
 
 import pandas as pd
 
@@ -1132,15 +1089,12 @@ data = {
     "Chemical Name": ["Ammonia", "Propanol", "Methanol", "Propane", "Thiophene"],
     "MACE-OFF Standard Formation Enthalpy [kJ/mol]": [dH_NH3, dH_Pro, dH_CH3OH, dH_C3H8, dH_C4H4S],
     "Database Standard Formation Enthalpy [kJ/mol]": [Ammonia_Enthalpy_Of_Formation, Propanol_Enthalpy_Of_Formation, Methanol_Enthalpy_Of_Formation, Propane_Enthalpy_Of_Formation, Thiophene_Enthalpy_Of_Formation],
-    "Experimental Standard Formation Enthalpy [kJ/mol]": [-45.9, -256.0, -205, -104.7, 116.4], # Values from NIST in kJ/mol
-    "MACE-OFF Percent Error": [Percent_Error_NH3_MACE, Percent_Error_Pro_MACE, Percent_Error_CH3OH_MACE, Percent_Error_C3H8_MACE, Percent_Error_C4H4S_MACE],
-    "Database Percent Error": [Percent_Error_NH3_ANN, Percent_Error_CH3CHOHCH3_ANN, Percent_Error_CH3OH_ANN, Percent_Error_C3H8_ANN, Percent_Error_C4H4S_ANN]
+    "MACE-OFF Percent Error": [Percent_Error_NH3, Percent_Error_CH3CHOHCH3, Percent_Error_CH3OH, Percent_Error_C3H8, Percent_Error_C4H4S],
 }
 pd.set_option("display.width", 1000)
 df = pd.DataFrame(data)
 
 df['MACE-OFF Percent Error'] = df['MACE-OFF Percent Error'].map(lambda x: f'{x:.3g}%')
-df['Database Percent Error'] = df['Database Percent Error'].map(lambda x: f'{x:.3g}%')
 
 display(df)
 ```
@@ -1148,19 +1102,19 @@ display(df)
 <summary>Expected output</summary>
 
 ```text
-	Chemical Name	MACE-OFF Standard Formation Enthalpy [kJ/mol]	Database Standard Formation Enthalpy [kJ/mol]	Experimental Standard Formation Enthalpy [kJ/mol]	MACE-OFF Percent Error	Database Percent Error
-0	Ammonia	-126.408027	-45940.0	-45.9	175%	0.0871%
-1	Propanol	-266.876195	-256000.0	-256.0	4.25%	0%
-2	Methanol	-223.134847	-205000.0	-205.0	8.85%	0%
-3	Propane	-87.738800	-104700.0	-104.7	16.2%	0%
-4	Thiophene	-114.585552	114900.0	116.4	198%	1.29%
+Chemical Name	MACE-OFF Standard Formation Enthalpy [kJ/mol]	Database Standard Formation Enthalpy [kJ/mol]	MACE-OFF Percent Error
+0	Ammonia	-133.483751	-45.94	191%
+1	Propanol	-245.356850	-256.00	4.16%
+2	Methanol	-209.129604	-205.00	2.01%
+3	Propane	-72.246995	-104.70	31%
+4	Thiophene	-107.357161	114.90	193%
 ```
 
 </details>
 
 ### Discussion / Analysis
 
-In this code, you were able to use ASE and MACE-OFF to compute Chemical Properties, and a few edge cases were shown to help if you need to compute the Standard Enthalpy of Formation of a molecule with a product that has a irregular natural form.  You also saw how to use the Database to compute any property of any chemical included in the excel sheet.  After that, the error in each method was shown.  The error in the Database compared to NIST was extremely small, but the error in MACE-OFF was small in some cases, but in others, it was extremely large.  That was due to trying to analyze elements that the model wasn't trained on specifically.  The Database is extensive and has many properties for known chemicals currently, but if you need a property for a chemical that isn't included, you will need to use another method.  MACE-OFF can be accurate on data it was trained on, but could significantly off when simulating atoms / molecules it has insufficient data on.  
+In this code, you were able to use ASE and MACE-OFF to compute Chemical Properties, and a few edge cases were shown to help if you need to compute the Standard Enthalpy of Formation of a molecule with a product that has a irregular natural form.  You also saw how to use the Database to compute any property of any chemical included in the excel sheet.  After that, the error in using MACE-OFF was shown.  The error in MACE-OFF varied from different molecules.  That was due to trying to analyze elements that the model wasn't trained on specifically.  The Database is extensive and has many properties for known chemicals currently, but if you need a property for a chemical that isn't included, you will need to use another method.  MACE-OFF can be accurate on data it was trained on, but could significantly off when simulating atoms / molecules it has insufficient data on.  
 
 ::::{grid} 2
 :gutter: 3
