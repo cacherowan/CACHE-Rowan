@@ -3,7 +3,15 @@
 
 <a id="ref-1"></a>
 
-## [1] MACE-OFF
+## [1] Dr. Lele's Molecular Simulations Website
+
+Lele, A. (n.d.). Classical interatomic potentials: From pair interactions to molecular force fields. Molecular Simulations. 
+
+https://adityadlele.github.io/molsim/classical-potentials/#id-2-5-effect-of-parameters-interactive-exploration 
+
+<a id="ref-2"></a>
+
+## [2] MACE-OFF
 MACE-OFF was used throughout the thermodynamic tutorials as the machine learning potential for estimating molecular energies and forces.
 
 Kovács, D. P., Moore, J. H., Browning, N. J., Batatia, I., Horton, J. T., Pu, Y., Kapil, V., Witt, W. C., Magdău, I.-B., Cole, D. J., & Csányi, G.  "MACE-OFF: Transferable Short Range Machine Learning Force Fields for Organic Molecules." 
@@ -12,9 +20,9 @@ Kovács, D. P., Moore, J. H., Browning, N. J., Batatia, I., Horton, J. T., Pu, Y
 
 ***
 
-<a id="ref-2"></a>
+<a id="ref-3"></a>
 
-## [2] LAMMPS
+## [3] LAMMPS
 
 LAMMPS is a molecular simulation software package referenced in the Molecular Dynamics background material.
 
@@ -26,9 +34,9 @@ meso, and continuum scales."  *Computer Physics Communications*, 271, 108171. DO
 [Documentation](https://docs.lammps.org/)
 ***
 
-<a id="ref-3"></a>
+<a id="ref-4"></a>
 
-## [3] GROMACS
+## [4] GROMACS
 
 GROMACS is a molecular dynamics software package referenced in the Molecular Dynamics background material.
 
@@ -39,9 +47,9 @@ Abraham, M. J., Murtola, T., Schulz, R., Páll, S., Smith, J. C., Hess, B., & Li
 
 ***
 
-<a id="ref-4"></a>
+<a id="ref-5"></a>
 
-## [4] Anvil High-Performance Computing System
+## [5] Anvil High-Performance Computing System
 
 Anvil is a U.S. academic high-performance computing resource referenced in the Molecular Dynamics background material.
 
@@ -51,9 +59,9 @@ Song, X. C., Smith, P., Kalyanam, R., Zhu, X., Adams, E., Colby, K., Finnegan, P
 
 ***
 
-<a id="ref-5"></a>
+<a id="ref-6"></a>
 
-## [5] Chemical Property Database and Environmental Impact Forecasting Framework
+## [6] Chemical Property Database and Environmental Impact Forecasting Framework
 
 The chemical-property database used in the tutorials was developed as part of research in  the Sustainable Design and Systems Medicine Lab and supports early-stage environmental impact assessment of chemicals and processes.
 
@@ -64,9 +72,9 @@ learning and data analytics tools." *Clean Technologies and Environmental Policy
 
 ***
 
-<a id="ref-6"></a>
+<a id="ref-7"></a>
 
-## [6] Atomic Simulation Environment (ASE)
+## [7] Atomic Simulation Environment (ASE)
 
 Atomic Simulation Environment (ASE) was used extensively throughout the thermodynamic tutorials for constructing atomic systems, geometry optimization, vibrational calculations, and thermochemical calculations.
 
@@ -80,9 +88,9 @@ Rostgaard, C., Schiøtz, J., Schütt, O., Strange, M., Thygesen, K. S., Vegge, T
 
 ***
 
-<a id="ref-7"></a>
+<a id="ref-8"></a>
 
-## [7] NumPy
+## [8] NumPy
 
 NumPy was used for numerical calculations and array operations throughout the tutorials.
 Harris, C. R., Millman, K. J., van der Walt, S. J., et al. (2020).  "Array programming with NumPy." *Nature*, 585, 357-362. DOI: 10.1038/s41586-020-2649-2
@@ -91,9 +99,9 @@ Harris, C. R., Millman, K. J., van der Walt, S. J., et al. (2020).  "Array progr
 
 ***
 
-<a id="ref-8"></a>
+<a id="ref-9"></a>
 
-## [8] pandas
+## [9] pandas
 
 pandas was used for reading, organizing, manipulating, and displaying tabular chemical-property data.
 
@@ -102,9 +110,9 @@ McKinney, W. (2010). "Data Structures for Statistical Computing in Python." *Pro
 
 ***
 
-<a id="ref-9"></a>
+<a id="ref-10"></a>
 
-## [9] RDKit
+## [10] RDKit
 
 RDKit was used to interpret SMILES strings, construct molecular structures, calculate molecular descriptors, and generate initial three-dimensional molecular geometries.
 
@@ -115,9 +123,9 @@ Landrum, G., et al. (2026). *RDKit: rdkit/rdkit: 2026_03_5 (Q1 2026) Release* (V
 
 ***
 
-<a id="ref-10"></a>
+<a id="ref-11"></a>
 
-## [10] MACE Calculator Documentation
+## [11] MACE Calculator Documentation
 
 The MACE calculator interface was used to assign MACE-OFF machine learning potentials to molecular systems.
 
@@ -125,9 +133,9 @@ The MACE calculator interface was used to assign MACE-OFF machine learning poten
 
 ***
 
-<a id="ref-11"></a>
+<a id="ref-12"></a>
 
-## [11] MACE Descriptors Documentation
+## [12] MACE Descriptors Documentation
 
 MACE descriptor functionality is referenced for obtaining learned atomic and molecular representations from MACE models.
 
@@ -135,9 +143,9 @@ MACE descriptor functionality is referenced for obtaining learned atomic and mol
 
 ***
 
-<a id="ref-12"></a>
+<a id="ref-13"></a>
 
-## [12] ASE Atoms Object
+## [13] ASE Atoms Object
 
 The ASE `Atoms` object is used to represent molecular systems, including their chemical elements and Cartesian coordinates.
 
@@ -145,9 +153,9 @@ The ASE `Atoms` object is used to represent molecular systems, including their c
 
 ***
 
-<a id="ref-13"></a>
+<a id="ref-14"></a>
 
-## [13] ASE Molecule Builder
+## [14] ASE Molecule Builder
 
 The ASE molecule-building functionality is used to construct predefined molecular structures in several tutorial examples.
 
@@ -155,9 +163,9 @@ The ASE molecule-building functionality is used to construct predefined molecula
 
 ***
 
-<a id="ref-14"></a>
+<a id="ref-15"></a>
 
-## [14] ASE Structure Optimization
+## [15] ASE Structure Optimization
 
 ASE optimization algorithms, including QuasiNewton and LBFGS, are used to minimize molecular geometries before vibrational and thermochemical calculations.
 
@@ -165,9 +173,9 @@ ASE optimization algorithms, including QuasiNewton and LBFGS, are used to minimi
 
 ***
 
-<a id="ref-15"></a>
+<a id="ref-16"></a>
 
-## [15] ASE Vibrational Analysis
+## [16] ASE Vibrational Analysis
 
 ASE's `Vibrations` functionality is used to calculate molecular vibrational modes from finite atomic displacements and force evaluations.
 
@@ -175,9 +183,9 @@ ASE's `Vibrations` functionality is used to calculate molecular vibrational mode
 
 ***
 
-<a id="ref-16"></a>
+<a id="ref-17"></a>
 
-## [16] ASE Ideal-Gas Thermochemistry
+## [17] ASE Ideal-Gas Thermochemistry
 
 ASE's `IdealGasThermo` implementation is used to calculate ideal-gas thermochemical quantities from molecular energies, vibrational modes, geometry, symmetry, spin,  temperature, and pressure.
 
@@ -185,9 +193,9 @@ ASE's `IdealGasThermo` implementation is used to calculate ideal-gas thermochemi
 
 ***
 
-<a id="ref-17"></a>
+<a id="ref-18"></a>
 
-## [17] ASE Units
+## [18] ASE Units
 
 ASE unit definitions and conversion factors are used throughout the tutorials to convert between atomistic and molar energy units.
 
@@ -195,9 +203,9 @@ ASE unit definitions and conversion factors are used throughout the tutorials to
 
 ***
 
-<a id="ref-18"></a>
+<a id="ref-19"></a>
 
-## [18] Matplotlib
+## [19] Matplotlib
 
 Matplotlib was used to visualize calculated thermodynamic properties and comparisons with reference data.
 
@@ -208,9 +216,17 @@ Hunter, J. D. (2007).
 
 ***
 
-<a id="ref-19"></a>
+<a id="ref-20"></a>
 
-## [19] PyTorch
+## [20] LibreTexts Chemistry
+
+Libretexts. (2026, July 16). 10.3: Entropy. Chemistry LibreTexts. 
+
+https://chem.libretexts.org/Courses/University_of_Toronto/Chemistry%3A_Physical_Principles/10%3A_Thermodynamics/10.03%3A_Entropy 
+
+<a id="ref-21"></a>
+
+## [21] PyTorch
 
 PyTorch is the underlying deep learning framework used by MACE and MACE-OFF.
 
@@ -222,12 +238,13 @@ Raison, M., Tejani, A., Chilamkurthy, S., Steiner, B., Fang, L., Bai, J., & Chin
 
 ***
 
-<a id="ref-20"></a>
+<a id="ref-22"></a>
 
-## [20] NIST Chemistry WebBook
+## [22] NIST Chemistry WebBook
 
 Reference thermochemical data used for comparison and validation in the tutorials were obtained from the National Institute of Standards and Technology (NIST) Chemistry WebBook.
 
 Linstrom, P. J., & Mallard, W. G. (Eds.). *NIST Chemistry WebBook, NIST Standard Reference Database Number 69*. National Institute of Standards and Technology, Gaithersburg, MD. DOI: 10.18434/T4D303
 
 [NIST Chemistry WebBook](https://webbook.nist.gov/chemistry/)
+
