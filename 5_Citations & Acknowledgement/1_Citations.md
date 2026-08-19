@@ -1,7 +1,4 @@
 # Citations
-***
-
-<a id="ref-1"></a>
 
 ## [1] MACE-OFF
 MACE-OFF was used throughout the thermodynamic tutorials as the machine learning potential for estimating molecular energies and forces.
