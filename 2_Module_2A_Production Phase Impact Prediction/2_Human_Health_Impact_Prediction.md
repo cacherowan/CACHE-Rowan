@@ -29,7 +29,7 @@ The libraries / packages listed in cell 1 will have a brief explanation of their
 Click the button below to open this code in Google Colab
 
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/Mol2LIFE/blob/main/Reference_Files/Google_Colab_Files/Human_Health_Impact_Prediction.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Google_Colab_Files/Human_Health_Impact_Prediction.ipynb)
 
 
 ### Outputs Should Appear Like This: 
@@ -83,19 +83,19 @@ def download_if_needed(url, local_path):
 # Cell 3: Create Path to Dowloaded Files and Database
 
 # URL / path to download (.h5 file)
-HH_MODEL_URL = ("https://raw.githubusercontent.com/cacherowan/Mol2LIFE/main/Reference_Files/Chemical_Property_Database/model_v5_HH_okayvaltest.h5")
+HH_MODEL_URL = ("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/model_v5_HH_okayvaltest.h5")
 
 # Name of weight file
 HH_MODEL_PATH = "model_v5_HH_okayvaltest.h5"
 
 # URL / path to download (.joblib file)
-MIN_MAX_SCALAR_URL = ("https://raw.githubusercontent.com/cacherowan/Mol2LIFE/main/Reference_Files/Chemical_Property_Database/minmax_scaler_0_5-1.joblib")
+MIN_MAX_SCALAR_URL = ("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/minmax_scaler_0_5-1.joblib")
 
 # Name of min_max_scalar file
 MIN_MAX_SCALAR_PATH = "minmax_scaler_0_5-1.joblib"
 
 # URL / path to database (the spreadsheet holding the molecular properties)
-DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/Mol2LIFE/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
+DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
 
 # Call to Function to Download Weight (.h5 file)
 download_if_needed(HH_MODEL_URL, HH_MODEL_PATH)

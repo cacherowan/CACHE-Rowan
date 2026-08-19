@@ -44,7 +44,7 @@ Cell 1 Purpose: Import required libraries to run codes in subsequent cells
 ```
 # Cell 2: Define Location of Database (Located in Github Repository)
 
-DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/Mol2LIFE/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
+DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
 df = pd.read_excel(DATABASE_PATH)
 ```
 
@@ -104,7 +104,7 @@ Cell 3 Purpose: Split descriptors into climate change impact and human health im
 ```
 # Cell 4: Show how to Display a Specific Property
 # Note to see full list of included chemicals and properties, go to this link which downloads the database:
-# https://raw.githubusercontent.com/cacherowan/Mol2LIFE/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6.xlsx.xlsx
+# https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6.xlsx.xlsx
 
 # Define Function to Obtain Standard Enthalpy of Formation
 def obtain_Enthalpy_Of_Formation(MOLECULE, SMILES):
