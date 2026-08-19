@@ -32,7 +32,9 @@ $$
 
 ## 2.1 Production Phase GWP
 
-The ANN predicts IPA's production GWP directly from its molecular and thermodynamic descriptors  as 1.902 kg CO₂-eq/kg
+:::{note}
+To calculate this yourself, go to Production Phase Impact Prediction → Tutorial 1: Climate Change Impact Prediction Using ANN Model, select IPA as the chemical, and run the prediction to obtain its climate change (GWP) impact directly from the ANN model.
+:::
 
 <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
   <thead>
@@ -57,9 +59,7 @@ The ANN predicts IPA's production GWP directly from its molecular and thermodyna
   </tbody>
 </table>
 
-:::{note}
-To calculate this yourself, go to Production Phase Impact Prediction → Tutorial 1: Climate Change Impact Prediction Using ANN Model, select IPA as the chemical, and run the prediction to obtain its climate change (GWP) impact directly from the ANN model.
-::: 
+ 
 
 ## 2.2 Use Phase GWP
 
