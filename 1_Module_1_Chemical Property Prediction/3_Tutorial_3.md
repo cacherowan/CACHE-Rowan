@@ -18,8 +18,8 @@ The libraries / packages listed in cell 1 will have a brief explanation of their
 
 | Library / Package | Link to Documentations |
 | :--: | :--: |
-| numpy | [NumPy Documentation [9]](https://numpy.org/doc/stable/) |
-| pandas | [Pandas Documentation [10]](https://pandas.pydata.org/docs/) |
+| numpy | [NumPy Documentation [8]](https://numpy.org/doc/stable/) |
+| pandas | [Pandas Documentation [9]](https://pandas.pydata.org/docs/) |
 
 Click the button below to open this code in Google Colab
 
