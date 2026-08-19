@@ -44,7 +44,7 @@ The libraries / packages listed in cell 2 will have a brief explanation of their
 Click the link below to open the Colab notebook:
 
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Google_Colab_Files/model_validation_metrics.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/Mol2LIFE/blob/main/Reference_Files/Google_Colab_Files/model_validation_metrics.ipynb)
 
 
 ### Outputs Should Appear Like This:
@@ -470,7 +470,7 @@ from pyodide.http import pyfetch
 import py3Dmol
 
 
-response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Ammonia(NH3).xyz")
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/Mol2LIFE/main/Reference_Files/Molecules_To_View/Ammonia(NH3).xyz")
 xyz = await response.string()
 
 view = py3Dmol.view(width=800, height=400)
@@ -547,7 +547,7 @@ from pyodide.http import pyfetch
 import py3Dmol
 
 
-response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Propanol(C3H8O).xyz")
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/Mol2LIFE/main/Reference_Files/Molecules_To_View/Propanol(C3H8O).xyz")
 xyz = await response.string()
 
 view = py3Dmol.view(width=800, height=400)
@@ -609,7 +609,7 @@ from pyodide.http import pyfetch
 import py3Dmol
 
 
-response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Methanol(CH4O).xyz")
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/Mol2LIFE/main/Reference_Files/Molecules_To_View/Methanol(CH4O).xyz")
 xyz = await response.string()
 
 view = py3Dmol.view(width=800, height=400)
@@ -671,7 +671,7 @@ from pyodide.http import pyfetch
 import py3Dmol
 
 
-response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Propane(C3H8).xyz")
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/Mol2LIFE/main/Reference_Files/Molecules_To_View/Propane(C3H8).xyz")
 xyz = await response.string()
 
 view = py3Dmol.view(width=800, height=400)
@@ -733,7 +733,7 @@ from pyodide.http import pyfetch
 import py3Dmol
 
 
-response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Thiophene(C4H4S).xyz")
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/Mol2LIFE/main/Reference_Files/Molecules_To_View/Thiophene(C4H4S).xyz")
 xyz = await response.string()
 
 view = py3Dmol.view(width=800, height=400)
@@ -982,7 +982,7 @@ Cell 15 Purpose: Compute the standard enthalpy of formation for the 5 molecules 
 ```
 # Cell 16: Define Location of Database (Located in Github Repository)
 
-DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
+DATABASE_PATH = "https://raw.githubusercontent.com/cacherowan/Mol2LIFE/main/Reference_Files/Chemical_Property_Database/Processed_Solvent_DF_v6_TEST.xlsx"
 df = pd.read_excel(DATABASE_PATH)
 ```
 

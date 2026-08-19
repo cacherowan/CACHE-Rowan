@@ -40,7 +40,7 @@ The libraries / packages listed in cell 2 will have a brief explanation of their
 
 Click the button below to open this code in Google Colab
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/CACHE-Rowan/blob/main/Reference_Files/Google_Colab_Files/Tutorial_1.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cacherowan/Mol2LIFE/blob/main/Reference_Files/Google_Colab_Files/Tutorial_1.ipynb)
 
 
 ### Outputs Should Appear Like This: 
@@ -408,7 +408,7 @@ from pyodide.http import pyfetch
 import py3Dmol
 
 
-response = await pyfetch("https://raw.githubusercontent.com/cacherowan/CACHE-Rowan/main/Reference_Files/Molecules_To_View/Propanol(C3H8O).xyz")
+response = await pyfetch("https://raw.githubusercontent.com/cacherowan/Mol2LIFE/main/Reference_Files/Molecules_To_View/Propanol(C3H8O).xyz")
 xyz = await response.string()
 
 view = py3Dmol.view(width=800, height=400)
