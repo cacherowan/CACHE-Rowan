@@ -14,9 +14,9 @@ There are two ways to build a potential:
 
 <img src="/Reference_Files/Chemical_Property_Prediction/Molecular_Dynamics_Background/LJ_potential_and_force.png">
 
-Image of Lennard-Jones Potential
+Image of Lennard-Jones Potential [1]
 
-**Machine learning (ML) potentials**, like MACE (Message Passing Atomic Cluster Expansion) [1], take a different approach. Instead of writing down a physics-based formula, we train a neural network on a large dataset of accurate quantum mechanical calculations. The network learns the relationship between atomic arrangements and energies directly from the data. Once trained, it predicts energies and forces on new configurations quickly, often with accuracy close to the underlying quantum calculations.
+**Machine learning (ML) potentials**, like MACE (Message Passing Atomic Cluster Expansion) [2], take a different approach. Instead of writing down a physics-based formula, we train a neural network on a large dataset of accurate quantum mechanical calculations. The network learns the relationship between atomic arrangements and energies directly from the data. Once trained, it predicts energies and forces on new configurations quickly, often with accuracy close to the underlying quantum calculations.
 
 Both approaches give the MD simulation the same thing: a way to calculate forces so atoms can be moved forward in time. The difference is in how that function is built. Classical potentials come from physical intuition. ML potentials come from data.  
 
@@ -31,7 +31,7 @@ In Cartesian coordinates, Newton’s equations can be written directly as separa
 
 A simulation box might contain thousands of molecules translating, rotating, and colliding. In Cartesian coordinates, every atom is described the same way regardless of what molecule it belongs to. Internal coordinates would require tracking which atom is bonded to which and updating those relationships as molecules move or react, which quickly becomes challenging.
 
-Because these advantages are so strong for MD, the entire software ecosystem (LAMMPS [2], GROMACS [3], trajectory formats, analysis tools, visualizers) is built around Cartesian coordinates.
+Because these advantages are so strong for MD, the entire software ecosystem (LAMMPS [3], GROMACS [4], trajectory formats, analysis tools, visualizers) is built around Cartesian coordinates.
 
 :::{note}
 Internal coordinates are not useless. They are the natural choice for normal mode analysis, some Monte Carlo methods, and small-molecule quantum chemistry, where the number of atoms is small and the connectivity does not change. For MD of many interacting molecules, Cartesian coordinates win.
@@ -39,7 +39,7 @@ Internal coordinates are not useless. They are the natural choice for normal mod
 
 ## MACE Model Sizes
 
-When you load a MACE-MP-0 model as "small", "medium", or "large", the sizes do not refer to the training data. All three models are trained on the same Materials Project dataset (about 1.5 million atomic configurations covering 89 elements) and use the same underlying MACE architecture. What differs is the internal feature representation each atom carries through the network, which grows from about 3.8 million parameters in the small model, to 4.7 million in the medium, to 5.7 million in the large. A larger internal representation lets the model capture more subtle chemistry, at the cost of slower computation per timestep. In practice, the small model is useful for quick screening or very large systems, the large model is worth it when you need high accuracy on a small system, and the medium model is the recommended default for almost everything in between. For class-sized simulations on Anvil [4], a U.S. academic high-performance computing (HPC) cluster, the medium model is a reasonable starting point.
+When you load a MACE-MP-0 model as "small", "medium", or "large", the sizes do not refer to the training data. All three models are trained on the same Materials Project dataset (about 1.5 million atomic configurations covering 89 elements) and use the same underlying MACE architecture. What differs is the internal feature representation each atom carries through the network, which grows from about 3.8 million parameters in the small model, to 4.7 million in the medium, to 5.7 million in the large. A larger internal representation lets the model capture more subtle chemistry, at the cost of slower computation per timestep. In practice, the small model is useful for quick screening or very large systems, the large model is worth it when you need high accuracy on a small system, and the medium model is the recommended default for almost everything in between. For class-sized simulations on Anvil [5], a U.S. academic high-performance computing (HPC) cluster, the medium model is a reasonable starting point.
 
 ## Stability and Optimization of MD Systems
 
@@ -125,7 +125,7 @@ Tutorials 1 and 2 predicted chemical properties of various molecules using molec
 :::{grid-item-card} Tutorial 4: Model Validation Metrics
 :link: 4_Error_Comparison.md
 
-Learn how to calculate the standard enthalpy of formation for molecules using the atomic simulations environment (calculate chemical properties using data from MACE-OF) as well as MACE-OFF.  Similar to using tutorial 1 to get the enthalpy of a molecule, you will be doing this again for specific atoms and molecules to find the standard enthalpy of formation for 5 molecules.  You will compare the standard enthalpy-of-formation values obtained from molecular simulations against a curated database containing NIST reference values, developed as part of a research project in the Sustainable Design and Systems Medicine Lab  [5], and calculate the corresponding errors.
+Learn how to calculate the standard enthalpy of formation for molecules using the atomic simulations environment (calculate chemical properties using data from MACE-OF) as well as MACE-OFF.  Similar to using tutorial 1 to get the enthalpy of a molecule, you will be doing this again for specific atoms and molecules to find the standard enthalpy of formation for 5 molecules.  You will compare the standard enthalpy-of-formation values obtained from molecular simulations against a curated database containing NIST reference values, developed as part of a research project in the Sustainable Design and Systems Medicine Lab  [6], and calculate the corresponding errors.
 :::
 
 ::::

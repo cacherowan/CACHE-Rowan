@@ -36,20 +36,20 @@ The libraries / packages listed in cell 2 will have a brief explanation of their
 
 | Library / Package | Link to Documentations |
 | :--: | :--: |
-| numpy | [NumPy Documentation [7]](https://numpy.org/doc/stable/) |
-| matplotlib.pyplot | [Matplotlib.pyplot [18]](https://matplotlib.org/stable/api/pyplot_summary.html) |
-| pandas | [Pandas Documentation [8]](https://pandas.pydata.org/docs/) |
-| chem | [rdkit.chem Documentation [9]](https://www.rdkit.org/docs/source/rdkit.html) |
+| numpy | [NumPy Documentation [8]](https://numpy.org/doc/stable/) |
+| matplotlib.pyplot | [Matplotlib.pyplot [19]](https://matplotlib.org/stable/api/pyplot_summary.html) |
+| pandas | [Pandas Documentation [9]](https://pandas.pydata.org/docs/) |
+| chem | [rdkit.chem Documentation [10]](https://www.rdkit.org/docs/source/rdkit.html) |
 | AllChem | Same link as above |
 | Descriptors | Same link as above |
 | rdMolDescriptors | Same Link as above |
-| mace_off | [MACE Calculator Documentation [10]](https://mace-web-interface.readthedocs.io/en/latest/guide/mace-calculator-parameters/#mace_off-organic-force-field-mace-off23) |
-| mace_off | [MACE Descriptors Documentation [11]](https://mace-docs.readthedocs.io/en/latest/guide/descriptors.html) |
-| atoms | [Atoms Object Documentation [12]](https://ase.gitlab.io/ase/ase/atoms.html#ase.Atoms) |
-| units | [Units Documentation [17]](https://ase.gitlab.io/ase/ase/units.html#module-ase.units) |
-| LBFGS | [Structure Optimization Documentation [14]](https://docs.ase-lib.org/ase/optimize.html) |
-| Vibrations | [Vibrational Modes Documentation [15]](https://ase.gitlab.io/ase/ase/vibrations/modes.html#module-ase.vibrations) |
-| IdealGasThermo | [Ideal-gas limit Documentation [16]](https://ase.gitlab.io/ase/ase/thermochemistry/thermochemistry.html#ase.thermochemistry.IdealGasThermo) |
+| mace_off | [MACE Calculator Documentation [11]](https://mace-web-interface.readthedocs.io/en/latest/guide/mace-calculator-parameters/#mace_off-organic-force-field-mace-off23) |
+| mace_off | [MACE Descriptors Documentation [12]](https://mace-docs.readthedocs.io/en/latest/guide/descriptors.html) |
+| atoms | [Atoms Object Documentation [13]](https://ase.gitlab.io/ase/ase/atoms.html#ase.Atoms) |
+| units | [Units Documentation [18]](https://ase.gitlab.io/ase/ase/units.html#module-ase.units) |
+| LBFGS | [Structure Optimization Documentation [15]](https://docs.ase-lib.org/ase/optimize.html) |
+| Vibrations | [Vibrational Modes Documentation [16]](https://ase.gitlab.io/ase/ase/vibrations/modes.html#module-ase.vibrations) |
+| IdealGasThermo | [Ideal-gas limit Documentation [17]](https://ase.gitlab.io/ase/ase/thermochemistry/thermochemistry.html#ase.thermochemistry.IdealGasThermo) |
 
 Click the button below to open this code in Google Colab
 
@@ -469,7 +469,7 @@ Cell 7 Purpose: Find the total energy of the molecule including vibrational ener
 
 <img src="/Reference_Files/Tutorial_2_Files/Possible_Molecular_Moves.jpg"/>
 
-
+Possible Molecular Motion [20]
 
 ```
 # Cell 8: Determines characteristics of the molecule to accurately compute chemical properties
