@@ -33,7 +33,7 @@
     <img src="/Reference_Files/Contributions/Harriet.png" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;">
   </div>
   <div style="flex: 2; text-align: justify;">
-    **Harriet Dufie Appiah** is pursuing a Ph.D. in Chemical Engineering at Rowan University, with research centered on sustainable process design. Her work spans three core areas: developing decision-making frameworks for food waste disposal and recycling, applying machine learning and life cycle assessment to forecast the environmental footprint of chemical processes at early design stages, and modeling the recovery and purification of sulfur hexafluoride (SF6) and octafluorocyclobutane (C4F8) to reduce pollution from electrical power systems and microelectronics processing. 
+    <strong>Harriet Dufie Appiah</strong> is pursuing a Ph.D. in Chemical Engineering at Rowan University, with research centered on sustainable process design. Her work spans three core areas: developing decision-making frameworks for food waste disposal and recycling, applying machine learning and life cycle assessment to forecast the environmental footprint of chemical processes at early design stages, and modeling the recovery and purification of sulfur hexafluoride (SF6) and octafluorocyclobutane (C4F8) to reduce pollution from electrical power systems and microelectronics processing. 
   </div>
 </div>
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
@@ -41,7 +41,7 @@
     <img src="/Reference_Files/Contributions/Ronald.png" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;">
   </div>
   <div style="flex: 2; text-align: justify;">
-    **Ronald Borja-Roman** is a Ph.D. student in Chemical Engineering at Rowan University. He holds a bachelor's degree in chemical engineering from Universidad del Atlántico and is currently completing a degree in Software Engineering at Universidad de Cartagena, Colombia. His research combines physics-based simulation, artificial intelligence, and computational optimization to model and optimize complex engineering systems, with applications in functional materials, additive manufacturing, and sustainable chemical processes. 
+    <strong>Ronald Borja-Roman</strong> is a Ph.D. student in Chemical Engineering at Rowan University. He holds a bachelor's degree in chemical engineering from Universidad del Atlántico and is currently completing a degree in Software Engineering at Universidad de Cartagena, Colombia. His research combines physics-based simulation, artificial intelligence, and computational optimization to model and optimize complex engineering systems, with applications in functional materials, additive manufacturing, and sustainable chemical processes. 
   </div>
 </div>
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
@@ -49,7 +49,7 @@
     <img src="/Reference_Files/Contributions/Greg.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;">
   </div>
    <div style="flex: 2; text-align: justify;">
-    **Gregory Santilli** is a mechanical engineer at Maarky Thermal Systems, designing large equipment for powerplants.  He holds B.S. in Mechanical Engineering.  He also completed an internship at Rowan University which involved designing this website and creating codes to obtain thermodynamic properties of molecules as well as implementing learning modules and research from Dr. Yenkie’s group.  
+    <strong>Gregory Santilli</strong> is a mechanical engineer at Maarky Thermal Systems, designing large equipment for powerplants.  He holds B.S. in Mechanical Engineering.  He also completed an internship at Rowan University which involved designing this website and creating codes to obtain thermodynamic properties of molecules as well as implementing learning modules and research from Dr. Yenkie’s group.  
   </div>
 </div>
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
@@ -57,7 +57,7 @@
     <img src="/Reference_Files/Contributions/Andres.png" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;">
   </div>
   <div style="flex: 2; text-align: justify;">
-   ** Andres Castellar-Freile** is a Chemical Engineering Ph.D. candidate at Rowan University, conducting research in the Sustainable Design and Systems Medicine Lab. He holds a B.S. in Chemical Engineering from Universidad del Atlántico, where he graduated with top honors and the highest GPA in the Faculty of Engineering. His research bridges artificial intelligence, process optimization, and sustainable systems design. Andres specializes in combining graph-theoretic frameworks with machine learning, vision-language models, and molecular dynamics simulations to solve complex engineering problems. His core projects focus on improving wastewater treatment networks, decision-making in plastic pyrolysis pathways, and modeling reverse micelle exchange dynamics for targeted biomolecule delivery. 
+   <strong>Andres Castellar-Freile</strong> is a Chemical Engineering Ph.D. candidate at Rowan University, conducting research in the Sustainable Design and Systems Medicine Lab. He holds a B.S. in Chemical Engineering from Universidad del Atlántico, where he graduated with top honors and the highest GPA in the Faculty of Engineering. His research bridges artificial intelligence, process optimization, and sustainable systems design. Andres specializes in combining graph-theoretic frameworks with machine learning, vision-language models, and molecular dynamics simulations to solve complex engineering problems. His core projects focus on improving wastewater treatment networks, decision-making in plastic pyrolysis pathways, and modeling reverse micelle exchange dynamics for targeted biomolecule delivery. 
   </div>
 </div>
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
@@ -65,7 +65,7 @@
     <img src="/Reference_Files/Contributions/Barnabas.png" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;">
   </div>
    <div style="flex: 2; text-align: justify;">
-    **Barnabas Gao** is a passionate chemical engineer currently pursuing his PhD at Rowan University in Glassboro, New Jersey at the Sustainable Design and Systems Medicine lab (SDSML). His research is centered around systems-level analysis, mathematical modeling, process design, process development, scale-up & optimization, with the integration of machine learning and high-performance computing to innovate and improve process efficiencies. He has contributed to the development of educational modules, and videos for STEM outreach on Sustainability, as well as mentoring several undergraduate students. He has received multiple awards throughout his research and professional journey from STLE, ACS, and AIChE Divisions among others. He received his Bachelor of Science degree from Kwame Nkrumah University of Science and Technology in Ghana.  
+    <strong>Barnabas Gao</strong> is a passionate chemical engineer currently pursuing his PhD at Rowan University in Glassboro, New Jersey at the Sustainable Design and Systems Medicine lab (SDSML). His research is centered around systems-level analysis, mathematical modeling, process design, process development, scale-up & optimization, with the integration of machine learning and high-performance computing to innovate and improve process efficiencies. He has contributed to the development of educational modules, and videos for STEM outreach on Sustainability, as well as mentoring several undergraduate students. He has received multiple awards throughout his research and professional journey from STLE, ACS, and AIChE Divisions among others. He received his Bachelor of Science degree from Kwame Nkrumah University of Science and Technology in Ghana.  
   </div>
 </div>
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
