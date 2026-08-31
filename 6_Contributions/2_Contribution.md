@@ -29,7 +29,7 @@
     <img src="/Reference_Files/Contributions/Andres.png" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;">
   </div>
   <div style="flex: 2; text-align: justify;">
-   <strong>Andres Castellar-Freile</strong> is a Chemical Engineering Ph.D. candidate at Rowan University, conducting research in the Sustainable Design and Systems Medicine Lab. He holds a B.S. in Chemical Engineering from Universidad del Atlántico, where he graduated with top honors and the highest GPA in the Faculty of Engineering. His research bridges artificial intelligence, process optimization, and sustainable systems design. Andres specializes in combining graph-theoretic frameworks with machine learning, vision-language models, and molecular dynamics simulations to solve complex engineering problems. His core projects focus on improving wastewater treatment networks, decision-making in plastic pyrolysis pathways, and modeling reverse micelle exchange dynamics for targeted biomolecule delivery. 
+   <strong>Andres Castellar-Freile</strong> is a Ph.D. candidate in Chemical Engineering at Rowan University. He holds a B.S. in Chemical Engineering from Universidad del Atlántico, Colombia. Andres specializes in combining graph-theoretic frameworks with machine learning, vision-language models, and molecular dynamics simulations to solve complex engineering problems. His core projects focus on improving wastewater treatment networks, modeling reverse micelles' exchange dynamics and decision-making in plastic pyrolysis pathways. 
   </div>
 </div>
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
