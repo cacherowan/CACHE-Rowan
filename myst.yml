@@ -1,7 +1,7 @@
 version: 1
 
 project:
-  title: "**MOL**ecular-**to**-**L**ife-cycle **I**ntelligence **F**ramework for **E**arly process design"
+  title: "MOL2LIFE: Molecular-to-Life-cycle Intelligence Framework for Early Process Design"
   id: e5c27d9e-b15a-4c9f-8707-614c782cf6ab
   jupyter: lite
   resources:
