@@ -1,9 +1,6 @@
 # Contributions
 
-
-
-
-<<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
   <div style="flex: 1; text-align: center;">
     <img src="/Reference_Files/Contributions/Harriet.png" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;">
   </div>
