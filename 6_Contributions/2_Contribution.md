@@ -40,7 +40,7 @@
     <strong>Barnabas Gao</strong> is a passionate chemical engineer currently pursuing his PhD at Rowan University in Glassboro, New Jersey at the Sustainable Design and Systems Medicine lab (SDSML). His research is centered around systems-level analysis, mathematical modeling, process design, process development, scale-up & optimization, with the integration of machine learning and high-performance computing to innovate and improve process efficiencies. He has contributed to the development of educational modules, and videos for STEM outreach on Sustainability, as well as mentoring several undergraduate students. He has received multiple awards throughout his research and professional journey from STLE, ACS, and AIChE Divisions among others. He received his Bachelor of Science degree from Kwame Nkrumah University of Science and Technology in Ghana.  
   </div>
 </div>
-div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
   <div style="flex: 1; text-align: center;">
     <img src="/Reference_Files/Contributions/Yenkie.png" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;">
   </div>
