@@ -64,11 +64,4 @@
     <strong>Dr. Robert P. Hesketh<strong> is an internationally recognized leader in chemical engineering education, research, and professional service. Since 2000, he has served as Professor of Chemical Engineering at Rowan University, where he was Department Chair (2004–2012). He has held faculty positions at the University of Tulsa and completed postdoctoral research at the University of Cambridge. Dr. Hesketh is widely known for pioneering the integration of hands-on, experiential learning into chemical engineering curricula, including innovative laboratory modules and the acclaimed Rowan Engineering Clinic model. He has secured over $5.9 million in external research funding, led interdisciplinary research projects in green engineering, separations, process engineering, and reaction engineering, and significantly advanced the application of sustainability principles in chemical engineering practice.
   </div>
 </div>
-<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-  <div style="flex: 1; text-align: center;">
-    Add the next contributor photo here.
-  </div>
-  <div style="flex: 1; text-align: center;">
-    Add the next contributor's bio here.
-  </div>
-</div>
+<
