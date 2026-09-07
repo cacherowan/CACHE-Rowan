@@ -48,7 +48,7 @@ To calculate this yourself, go to Module 2A: Production Phase Impact Prediction 
       <td style="border: 1px solid #ccc; padding: 10px;">Isopropanol</td>
       <td style="border: 1px solid #ccc; padding: 10px; text-align: center;"></td>
     </tr>
-    <tr style="background-color: #f5f5f5;">
+    <tr>
       <td style="border: 1px solid #ccc; padding: 10px;">Water</td>
       <td style="border: 1px solid #ccc; padding: 10px; text-align: center;"></td>
     </tr>
@@ -81,7 +81,7 @@ $$
       <td style="border: 1px solid #ccc; padding: 10px;">Distillation</td>
       <td style="border: 1px solid #ccc; padding: 10px; text-align: center;"></td>
     </tr>
-    <tr style="background-color: #f5f5f5;">
+    <tr>
       <td style="border: 1px solid #ccc; padding: 10px;">Pervaporation</td>
       <td style="border: 1px solid #ccc; padding: 10px; text-align: center;"></td>
     </tr>
