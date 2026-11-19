@@ -257,76 +257,15 @@ def predict_human_health_impact(molecule_name, smiles):
 ```
 
 
-
-
-
-
 ```
 # Cell 9: Calculate the Human Health Impact of a chemical
 # Give the function below two things: the chemical's name (for display) and its SMILES code, which the model uses to look it up.  Run the cell to see its features and its predicted human health impact impact.
 # To calculate the impact for another chemical, copy the line below into a new cell and change the name and SMILES.
 
-predict_human_health_impact("Methanol", "CO");
+predict_human_health_impact("Benzene", "c1ccccc1");
+``` 
 ```
-
-<details>
-<summary>Expected output</summary>
-
-```text
-Methanol  (CO)
-----------------------------------------
-  Heat of Vaporization(J/mol)      37460.1385
-  Heat Capacity (kJ/kgC)             2.5318
-  XLogP                             -0.5000
-  Pitzer’s Acentric Factor [-]       0.5560
-  Critical Temperature [K]         512.5000
-  Chi0n                              1.4472
-  HallKierAlpha                     -0.0400
-  SMR_VSA7                           0.0000
-  VSA_EState6                        0.0000
-  NumValenceElectrons               14.0000
-----------------------------------------
-  Human Health Impact: 0.9432 DALY/kg
-```
-
-</details>
-
-
-
-
-```
-# Cell 10: Example with Ethanol
-
-predict_human_health_impact("Ethanol", "CCO");
-```
-
-<details>
-<summary>Expected output</summary>
-
-```text
-Ethanol  (CCO)
-----------------------------------------
-  Heat of Vaporization(J/mol)      42319.9941
-  Heat Capacity (kJ/kgC)             2.5700
-  XLogP                             -0.1000
-  Pitzer’s Acentric Factor [-]       0.6440
-  Critical Temperature [K]         514.0000
-  Chi0n                              2.1543
-  HallKierAlpha                     -0.0400
-  SMR_VSA7                           0.0000
-  VSA_EState6                        0.0000
-  NumValenceElectrons               20.0000
-----------------------------------------
-  Human Health Impact: 0.9486 DALY/kg
-```
-
-</details>
-
-
-
-
-```
-# Cell 11: Example with Benzene
+# Cell 10: Example with Benzene
 
 predict_human_health_impact("Benzene", "c1ccccc1");
 ```
@@ -353,11 +292,8 @@ Benzene  (c1ccccc1)
 
 </details>
 
-
-
-
 ```
-# Cell 12: Example with Toluene
+# Cell 11: Example with Toluene
 
 predict_human_health_impact("Toluene", "Cc1ccccc1");
 ```
@@ -384,46 +320,8 @@ Toluene  (Cc1ccccc1)
 
 </details>
 
-
-
-
 ```
-# Cell 13: Example using Phenol (Which will be displayed later on a slider and graph)
-
-# 1. Example: Phenol
-MOLECULE = "PHENOL"
-SMILES = "Oc1ccccc1"
-
-impact_value_slider = predict_human_health_impact(MOLECULE, SMILES)
-```
-
-<details>
-<summary>Expected output</summary>
-
-```text
-PHENOL  (Oc1ccccc1)
-----------------------------------------
-  Heat of Vaporization(J/mol)      57735.3635
-  Heat Capacity (kJ/kgC)             2.1408
-  XLogP                              1.5000
-  Pitzer’s Acentric Factor [-]       0.4380
-  Critical Temperature [K]         694.2500
-  Chi0n                              3.8340
-  HallKierAlpha                     -0.9800
-  SMR_VSA7                          30.3318
-  VSA_EState6                        8.7127
-  NumValenceElectrons               36.0000
-----------------------------------------
-  Human Health Impact: 0.9596 DALY/kg
-```
-
-</details>
-
-
-
-
-```
-# Cell 14: Phenol Continued, Creating Slider to Visualize Impact
+# Cell 14: Toluene Continued, Creating Slider to Visualize Impact
 
 kg_slider = widgets.FloatSlider(value=(round(impact_value_slider, 4)), min=(round(impact_value_slider, 4)) * 0.5, max=(round(impact_value_slider, 4)) * 1.5, step=0.1, description='kg amount:')
 output_slider = widgets.Output()
