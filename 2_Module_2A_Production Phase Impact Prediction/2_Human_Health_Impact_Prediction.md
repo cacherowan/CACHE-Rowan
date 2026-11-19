@@ -262,36 +262,8 @@ def predict_human_health_impact(molecule_name, smiles):
 # Give the function below two things: the chemical's name (for display) and its SMILES code, which the model uses to look it up.  Run the cell to see its features and its predicted human health impact impact.
 # To calculate the impact for another chemical, copy the line below into a new cell and change the name and SMILES.
 
-predict_human_health_impact("Benzene", "c1ccccc1");
+predict_human_health_impact("Toluene", "Cc1ccccc1");
 ``` 
-```
-# Cell 10: Example with Benzene
-
-predict_human_health_impact("Benzene", "c1ccccc1");
-```
-
-<details>
-<summary>Expected output</summary>
-
-```text
-Benzene  (c1ccccc1)
-----------------------------------------
-  Heat of Vaporization(J/mol)      33879.4484
-  Heat Capacity (kJ/kgC)             1.7469
-  XLogP                              2.1000
-  Pitzer’s Acentric Factor [-]       0.2120
-  Critical Temperature [K]         562.0500
-  Chi0n                              3.4641
-  HallKierAlpha                     -0.7800
-  SMR_VSA7                          36.3982
-  VSA_EState6                       12.0000
-  NumValenceElectrons               30.0000
-----------------------------------------
-  Human Health Impact: 0.9432 DALY/kg
-```
-
-</details>
-
 ```
 # Cell 11: Example with Toluene
 
@@ -348,7 +320,7 @@ update_slider(None)
 
 
 ```
-# Cell 15: Phenol Continued, Creating Slider and Graph to Visualize Impact
+# Cell 15: Toluene Continued, Creating Slider and Graph to Visualize Impact
 
 kg_slider_graph = widgets.FloatSlider(value=(round(impact_value_slider, 4)), min=(round(impact_value_slider, 4)) * 0.5, max=(round(impact_value_slider, 4)) * 1.5, step=0.1, description='kg amount:')
 output_graph = widgets.Output()
