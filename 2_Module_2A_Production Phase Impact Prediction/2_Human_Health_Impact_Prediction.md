@@ -351,7 +351,7 @@ update_graph(None)
 <details>
 <summary>Expected output</summary>
 
-<img src="/Reference_Files/Human_Health_Impact_Files/Cell_15.png"/>
+<img src="/Reference_Files/Human_Health_Impact_Files/toluene_image.png"/>
 
 </details>
 
