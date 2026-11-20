@@ -250,9 +250,9 @@ def predict_human_health_impact(molecule_name, smiles):
 
     model_input = np.array([list(descriptors_hh_scaled)])
     prediction = model_HH.predict(model_input, verbose=0)
-    impact_value = impact_value_slider * 1e-6
+    impact_value = prediction.item() * 1e-6
 
-    print(f" Human Health impact: {impact_value:.3e} DALY")
+    print(f" Human Health impact: {impact_value:.3e} DALY/kg")
     return impact_value
 ```
 
