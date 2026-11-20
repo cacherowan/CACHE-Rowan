@@ -259,7 +259,7 @@ def predict_climate_change_impact(molecule_name, smiles):
 # Cell 9: Calculate the Climate Change Impact of a chemical
 # Give the function below two things: the chemical's name (for display) and its SMILES code, which the model uses to look it up.  Run the cell to see its features and its predicted climate change impact.
 # To calculate the impact for another chemical, copy the line below into a new cell and change the name and SMILES.
-
+# IMPORTANT: Before running your model, confirm that all input data is correctly normalized. Feeding unnormalized data into the model will lead to inaccurate predictions!
 predict_climate_change_impact("Methanol", "CO");
 ```
 

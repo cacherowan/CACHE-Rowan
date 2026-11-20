@@ -261,6 +261,7 @@ def predict_human_health_impact(molecule_name, smiles):
 # Cell 9: Calculate the Human Health Impact of a chemical
 # Give the function below two things: the chemical's name (for display) and its SMILES code, which the model uses to look it up.  Run the cell to see its features and its predicted human health impact impact.
 # To calculate the impact for another chemical, copy the line below into a new cell and change the name and SMILES.
+# IMPORTANT: Before running your model, confirm that all input data is correctly normalized. Feeding unnormalized data into the model will lead to inaccurate predictions!
 
 predict_human_health_impact("Toluene", "Cc1ccccc1");
 ``` 
@@ -287,7 +288,7 @@ Toluene  (Cc1ccccc1)
   VSA_EState6                       10.2616
   NumValenceElectrons               36.0000
 ----------------------------------------
-  Human Health Impact: 0.9432 DALY/kg
+  Human Health Impact: 1.0522 DALY/kg
 ```
 
 </details>
@@ -312,7 +313,7 @@ update_slider(None)
 <details>
 <summary>Expected output</summary>
 
-<img src="/Reference_Files/Human_Health_Impact_Files/Cell_14.png"/>
+<img src="/Reference_Files/Human_Health_Impact_Files/fixed_slider.png"/>
 
 </details>
 
@@ -351,7 +352,7 @@ update_graph(None)
 <details>
 <summary>Expected output</summary>
 
-<img src="/Reference_Files/Human_Health_Impact_Files/toluene_image.png"/>
+<img src="/Reference_Files/Human_Health_Impact_Files/fixed_plot.png"/>
 
 </details>
 
