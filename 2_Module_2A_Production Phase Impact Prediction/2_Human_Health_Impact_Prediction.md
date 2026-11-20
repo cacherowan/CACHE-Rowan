@@ -250,9 +250,9 @@ def predict_human_health_impact(molecule_name, smiles):
 
     model_input = np.array([list(descriptors_hh_scaled)])
     prediction = model_HH.predict(model_input, verbose=0)
-    impact_value = prediction.item() * 1e-6
+    impact_value = impact_value_slider * 1e-6
 
-    print(f"  Human Health Impact: {impact_value / 1e-6:.3g} × 10⁻⁶ DALY/kg\n")
+    print(f" Human Health impact: {impact_value:.3e} DALY")
     return impact_value
 ```
 
@@ -288,23 +288,24 @@ Toluene  (Cc1ccccc1)
   VSA_EState6                       10.2616
   NumValenceElectrons               36.0000
 ----------------------------------------
-  Human Health Impact: 1.0522 DALY/kg
+  Human Health Impact: 1.05 x 10⁻⁶ DALY/kg
 ```
 
 </details>
 
 ```
 # Cell 14: Toluene Continued, Creating Slider to Visualize Impact
-
-kg_slider = widgets.FloatSlider(value=(round(impact_value_slider, 4)), min=(round(impact_value_slider, 4)) * 0.5, max=(round(impact_value_slider, 4)) * 1.5, step=0.1, description='kg amount:')
+kg_slider = widgets.FloatSlider(value=1.0, min=0.0, max=10.0, step=0.1, description='kg amount:')
 output_slider = widgets.Output()
+
+hh_per_kg = impact_value_slider * 1e-6
 
 def update_slider(change):
     with output_slider:
-        output_slider.clear_output()
-        kg_slider_kg = kg_slider.value
-        total_hh_slider = (round(impact_value_slider, 4)) * kg_slider_kg
-        print(f"Health impact:  {total_hh_slider:.6f} Disability-Adjusted Life Years (DALY)")
+        output_slider.clear_output(wait=True)
+
+        total_hh_slider = hh_per_kg * kg_slider.value
+        print(f"Health impact: {total_hh_slider:.3e} DALY")
 
 kg_slider.observe(update_slider, names='value')
 display(kg_slider, output_slider)
@@ -313,7 +314,7 @@ update_slider(None)
 <details>
 <summary>Expected output</summary>
 
-<img src="/Reference_Files/Human_Health_Impact_Files/fixed_slider.png"/>
+<img src="/Reference_Files/Human_Health_Impact_Files/correct_image.png"/>
 
 </details>
 
@@ -323,15 +324,15 @@ update_slider(None)
 ```
 # Cell 15: Toluene Continued, Creating Slider and Graph to Visualize Impact
 
-kg_slider_graph = widgets.FloatSlider(value=(round(impact_value_slider, 4)), min=(round(impact_value_slider, 4)) * 0.5, max=(round(impact_value_slider, 4)) * 1.5, step=0.1, description='kg amount:')
+kg_slider_graph = widgets.FloatSlider(value=1.0, min=0.0, max=10.0, step=0.1, description='kg amount:')
 output_graph = widgets.Output()
-
-hh_per_kg = (round(impact_value_slider, 4))
-kg_range = np.linspace((round(impact_value_slider, 4)) * 0.5, (round(impact_value_slider, 4)) * 1.5, 20)
+hh_per_kg = impact_value_slider * 1e-6
+kg_range = np.linspace(0, 10, 100)
 
 def update_graph(change):
     with output_graph:
         output_graph.clear_output(wait=True)
+
         kg_graph_kg = kg_slider_graph.value
         total_hh_graph = hh_per_kg * kg_graph_kg
 
@@ -339,11 +340,16 @@ def update_graph(change):
 
         ax.plot(kg_range, hh_per_kg * kg_range, color='#e0685c')
         ax.scatter([kg_graph_kg], [total_hh_graph], color='#e0685c', zorder=5, s=80)
-        ax.set_title(f"Health: {total_hh_graph:.6f} Disability-Adjusted Life Years (DALY)")
+
+        ax.set_title(f"Health Impact: {total_hh_graph:.3e} DALY")
         ax.set_xlabel(f"kg {MOLECULE}")
+        ax.set_ylabel("Human Health Impact (DALY)")
+
+        ax.ticklabel_format(axis='y', style='sci', scilimits=(0, 0))
 
         plt.tight_layout()
         plt.show()
+        plt.close(fig)
 
 kg_slider_graph.observe(update_graph, names='value')
 display(kg_slider_graph, output_graph)
@@ -352,7 +358,7 @@ update_graph(None)
 <details>
 <summary>Expected output</summary>
 
-<img src="/Reference_Files/Human_Health_Impact_Files/fixed_plot.png"/>
+<img src="/Reference_Files/Human_Health_Impact_Files/correct_plot.png"/>
 
 </details>
 
